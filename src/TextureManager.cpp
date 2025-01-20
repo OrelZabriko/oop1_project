@@ -27,7 +27,7 @@ TextureManager::TextureManager()
 
 
 //-----------------------------------------------------------------------------
-const sf::Texture& TextureManager::getBackGround()
+const sf::Texture& TextureManager::getStartMenuBackground()
 {
 	return m_backGroundImage;
 }

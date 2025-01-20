@@ -26,7 +26,7 @@ public:
    
     // Get a texture by name
     const sf::Texture& getTexture(enum Object object) ;
-    const sf::Texture& getBackGround();
+    const sf::Texture& getStartMenuBackground();
    
    
 

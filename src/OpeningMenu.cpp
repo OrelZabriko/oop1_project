@@ -17,13 +17,9 @@ OpeningMenu::OpeningMenu()
    
 
     //create a sprite and set its texture
-    m_backgroundImage = sf::Sprite(TextureManager::getInstance().getBackGround());
+    m_backgroundImage = sf::Sprite(TextureManager::getInstance().getStartMenuBackground());
 
     SetScaleBackgroundImag();
-
-    /*TextureManager backgroundImage;
-    m_backgroundImage = backgroundImage.getStartMenuBackground();
-    SetScaleBackgroundImag(m_backgroundImageTexture);*/
 }
 
 
@@ -31,8 +27,8 @@ OpeningMenu::OpeningMenu()
 void OpeningMenu::SetScaleBackgroundImag()
 {
     //Scale the background to fit the window if needed
-    float scaleX = 1920.0f / TextureManager::getInstance().getBackGround().getSize().x;
-    float scaleY = 1080.0f / TextureManager::getInstance().getBackGround().getSize().y;
+    float scaleX = 1920.0f / TextureManager::getInstance().getStartMenuBackground().getSize().x;
+    float scaleY = 1080.0f / TextureManager::getInstance().getStartMenuBackground().getSize().y;
     m_backgroundImage.setScale(scaleX, scaleY);
 }
 
@@ -50,38 +46,3 @@ void OpeningMenu::Draw(sf::RenderWindow& window)
         m_menuButtons[buttonNum]->draw(window, START_MENU_INDENTIFIER[buttonNum]);
     }
 }
-
-
-//-----------------------------------------------------------------------------
-//void OpeningMenu::RunStartWindow()
-//{
-//	//create the window. 
-//	m_startMenu.create(sf::VideoMode(OPENINIG_MENU_WIDTH, OPENINIG_MENU_HEIGHT),
-//					   OPENING_WINDOW_NAME);
-//}
-
-
-
-
-
-
-
-
-// Main game loop
-//while (window.isOpen()) {
-//    sf::Event event;
-//    while (window.pollEvent(event)) {
-//        // Close window if requested
-//        if (event.type == sf::Event::Closed)
-//            window.close();
-//    }
-//
-//    // Clear the window
-//    window.clear();
-//
-//    // Draw the background
-//    window.draw(background);
-//
-//    // Display everything that was drawn
-//    window.display();
-//}
