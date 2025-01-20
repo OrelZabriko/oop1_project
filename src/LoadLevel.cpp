@@ -1,9 +1,10 @@
 //-----include section-----
+#include "LoadLevel.h"
+
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include <LoadLevel.h>
 
 
 //-----functions section------
@@ -13,10 +14,11 @@ LoadLevel::LoadLevel()
 	readAllLevels();
 }
 
+
+//-----------------------------------------------------------------------------
 bool LoadLevel::readAllLevels()
 {
-	std::string levels_file("LevelList.txt");
-	std::ifstream file(levels_file);
+	std::ifstream file(LEVELS_FILE);
 	if (!file.is_open())
 	{
 		std::cerr << "Could not open level file: " << std::endl;

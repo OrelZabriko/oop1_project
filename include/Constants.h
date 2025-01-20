@@ -8,6 +8,7 @@
 //-----constants section------
 const std::string BOARD_FILE_NAME = "Board.txt";
 const std::string TOOLBAROBJECTS = "ToolBar.txt";
+const std::string LEVELS_FILE = "LevelList.txt";
 const std::string OPENING_WINDOW_NAME = "Opening Window";
 const std::string GAME_WINDOW_NAME = "Game Window";
 

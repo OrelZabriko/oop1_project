@@ -29,6 +29,6 @@ public:
 private:
     int m_currLevel;
     bool readAllLevels();
-        std::vector<Level> m_levels;
+    std::vector<Level> m_levels;
 };
 
