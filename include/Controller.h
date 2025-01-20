@@ -21,9 +21,20 @@ public:
 	Controller() = default;
 
 	void Run();
+	//handle click
+	// /*
+	// m_upper_menu->handleclick;
+	//hanle hover
+	//handleMove()
+	//
+	//handlers
+	//update - change positionts
+	//draw
+
 
 
 private:
 	sf::RenderWindow m_GameWindow;
+	// Board m_board;
 
 };

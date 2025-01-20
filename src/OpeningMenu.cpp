@@ -14,16 +14,12 @@ OpeningMenu::OpeningMenu()
         m_menuButtons.push_back(std::make_unique<Button>(START_MENU_INDENTIFIER[buttons]));
     }
 
-    //load the PNG file
-    if (!m_backgroundImageTexture.loadFromFile("StartMenuBackground.png"))
-    {
-        //error handling if the image fails to load
-        exit(EXIT_FAILURE);
-    }
+   
 
     //create a sprite and set its texture
-    m_backgroundImage = sf::Sprite(m_backgroundImageTexture);
-    SetScaleBackgroundImag(m_backgroundImageTexture);
+    m_backgroundImage = sf::Sprite(TextureManager::getInstance().getBackGround());
+
+    SetScaleBackgroundImag();
 
     /*TextureManager backgroundImage;
     m_backgroundImage = backgroundImage.getStartMenuBackground();
@@ -32,11 +28,11 @@ OpeningMenu::OpeningMenu()
 
 
 //-----------------------------------------------------------------------------
-void OpeningMenu::SetScaleBackgroundImag(const sf::Texture& texture)
+void OpeningMenu::SetScaleBackgroundImag()
 {
     //Scale the background to fit the window if needed
-    float scaleX = 1920.0f / texture.getSize().x;
-    float scaleY = 1080.0f / texture.getSize().y;
+    float scaleX = 1920.0f / TextureManager::getInstance().getBackGround().getSize().x;
+    float scaleY = 1080.0f / TextureManager::getInstance().getBackGround().getSize().y;
     m_backgroundImage.setScale(scaleX, scaleY);
 }
 

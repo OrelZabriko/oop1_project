@@ -48,6 +48,7 @@ enum OBJECT {
 	Rock,
 	Robot,
 	Guard,
+	Bomb,
 	None //in case of creating default value
 };
 
