@@ -3,6 +3,8 @@
 //-----include section-----
 #include "OpeningMenu.h"
 #include "Board.h"
+#include "Audio.h"
+#include "LoadLevel.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

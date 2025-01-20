@@ -1,8 +1,10 @@
 //-----include section-----
-#include <SFML/Graphics.hpp>
-#include "constants.h"
-#include <iostream>
 #include "Level.h"
+#include "Constants.h"
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
 
 
 //-----functions section------

@@ -12,12 +12,12 @@
 class Board
 {
 public:
-	Board();
+	//Board();
 
-	void resetBoard(const int rows, const int cols);
+	//void resetBoard(const int rows, const int cols);
 
-	int GetRows() const;
-	int GetCols() const;
+	//int GetRows() const;
+	//int GetCols() const;
 
 	//bool CheckIfInBoard(const sf::Vector2f mousePosition, sf::Vector2i& boardCord) const;
 	//void update(const sf::Vector2i boardCord, OBJECT obj, bool& checkExistencePlayer);
