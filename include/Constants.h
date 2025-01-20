@@ -27,7 +27,7 @@ const int FONT_CHARACTERS_SIZE = 26;
 const unsigned int OPENINIG_MENU_WIDTH = 1920;
 const unsigned int OPENINIG_MENU_HEIGHT = 1080;
 
-
+const int OBJECT_COUNT = 5;
 const unsigned int WINDOW_WIDTH = 3500;
 const unsigned int WINDOW_HEIGHT = 1750;
 
