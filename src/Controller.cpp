@@ -11,7 +11,7 @@ void Controller::run()
     LoadLevel levelManager;
     
 	sf::RenderWindow window;
-
+    //add a comment
     window.create(sf::VideoMode(OPENINIG_MENU_WIDTH, OPENINIG_MENU_HEIGHT), OPENING_WINDOW_NAME);
 
     while (window.isOpen())
