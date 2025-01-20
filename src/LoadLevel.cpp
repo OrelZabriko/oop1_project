@@ -8,40 +8,52 @@
 
 
 //-----functions section------
+
 //-----------------------------------------------------------------------------
-bool LoadLevel::loadGameLevel(int levelNumber)
+
+LoadLevel::LoadLevel()
 {
-	std::string levelname = "level" + std::to_string(levelNumber) + ".txt";
-	return readLevelFromFile(levelname);
+	readAllLevels();
 }
 
-//-----------------------------------------------------------------------------
-
-bool LoadLevel::readLevelFromFile(const std::string& levelname)
+bool LoadLevel::readAllLevels()
 {
-	std::ifstream file(levelname);
+	std::string levels_file("LevelList.txt");
+	std::ifstream file(levels_file);
 	if (!file.is_open())
 	{
-		std::cerr << "Could not open level file: " << levelname << std::endl;
+		std::cerr << "Could not open level file: " << std::endl;
 		return false;
 	}
 
-	m_board.resetBoard();
+	
 
 	std::string line;
 	int row = 0;
-
-	while (std::getline(file, line) && row < m_board.GetRows())
+	while (std::getline(file, line))
 	{
-		int lineLength = line.length(); // length of the line that read from the file
-		int colsToRead = std::min(lineLength, m_board.GetCols()); // in order to avoid reading more than the board size
-
-		for (int col = 0; col < colsToRead; col++)
+		std::ifstream level(line);
+		if (!file.is_open())
 		{
-			m_board[row][col] = line[col];
+			std::cerr << "Could not open level file: "  << std::endl;
+			return false;
 		}
-		row++;
+		std::string temp;
+		Level currLevel;
+		int rows, cols;
+		level >> cols >> rows;
+		std::cout << "read cols:" << cols << "read rows" << rows << std::endl;
+		currLevel.setRows(rows);
+		currLevel.setCols(cols);
+	
+		while (std::getline(level, temp))
+		{
+			currLevel.setCell(temp);
+		}
+		m_levels.push_back(currLevel);
+		level.close();
 	}
+	
 
 	file.close();
 	return true;

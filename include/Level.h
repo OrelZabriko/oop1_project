@@ -2,7 +2,7 @@
 
 //-----include section-----
 #include <SFML/Graphics.hpp>
-#include "LoadLevel.h"
+
 #include "Constants.h"
 
 
@@ -11,16 +11,18 @@ class Level
 {
 public:
     Level();
-    const int getNumOfLevel() const;
-    bool loadLevel(int levelnumber);
-    void draw(sf::RenderWindow& window) const;
-
+    
+    void setRows(const int);
+    void setCols(const int);
+    const int getRows() const;
+    const int getCols() const;
+    const std::vector<std::string>& getMatrix();
+    void setCell(const std::string line);
 
 private:
-    void initializeTextures();
-    LoadLevel m_levelLoader;
-    int m_currentLevel;
-    sf::Texture m_textures[OBJECT_COUNT];
-    sf::Sprite m_sprites[OBJECT_COUNT];
+    int m_rows;
+    int m_cols;
+    std::vector<std::string> m_matrix;
+    
 };
 

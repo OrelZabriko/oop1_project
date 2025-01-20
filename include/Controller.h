@@ -20,10 +20,12 @@ class Controller
 public:
 	Controller() = default;
 
-	void Run();
+	void run();
 
 
 private:
 	sf::RenderWindow m_GameWindow;
+	bool m_state = false; // false == start menu //true game started
+	Board m_board;
 
 };
