@@ -14,32 +14,27 @@
 //-----------------------------------------------------------------------------
 TextureManager::TextureManager()
 {
-	std::vector<sf::Texture> textures;
-
-	for (int index = 0; index < m_objNames.size(); index++)
+	for (int index = 0; index < m_objNames.size();index++)
 	{
 		sf::Texture newTexture;
 		newTexture.loadFromFile(m_objNames[index]);
-		textures.push_back(newTexture);
+		m_objects.push_back(newTexture);
 	}
 
-
-	for (int index = 0; index < m_objNames.size(); index++)
-	{
-		sf::Sprite newSprite;
-		newSprite.setTexture(textures[index]);
-		m_objectSprites.push_back(newSprite);
-	}
-
-
-	sf::Texture startBackgroundTexture;
-	startBackgroundTexture.loadFromFile(m_StartBackGroundFileName);
-	m_StartMenuBackground.setTexture(startBackgroundTexture);
+	
+	m_backGroundImage.loadFromFile(m_StartBackGroundFileName);
 }
 
 
 //-----------------------------------------------------------------------------
-const sf::Sprite& TextureManager::getStartMenuBackground() const
+const sf::Texture& TextureManager::getStartMenuBackground()
 {
-	return m_StartMenuBackground;
+	return m_backGroundImage;
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Texture& TextureManager::getTexture(enum Object object)
+{
+	return m_objects[object];
 }

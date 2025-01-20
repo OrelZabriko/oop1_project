@@ -27,10 +27,10 @@ public:
 
 private:
 	//sf::RenderWindow m_startMenu;
-	sf::Texture m_backgroundImageTexture;
+
 	sf::Sprite m_backgroundImage;
 	sf::Vector2f m_backgroundImageSize;
 	std::vector<std::unique_ptr<Button>> m_menuButtons;
 	
-	void SetScaleBackgroundImag(const sf::Texture& texture);
+	void SetScaleBackgroundImag();
 };
