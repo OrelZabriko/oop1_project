@@ -31,6 +31,5 @@ private:
 	sf::Sprite m_backgroundImage;
 	sf::Vector2f m_backgroundImageSize;
 	std::vector<std::unique_ptr<Button>> m_menuButtons;
-
 	void SetScaleBackgroundImag();
 };

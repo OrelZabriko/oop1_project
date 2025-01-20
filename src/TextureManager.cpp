@@ -20,8 +20,8 @@ TextureManager::TextureManager()
 		newTexture.loadFromFile(m_objNames[index]);
 		m_objects.push_back(newTexture);
 	}
-
-
+  
+  
 	m_backGroundImage.loadFromFile(m_StartBackGroundFileName);
 }
 
