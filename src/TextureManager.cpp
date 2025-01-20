@@ -14,14 +14,14 @@
 //-----------------------------------------------------------------------------
 TextureManager::TextureManager()
 {
-	for (int index = 0; index < m_objNames.size();index++)
+	for (int index = 0; index < m_objNames.size(); index++)
 	{
 		sf::Texture newTexture;
 		newTexture.loadFromFile(m_objNames[index]);
 		m_objects.push_back(newTexture);
 	}
-
-	
+  
+  
 	m_backGroundImage.loadFromFile(m_StartBackGroundFileName);
 }
 

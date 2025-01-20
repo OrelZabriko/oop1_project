@@ -1,19 +1,34 @@
 #pragma once
+
+//-----include section-----
+#include "Constants.h"
+#include "Board.h"
+#include "Level.h"
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-#include "Constants.h"
-#include "Board.h"
 
+
+//-----class section-----
 class LoadLevel
 {
 public:
-    LoadLevel() = default;
-    bool loadGameLevel(int levelNumber);
+    LoadLevel();
+    const Level& getLevel()
+    {
+        
+        if (m_currLevel > m_levels.size())
+        {
+            //winner?
+        }
+        return m_levels[m_currLevel++];
+    }
 
 
 private:
-    bool readLevelFromFile(const std::string& levelname);
-    BOARD m_board;
+    int m_currLevel;
+    bool readAllLevels();
+    std::vector<Level> m_levels;
 };
 

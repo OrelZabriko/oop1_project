@@ -13,8 +13,8 @@ OpeningMenu::OpeningMenu()
     {
         m_menuButtons.push_back(std::make_unique<Button>(START_MENU_INDENTIFIER[buttons]));
     }
-
-   
+  
+  
 
     //create a sprite and set its texture
     m_backgroundImage = sf::Sprite(TextureManager::getInstance().getStartMenuBackground());

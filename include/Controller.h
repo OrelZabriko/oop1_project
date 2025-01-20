@@ -2,6 +2,9 @@
 
 //-----include section-----
 #include "OpeningMenu.h"
+#include "Board.h"
+#include "Audio.h"
+#include "LoadLevel.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -35,6 +38,6 @@ public:
 
 private:
 	sf::RenderWindow m_GameWindow;
-	// Board m_board;
-
+	bool m_state = false;   //false == start menu //true game started
+	Board m_board;
 };
