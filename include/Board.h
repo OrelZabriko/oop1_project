@@ -1,11 +1,12 @@
 #pragma once
 
 //-----include section-----
+#include "Constants.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
-#include "Constants.h"
+
 
 //-----class section-----
 class Board

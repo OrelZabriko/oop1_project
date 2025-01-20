@@ -1,5 +1,4 @@
 //-----include section-----
-
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <iostream>
@@ -8,9 +7,7 @@
 
 
 //-----functions section------
-
 //-----------------------------------------------------------------------------
-
 LoadLevel::LoadLevel()
 {
 	readAllLevels();
@@ -38,10 +35,12 @@ bool LoadLevel::readAllLevels()
 			std::cerr << "Could not open level file: "  << std::endl;
 			return false;
 		}
+
 		std::string temp;
 		Level currLevel;
 		int rows, cols;
 		level >> cols >> rows;
+
 		std::cout << "read cols:" << cols << "read rows" << rows << std::endl;
 		currLevel.setRows(rows);
 		currLevel.setCols(cols);
@@ -58,13 +57,3 @@ bool LoadLevel::readAllLevels()
 	file.close();
 	return true;
 }
-
-//-----------------------------------------------------------------------------
-
-
-
-
-
-
-
-

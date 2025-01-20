@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "OpeningMenu.h"
+#include "Board.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -20,12 +21,11 @@ class Controller
 public:
 	Controller() = default;
 
-	void run();
+	void Run();
 
 
 private:
 	sf::RenderWindow m_GameWindow;
-	bool m_state = false; // false == start menu //true game started
+	bool m_state = false;   //false == start menu //true game started
 	Board m_board;
-
 };

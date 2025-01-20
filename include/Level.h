@@ -1,9 +1,9 @@
 #pragma once
 
 //-----include section-----
-#include <SFML/Graphics.hpp>
-
 #include "Constants.h"
+
+#include <SFML/Graphics.hpp>
 
 
 //-----class section-----
