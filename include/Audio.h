@@ -16,6 +16,7 @@ public:
 	const sf::Music& GetWinLevelSound() const;
 	const sf::Music& GetLoseLevelSound() const;
 
+
 private:
 	sf::Music m_backgroundMusic;
 	sf::Music m_winLevelSound;

@@ -10,16 +10,16 @@
 
 
 //-----class section-----
-class TextureManager
+class ResourceManager
 {
 public:
     // Deleted copy constructor and assignment operator to ensure singleton
-    TextureManager(const TextureManager&) = delete;
-    TextureManager& operator=(const TextureManager&) = delete;
+    ResourceManager(const ResourceManager&) = delete;
+    ResourceManager& operator=(const ResourceManager&) = delete;
 
     // Get the singleton instance
-    static TextureManager& getInstance() {
-        static TextureManager instance;
+    static ResourceManager& getInstance() {
+        static ResourceManager instance;
         return instance;
     };
 
@@ -29,10 +29,9 @@ public:
     const sf::Texture& getStartMenuBackground();
 
 
-
 private:
     // Private constructor for singleton
-    TextureManager();
+    ResourceManager();
 
     // Storage for textures
     std::vector<std::string> m_objNames =

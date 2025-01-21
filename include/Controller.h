@@ -28,6 +28,8 @@ public:
 
 private:
 	sf::RenderWindow m_GameWindow;
-	bool m_state = false;   //false == start menu //true game started
+	bool m_startMenuState = false;   //false == start menu //true game started
 	Board m_board;
+
+	void handleClicks(sf::Event event);
 };

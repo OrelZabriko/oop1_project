@@ -1,6 +1,5 @@
 //-----include section-----
 #include "Level.h"
-#include "Constants.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>

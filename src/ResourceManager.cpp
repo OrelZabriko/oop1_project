@@ -1,5 +1,5 @@
 //-----include section-----
-#include "TextureManager.h"
+#include "ResourceManager.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -12,7 +12,7 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-TextureManager::TextureManager()
+ResourceManager::ResourceManager()
 {
 	for (int index = 0; index < m_objNames.size(); index++)
 	{
@@ -27,14 +27,14 @@ TextureManager::TextureManager()
 
 
 //-----------------------------------------------------------------------------
-const sf::Texture& TextureManager::getStartMenuBackground()
+const sf::Texture& ResourceManager::getStartMenuBackground()
 {
 	return m_backGroundImage;
 }
 
 
 //-----------------------------------------------------------------------------
-const sf::Texture& TextureManager::getTexture(enum Object object)
+const sf::Texture& ResourceManager::getTexture(enum Object object)
 {
 	return m_objects[object];
 }

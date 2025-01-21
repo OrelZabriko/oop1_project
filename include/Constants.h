@@ -25,18 +25,16 @@ const std::string LOSE_LEVEL_SOUND = "LoseLevelSound.wav";
 const int FONT_CHARACTERS_SIZE = 26;
 
 //I define Full-HD resolution to fit as many different computer screens as possible.
-const unsigned int OPENINIG_MENU_WIDTH = 1920;
-const unsigned int OPENINIG_MENU_HEIGHT = 1080;
+const unsigned int WINDOW_WIDTH = 1920;
+const unsigned int WINDOW_HEIGHT = 1080;
 
 const int OBJECT_COUNT = 5;
-const unsigned int WINDOW_WIDTH = 3500;
-const unsigned int WINDOW_HEIGHT = 1750;
 
 const float BUTTON_WIDTH = 300;
 const float BUTTON_HEIGHT = 100;
 
-const float BOARD_WIDTH = 2000;
-const float BOARD_HEIGHT = 1000;
+const float BOARD_WIDTH = 1400;
+const float BOARD_HEIGHT = 720;
 
 const float CELL_SPACING = 6.f; // Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; // Space between buttons in pixels

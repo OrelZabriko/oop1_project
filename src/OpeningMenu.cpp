@@ -15,9 +15,8 @@ OpeningMenu::OpeningMenu()
     }
 
 
-
     //create a sprite and set its texture
-    m_backgroundImage = sf::Sprite(TextureManager::getInstance().getStartMenuBackground());
+    m_backgroundImage = sf::Sprite(ResourceManager::getInstance().getStartMenuBackground());
 
     SetScaleBackgroundImag();
 }
@@ -27,8 +26,8 @@ OpeningMenu::OpeningMenu()
 void OpeningMenu::SetScaleBackgroundImag()
 {
     //Scale the background to fit the window if needed
-    float scaleX = 1920.0f / TextureManager::getInstance().getStartMenuBackground().getSize().x;
-    float scaleY = 1080.0f / TextureManager::getInstance().getStartMenuBackground().getSize().y;
+    float scaleX = 1920.0f / ResourceManager::getInstance().getStartMenuBackground().getSize().x;
+    float scaleY = 1080.0f / ResourceManager::getInstance().getStartMenuBackground().getSize().y;
     m_backgroundImage.setScale(scaleX, scaleY);
 }
 
