@@ -15,20 +15,18 @@ class LoadLevel
 {
 public:
     LoadLevel();
-    const Level& getLevel()
-    {
-        
-        if (m_currLevel > m_levels.size())
-        {
-            //winner?
-        }
-        return m_levels[m_currLevel++];
-    }
+
+    bool readAllLevels();
+
+    const Level& getLevel();
+    
+
+    int getCurrentLevelRows() const;
+    int getCurrentLevelCols() const;
 
 
 private:
     int m_currLevel;
-    bool readAllLevels();
     std::vector<Level> m_levels;
 };
 

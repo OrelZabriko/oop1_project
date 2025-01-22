@@ -2,9 +2,11 @@
 
 //-----include section-----
 #include "OpeningMenu.h"
+#include "Objects.h"
 #include "Board.h"
 #include "Audio.h"
 #include "LoadLevel.h"
+#include "Level.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -25,10 +27,13 @@ public:
 
 	void Run();
 
+	void handleOpenMenuMouseClick(sf::RenderWindow& window,
+								  OpeningMenu& start_menu,
+								  LoadLevel& levelManager);
 
 private:
 	sf::RenderWindow m_GameWindow;
-	bool m_startMenuState = false;   //false == start menu //true game started
+	bool m_startMenuState = false;   //false == start menu //true == game started
 	Board m_board;
 
 	void handleClicks(sf::Event event);

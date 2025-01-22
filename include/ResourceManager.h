@@ -4,7 +4,6 @@
 #include "Constants.h"
 
 #include <SFML/Graphics.hpp>
-#include <map>
 #include <string>
 #include <memory>
 
@@ -25,7 +24,7 @@ public:
 
 
     // Get a texture by name
-    const sf::Texture& getTexture(enum Object object);
+    const sf::Texture& getObjectTexture(enum OBJECT object) const;
     const sf::Texture& getStartMenuBackground();
 
 

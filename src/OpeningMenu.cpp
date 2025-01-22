@@ -45,3 +45,22 @@ void OpeningMenu::Draw(sf::RenderWindow& window)
         m_menuButtons[buttonNum]->draw(window, START_MENU_INDENTIFIER[buttonNum]);
     }
 }
+
+
+//-----------------------------------------------------------------------------
+//this function will return the constant char of the button that clicked
+char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
+{
+    for (int buttons = 0; buttons < START_WINDOW_BUTTONS_NUM; buttons++)
+    {
+        const sf::Vector2f buttonPosition = m_menuButtons[buttons]->getPosition();
+        const sf::Vector2f buttonSize = m_menuButtons[buttons]->getSize();
+
+        if (CheckLimits(mousePosition, buttonPosition, buttonSize))
+        {
+            return START_MENU_INDENTIFIER[buttons];
+        }
+    }
+
+    return '\0'; //no button clicked
+}

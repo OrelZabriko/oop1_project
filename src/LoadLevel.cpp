@@ -24,7 +24,6 @@ bool LoadLevel::readAllLevels()
 		std::cerr << "Could not open level file: " << std::endl;
 		return false;
 	}
-
 	
 
 	std::string line;
@@ -43,9 +42,9 @@ bool LoadLevel::readAllLevels()
 		int rows, cols;
 		level >> cols >> rows;
 
-		std::cout << "read cols:" << cols << "read rows" << rows << std::endl;
-		currLevel.setRows(rows);
-		currLevel.setCols(cols);
+		std::cout << "read cols:" << cols << " read rows: " << rows << std::endl;
+		currLevel.setLevelRows(rows);
+		currLevel.setLevelCols(cols);
 	
 		while (std::getline(level, temp))
 		{
@@ -58,4 +57,37 @@ bool LoadLevel::readAllLevels()
 
 	file.close();
 	return true;
+}
+
+
+//-----------------------------------------------------------------------------
+const Level& LoadLevel::getLevel()
+{
+	if (m_currLevel > m_levels.size())
+	{
+		//winner?
+	}
+	return m_levels[m_currLevel++];
+}
+
+
+//-----------------------------------------------------------------------------
+int LoadLevel::getCurrentLevelRows() const
+{
+	if (m_levels.empty())
+	{
+		return 0;
+	}
+	else return m_levels[0].getRows();
+}
+
+
+//-----------------------------------------------------------------------------
+int LoadLevel::getCurrentLevelCols() const
+{
+	if (m_levels.empty())
+	{
+		return 0;
+	}
+	else return m_levels[0].getCols();
 }

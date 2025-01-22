@@ -4,7 +4,7 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-char getCharByEnum(OBJECT obj)
+char getObjCharByEnum(OBJECT obj)
 {
 	switch (obj)
 	{

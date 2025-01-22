@@ -34,7 +34,7 @@ const sf::Texture& ResourceManager::getStartMenuBackground()
 
 
 //-----------------------------------------------------------------------------
-const sf::Texture& ResourceManager::getTexture(enum Object object)
+const sf::Texture& ResourceManager::getObjectTexture(enum OBJECT object) const
 {
 	return m_objects[object];
 }

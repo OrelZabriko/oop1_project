@@ -21,6 +21,8 @@ class OpeningMenu
 public:
 	OpeningMenu();
 
+	char getClickedButton(const sf::Vector2f& mousePosition) const;
+
 	void Draw(sf::RenderWindow& window);
 
 

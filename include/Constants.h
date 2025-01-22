@@ -36,8 +36,8 @@ const float BUTTON_HEIGHT = 100;
 const float BOARD_WIDTH = 1400;
 const float BOARD_HEIGHT = 720;
 
-const float CELL_SPACING = 6.f; // Space adding in calculations between cells in pixels
-const float BUTTON_SPACING = 40.f; // Space between buttons in pixels
+const float CELL_SPACING = 6.f;		//Space adding in calculations between cells in pixels
+const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
 
 //-----enum section------
@@ -60,7 +60,7 @@ enum START_MENU_BUTTON {
 //-----functions section------
 //-----------------------------------------------------------------------------
 //functions which used in classes.
-char getCharByEnum(OBJECT obj);
+char getObjCharByEnum(OBJECT obj);
 OBJECT getObjByChar(char obj);
 char getStartMenuCharByEnum(START_MENU_BUTTON buttonType);
 START_MENU_BUTTON getStartMenuButtonByChar(char buttonType);
