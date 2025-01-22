@@ -13,6 +13,7 @@ void Controller::Run()
 
     sf::Clock clock;
 
+
     if (!levelManager.readAllLevels())
     {
         std::cerr << "read levels failed\n";
