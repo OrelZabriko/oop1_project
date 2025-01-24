@@ -9,10 +9,10 @@
 
 
 //-----class section-----
-class Guards : public Objects
+class Guard : public Objects
 {
 public:
-	virtual ~Guards() = default;
+	virtual ~Guard() = default;
 
 private:
 

@@ -42,12 +42,12 @@ const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
 //-----enum section------
 enum OBJECT {
-	Door,
-	Wall,
-	Rock,
-	Robot,
-	Guard,
-	None	//in case of creating default value
+	DOOR,
+	WALL,
+	ROCK,
+	ROBOT,
+	GUARD,
+	NONE	//in case of creating default value
 };
 
 enum START_MENU_BUTTON {

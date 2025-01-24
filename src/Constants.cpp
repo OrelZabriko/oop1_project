@@ -8,15 +8,15 @@ char getObjCharByEnum(OBJECT obj)
 {
 	switch (obj)
 	{
-	case OBJECT::Door:
+	case OBJECT::DOOR:
 		return 'D';
-	case OBJECT::Wall:
+	case OBJECT::WALL:
 		return '#';
-	case OBJECT::Rock:
+	case OBJECT::ROCK:
 		return '@';
-	case OBJECT::Robot:
+	case OBJECT::ROBOT:
 		return '/';
-	case OBJECT::Guard:
+	case OBJECT::GUARD:
 		return '!';
 	}
 }
@@ -28,15 +28,15 @@ OBJECT getObjByChar(char obj)
 	switch (obj)
 	{
 	case 'D':
-		return OBJECT::Door;
+		return OBJECT::DOOR;
 	case '#':
-		return OBJECT::Wall;
+		return OBJECT::WALL;
 	case '@':
-		return OBJECT::Rock;
+		return OBJECT::ROCK;
 	case '/':
-		return OBJECT::Robot;
+		return OBJECT::ROBOT;
 	case '!':
-		return OBJECT::Guard;
+		return OBJECT::GUARD;
 	}
 }
 

@@ -6,7 +6,7 @@
 #include "ResourceManager.h"
 #include "Level.h"
 #include "Robot.h"
-#include "Guards.h"
+#include "Guard.h"
 #include "StaticObjects.h"
 
 #include <SFML/Graphics.hpp>
@@ -45,6 +45,7 @@ private:
 	int m_rows;
 	int m_cols;
 	//std::vector<std::vector<Cell>> m_board;
-	std::vector<std::unique_ptr<Guards>> m_Guards;
-	std::vector<std::unique_ptr<StaticObjects>> m_NonMovingObjects;
+	std::unique_ptr<Robot> m_Robot;
+	std::vector<std::unique_ptr<Guard>> m_Guards;
+	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
 };
