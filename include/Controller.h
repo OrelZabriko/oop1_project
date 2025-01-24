@@ -27,13 +27,14 @@ public:
 	void Run();
 
 	void handleOpenMenuMouseClick(sf::RenderWindow& window,
-								  OpeningMenu& start_menu,
-								  LoadLevel& levelManager);
+		OpeningMenu& start_menu,
+		LoadLevel& levelManager);
 
 private:
 	sf::RenderWindow m_GameWindow;
 	bool m_startMenuState = false;   //false == start menu //true == game started
 	Board m_board;
+	Level m_currLevel;
 
 	void handleClicks(sf::Event event);
 };

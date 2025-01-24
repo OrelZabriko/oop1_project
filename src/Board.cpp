@@ -21,10 +21,10 @@ Board::Board() : m_rows(0), m_cols(0)
 //-----------------------------------------------------------------------------
 //This function initialized the board and ask from the user to enter new
 //number of rows and cols.
-void Board::resetBoard(const int rows, const int cols, const Level& currLevel)
+void Board::resetBoard(const Level& currLevel)
 {
-	m_rows = rows;
-	m_cols = cols;
+	m_rows = currLevel.getRows();
+	m_cols = currLevel.getCols();
 
 	m_board.resize(m_rows);
 	for (int row = 0; row < m_rows; row++)

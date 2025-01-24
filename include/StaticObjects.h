@@ -5,10 +5,12 @@
 
 
 //-----class section-----
-class Objects : public Objects
+class StaticObjects : public Objects
 {
 public:
-	virtual ~Objects() = default;
+	using Objects::Objects;
+	virtual ~StaticObjects() = default;
+
 
 private:
 

@@ -4,8 +4,9 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Objects::Objects(sf::Texture objTexture, sf::Vector2i objPlace) :
+Objects::Objects(char objType, sf::Vector2f objPlace) :
 		m_objPlace(objPlace)
 {
-	m_objSprite.setTexture(objTexture);
+	sf::Texture new_tex = ResourceManager::getInstance().getObjectTexture(getObjByChar(objType));
+	m_objSprite.setTexture(new_tex);
 }

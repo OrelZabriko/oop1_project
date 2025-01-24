@@ -4,6 +4,8 @@
 #include "Button.h"
 #include "Constants.h"
 #include "ResourceManager.h"
+#include "LoadLevel.h"
+#include "Level.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -22,5 +24,5 @@ public:
 
 
 private:
-
+	Level m_currLevel;
 };

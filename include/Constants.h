@@ -47,7 +47,7 @@ enum OBJECT {
 	Rock,
 	Robot,
 	Guard,
-	None //in case of creating default value
+	None	//in case of creating default value
 };
 
 enum START_MENU_BUTTON {
@@ -66,5 +66,5 @@ char getStartMenuCharByEnum(START_MENU_BUTTON buttonType);
 START_MENU_BUTTON getStartMenuButtonByChar(char buttonType);
 std::string getStartMenuButtonStringByChar(char buttonType);
 bool CheckLimits(const sf::Vector2f mousePosition,
-				 const sf::Vector2f buttonPos,
-				 const sf::Vector2f buttonSize);
+	const sf::Vector2f buttonPos,
+	const sf::Vector2f buttonSize);

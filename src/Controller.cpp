@@ -9,17 +9,17 @@
 void Controller::Run()
 {
     OpeningMenu start_menu;
+
     LoadLevel levelManager;
-
-    sf::Clock clock;
-
-
     if (!levelManager.readAllLevels())
     {
         std::cerr << "read levels failed\n";
         return;
     }
+
+    sf::Clock clock;
     
+
     m_GameWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), OPENING_WINDOW_NAME);
     m_GameWindow.setFramerateLimit(60);
 
@@ -35,7 +35,7 @@ void Controller::Run()
         {
             m_GameWindow.clear();
 
-            m_board.resetBoard(levelManager.getCurrentLevelRows(), levelManager.getCurrentLevelCols(), levelManager.getLevel());
+            m_board.resetBoard(levelManager.getLevel());
             m_board.Draw(m_GameWindow, levelManager.getLevel());
         }
 

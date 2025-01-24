@@ -90,8 +90,8 @@ std::string getStartMenuButtonStringByChar(char buttonType)
 //This function check if the mouse is in the bounds of the button or the cell
 //that called to this function.
 bool CheckLimits(const sf::Vector2f mousePosition,
-				 const sf::Vector2f buttonCellPos,
-				 const sf::Vector2f buttonCellSize)
+	const sf::Vector2f buttonCellPos,
+	const sf::Vector2f buttonCellSize)
 {
 	if (buttonCellPos.x < mousePosition.x && buttonCellPos.x + buttonCellSize.x > mousePosition.x &&
 		buttonCellPos.y < mousePosition.y && buttonCellPos.y + buttonCellSize.y > mousePosition.y)

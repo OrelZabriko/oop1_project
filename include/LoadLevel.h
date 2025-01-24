@@ -19,7 +19,6 @@ public:
     bool readAllLevels();
 
     const Level& getLevel();
-    
 
     int getCurrentLevelRows() const;
     int getCurrentLevelCols() const;

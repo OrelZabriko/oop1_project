@@ -1,5 +1,5 @@
 //-----include section-----
-#include "StaticObjects.h"
+#include "Guards.h"
 
 
 //-----functions section------
