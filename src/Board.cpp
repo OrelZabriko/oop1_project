@@ -17,6 +17,44 @@
 Board::Board() : m_rows(0), m_cols(0)
 {}
 
+//-----------------------------------------------------------------------------
+Board::Board(const char objChar, const sf::Vector2f objLoc)
+{
+	switch (objChar)
+	{
+	case 'D': //OBJECT::DOOR
+	{
+		
+
+		break;
+	}
+	case '#': //OBJECT::WALL
+	{
+		
+
+		break;
+	}
+	case '@': //OBJECT::ROCK
+	{
+		return '@';
+
+		break;
+	}
+	case '/': //OBJECT::ROBOT
+	{
+		m_Robot = std::make_unique<Robot>(objChar, objLoc);
+
+		break;
+	}
+	case '!': //OBJECT::GUARD
+	{
+		m_Guards.push_back(std::make_unique<Guard>(objChar, objLoc));
+
+		break;
+	}
+	}
+}
+
 
 //-----------------------------------------------------------------------------
 //This function initialized the board and ask from the user to enter new
@@ -25,6 +63,7 @@ void Board::resetBoard(const Level& currLevel)
 {
 	m_rows = currLevel.getRows();
 	m_cols = currLevel.getCols();
+
 
 	m_board.resize(m_rows);
 	for (int row = 0; row < m_rows; row++)
@@ -60,6 +99,20 @@ int Board::GetRows() const
 int Board::GetCols() const
 {
 	return m_cols;
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Vector2f& Board::GetBoardPos()
+{
+	return m_boardPosition;
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::SetBoardPos(const sf::Vector2f& boardPos)
+{
+	m_boardPosition = boardPos;
 }
 
 

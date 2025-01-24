@@ -17,6 +17,8 @@ void Controller::Run()
         return;
     }
 
+    GameWindow currGameWindow(levelManager.getLevel());
+
     sf::Clock clock;
     
 
@@ -34,6 +36,8 @@ void Controller::Run()
         else
         {
             m_GameWindow.clear();
+
+            
 
             m_board.resetBoard(levelManager.getLevel());
             m_board.Draw(m_GameWindow, levelManager.getLevel());

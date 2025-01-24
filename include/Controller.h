@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "OpeningMenu.h"
+#include "GameWindow.h"
 #include "Objects.h"
 #include "Board.h"
 #include "LoadLevel.h"

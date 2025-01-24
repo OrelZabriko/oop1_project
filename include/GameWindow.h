@@ -1,9 +1,10 @@
 #pragma once
 
 //-----include section-----
-#include "Button.h"
 #include "Constants.h"
 #include "ResourceManager.h"
+#include "Button.h"
+#include "Board.h"
 #include "LoadLevel.h"
 #include "Level.h"
 
@@ -21,8 +22,11 @@
 class GameWindow
 {
 public:
+	GameWindow() = default;
+	GameWindow(const Level& currLevel);
 
 
 private:
 	Level m_currLevel;
+	Board m_currBoard;
 };
