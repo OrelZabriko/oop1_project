@@ -16,31 +16,31 @@ GameWindow::GameWindow(const Level& currLevel) : m_currLevel(currLevel)
 			{
 			case 'D': //OBJECT::DOOR
 			{
-				m_currBoard;
+				m_currBoard = Board('D', objLOcMatrix);
 
 				break;
 			}
 			case '#': //OBJECT::WALL
 			{
-				return '#';
+				m_currBoard = Board('#', objLOcMatrix);
 
 				break;
 			}
 			case '@': //OBJECT::ROCK
 			{
-				return '@';
+				m_currBoard = Board('@', objLOcMatrix);
 
 				break;
 			}
 			case '/': //OBJECT::ROBOT
 			{
-				return '/';
+				m_currBoard = Board('/', objLOcMatrix);
 
 				break;
 			}
 			case '!': //OBJECT::GUARD
 			{
-				return '!';
+				m_currBoard = Board('!', objLOcMatrix);
 
 				break;
 			}

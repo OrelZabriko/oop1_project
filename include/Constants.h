@@ -39,6 +39,11 @@ const float BOARD_HEIGHT = 720;
 const float CELL_SPACING = 6.f;		//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
+//These constants are responsible to sign the place in the std::vector of the static objects 
+const int DOOR_PLACE = 0;
+const int WALL_PLACE = 1;
+const int ROCK_PLACE = 2;
+
 
 //-----enum section------
 enum OBJECT {

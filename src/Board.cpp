@@ -36,14 +36,13 @@ Board::Board(const char objChar, const sf::Vector2f objLoc)
 	}
 	case '@': //OBJECT::ROCK
 	{
-		return '@';
+		
 
 		break;
 	}
 	case '/': //OBJECT::ROBOT
 	{
 		m_Robot = std::make_unique<Robot>(objChar, objLoc);
-
 
 		break;
 	}
@@ -66,26 +65,26 @@ void Board::resetBoard(const Level& currLevel)
 	m_cols = currLevel.getCols();
 
 
-	m_board.resize(m_rows);
-	for (int row = 0; row < m_rows; row++)
-	{
-		m_board[row].resize(m_cols);
-		for (int col = 0; col < m_cols; col++)
-		{
-			m_board[row][col].SetRow(m_rows);
-			m_board[row][col].SetCol(m_cols);
-			m_board[row][col].SetCellSize();
-			m_board[row][col].SetCellPos(col, row);
+	//m_board.resize(m_rows);
+	//for (int row = 0; row < m_rows; row++)
+	//{
+	//	m_board[row].resize(m_cols);
+	//	for (int col = 0; col < m_cols; col++)
+	//	{
+	//		m_board[row][col].SetRow(m_rows);
+	//		m_board[row][col].SetCol(m_cols);
+	//		m_board[row][col].SetCellSize();
+	//		m_board[row][col].SetCellPos(col, row);
 
-			if (row < currLevel.getRows() && col < currLevel.getCols()) {
-				m_board[row][col].SetObjectType(currLevel.GetObjChar(row, col));
-			}
-			else {
-				// Handle the case where the indices are out of range
-				m_board[row][col].SetObjectType(' '); // or some default value
-			}
-		}
-	}
+	//		if (row < currLevel.getRows() && col < currLevel.getCols()) {
+	//			m_board[row][col].SetObjectType(currLevel.GetObjChar(row, col));
+	//		}
+	//		else {
+	//			// Handle the case where the indices are out of range
+	//			m_board[row][col].SetObjectType(' '); // or some default value
+	//		}
+	//	}
+	//}
 }
 
 

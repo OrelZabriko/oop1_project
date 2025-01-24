@@ -1,7 +1,7 @@
 #pragma once
 
 //-----include section-----
-#include "Objects.h"
+#include "UpdatedObjects.h"
 #include "ResourceManager.h"
 #include "Constants.h"
 
@@ -9,10 +9,10 @@
 
 
 //-----class section-----
-class Robot : public Objects
+class Robot : public UpdatedObjects
 {
 public:
-	using Objects::Objects;
+	using UpdatedObjects::UpdatedObjects;
 	virtual ~Robot() = default;
 
 

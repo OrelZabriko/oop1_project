@@ -48,8 +48,9 @@ public:
 private:
 	int m_rows;
 	int m_cols;
+	sf::Vector2f m_boardPosition;
 	std::unique_ptr<Robot> m_Robot;
 	std::vector<std::unique_ptr<Guard>> m_Guards;
 	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
-	sf::Vector2f m_boardPosition;
+	//std::vector<std::unique_ptr<Bomb>> m_Bombs;
 };
