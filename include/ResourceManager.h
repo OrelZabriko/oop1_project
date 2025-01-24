@@ -4,6 +4,7 @@
 #include "Constants.h"
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <memory>
 
@@ -28,15 +29,27 @@ public:
     const sf::Texture& getStartMenuBackground();
 
 
-private:
-    // Private constructor for singleton
-    ResourceManager();
+    const sf::Music& GetBackgroundMusic() const;
+    const sf::Music& GetWinLevelSound() const;
+    const sf::Music& GetLoseLevelSound() const;
 
-    // Storage for textures
+
+private:
+    //Private constructor for singleton
+    ResourceManager();
+    void loadTextures();
+    void loadMusic();
+
+    //Storage for textures
     std::vector<std::string> m_objNames =
     { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png", "Bomb.png" };
     std::string m_StartBackGroundFileName = "StartMenuBackground.png";
     std::vector<sf::Texture> m_objects;
     std::vector<sf::Texture> m_utility;
     sf::Texture m_backGroundImage;
+
+    //Storage music
+    sf::Music m_backgroundMusic;
+    sf::Music m_winLevelSound;
+    sf::Music m_loseLevelSound;
 };
