@@ -16,8 +16,6 @@ public:
 	virtual ~Robot() = default;
 
 
-	void SetTexture();
-
 private:
-	//sf::Sprite m_RobotSprite;
+
 };

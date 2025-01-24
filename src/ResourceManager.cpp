@@ -16,6 +16,7 @@ ResourceManager::ResourceManager()
 {
 	loadTextures();
 	loadMusic();
+	loadTextFont();
 }
 
 
@@ -88,4 +89,21 @@ const sf::Music& ResourceManager::GetWinLevelSound() const
 const sf::Music& ResourceManager::GetLoseLevelSound() const
 {
 	return m_loseLevelSound;
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::loadTextFont()
+{
+	if (!m_txtFont.loadFromFile("GOUDYSTO.TTF"))
+	{
+		exit(EXIT_FAILURE); //Make sure you have a valid font file
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Font& ResourceManager::GetTextFont() const
+{
+	return m_txtFont;
 }

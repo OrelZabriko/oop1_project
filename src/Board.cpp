@@ -44,6 +44,7 @@ Board::Board(const char objChar, const sf::Vector2f objLoc)
 	{
 		m_Robot = std::make_unique<Robot>(objChar, objLoc);
 
+
 		break;
 	}
 	case '!': //OBJECT::GUARD

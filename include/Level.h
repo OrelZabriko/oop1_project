@@ -10,7 +10,7 @@
 class Level
 {
 public:
-    Level();
+    Level() = default;
     
     void setLevelRows(const int);
     void setLevelCols(const int);

@@ -28,10 +28,11 @@ public:
     const sf::Texture& getObjectTexture(enum OBJECT object) const;
     const sf::Texture& getStartMenuBackground();
 
-
     const sf::Music& GetBackgroundMusic() const;
     const sf::Music& GetWinLevelSound() const;
     const sf::Music& GetLoseLevelSound() const;
+
+    const sf::Font& GetTextFont() const;
 
 
 private:
@@ -39,6 +40,7 @@ private:
     ResourceManager();
     void loadTextures();
     void loadMusic();
+    void loadTextFont();
 
     //Storage for textures
     std::vector<std::string> m_objNames =
@@ -48,8 +50,11 @@ private:
     std::vector<sf::Texture> m_utility;
     sf::Texture m_backGroundImage;
 
-    //Storage music
+    //Storage for music
     sf::Music m_backgroundMusic;
     sf::Music m_winLevelSound;
     sf::Music m_loseLevelSound;
+
+    //Storage for font
+    sf::Font m_txtFont;
 };

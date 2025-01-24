@@ -77,21 +77,13 @@ sf::RectangleShape Button::makeButtonRectangle() const
 //This function draw each button.
 void Button::draw(sf::RenderWindow& window, char buttonType) const
 {
-    //load a font
-    sf::Font font;
-    if (!font.loadFromFile("GOUDYSTO.TTF"))
-    {
-        exit(EXIT_FAILURE); //Make sure you have a valid font file
-    }
-
-
     //create a rectangle for the button
     sf::RectangleShape button = makeButtonRectangle();
 
 
     //create text for the button
     sf::Text buttonText;
-    buttonText.setFont(font);                                           //Set the font
+    buttonText.setFont(ResourceManager::getInstance().GetTextFont());   //Set the font
     buttonText.setString(getStartMenuButtonStringByChar(buttonType));  //Set the text
     buttonText.setCharacterSize(FONT_CHARACTERS_SIZE);                //Text size
     buttonText.setFillColor(sf::Color::Black);                       //Text color
