@@ -56,6 +56,10 @@ void Controller::Run()
                 handleOpenMenuMouseClick(m_GameWindow, start_menu, levelManager);
                 break;
             }
+            case sf::Event::KeyPressed:
+            {
+                handleKeyPressed(m_GameWindow, event, deltaTime);
+            }
             }
         }
         m_GameWindow.display();
@@ -101,5 +105,21 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
     else //take care other clicks in the game
     {
         return;
+    }
+}
+
+void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Event event, const sf::Time delta,
+    GameManager manager)
+{
+    std::cout << "inside handle key pressed"<< std::endl;
+    switch (event.key.code)
+    {
+    case sf::Keyboard::Up:
+        std::cout << "pressed up" << std::endl;
+        //manager.getBoard().updatePlayer(UP,delta);
+            break;
+    
+    default:
+        break;
     }
 }

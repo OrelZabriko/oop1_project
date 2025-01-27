@@ -44,7 +44,14 @@ public:
 	//void CheckHover(sf::Vector2f mousePosition,
 	//sf::RenderWindow& m_gameWindow,
 	//const TextureManager& textures);
+	//void updatePlayer(enum direction, int delta)
+	/*
+	{
+	m_robot->changeDIrection();
+	m_robot->updateSpritePos();
 
+	}
+	*/
 
 private:
 	int m_rows;

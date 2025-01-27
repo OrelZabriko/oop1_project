@@ -30,6 +30,8 @@ public:
 	void handleOpenMenuMouseClick(sf::RenderWindow& window,
 		OpeningMenu& start_menu,
 		LoadLevel& levelManager);
+	void handleKeyPressed(sf::RenderWindow& window,
+		sf::Event event, const sf::Time delta,GameManager manager);
 
 private:
 	sf::RenderWindow m_GameWindow;
