@@ -12,10 +12,7 @@ public:
 	virtual ~UpdatedObjects() = default;
 
 	//virtual sf::Vector2f updateMovment(ENUM DIRECTIONS,DELATTIME);
-	void updateSpritePos(sf::Vector2f offset)
-	{
-		getSprite().move(offset);
-	}
+	void updateSpritePos(sf::Vector2f offset);
 		
 	
 private:

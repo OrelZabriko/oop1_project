@@ -28,8 +28,8 @@ public:
 	void Run();
 
 	void handleOpenMenuMouseClick(sf::RenderWindow& window,
-		OpeningMenu& start_menu,
-		LoadLevel& levelManager);
+								  OpeningMenu& start_menu,
+								  LoadLevel& levelManager);
 	void handleKeyPressed(sf::RenderWindow& window,
 		sf::Event event, const sf::Time delta, const GameManager& manager);
 

@@ -18,10 +18,7 @@ public:
     ResourceManager& operator=(const ResourceManager&) = delete;
 
     // Get the singleton instance
-    static ResourceManager& getInstance() {
-        static ResourceManager instance;
-        return instance;
-    };
+    static ResourceManager& getInstance() ;
 
 
     // Get a texture by name

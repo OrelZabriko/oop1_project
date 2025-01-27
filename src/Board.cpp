@@ -25,24 +25,26 @@ void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 {
 	std::cout << "got objchar:" << objChar << std::endl;
 	std::cout << "got  objloc "<< objLoc.x << objLoc.y <<std::endl;
+
+
 	switch (objChar)
 	{
 	case 'D': //OBJECT::DOOR
 	{
 		m_StaticObjects.push_back(std::make_unique<Door>(objChar, objLoc));
+
 		break;
 	}
 	case '#': //OBJECT::WALL
 	{
-		 
 		m_StaticObjects.push_back(std::make_unique<Wall>(objChar, objLoc));
 
 		break;
 	}
 	case '@': //OBJECT::ROCK
 	{
-		
 		m_StaticObjects.push_back(std::make_unique<Rock>(objChar, objLoc));
+
 		break;
 	}
 	case '/': //OBJECT::ROBOT

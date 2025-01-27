@@ -12,6 +12,14 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+ResourceManager& ResourceManager::getInstance()
+{
+	static ResourceManager instance;
+	return instance;
+}
+
+
+//-----------------------------------------------------------------------------
 ResourceManager::ResourceManager()
 {
 	loadTextures();
