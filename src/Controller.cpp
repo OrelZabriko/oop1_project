@@ -58,7 +58,7 @@ void Controller::Run()
             }
             case sf::Event::KeyPressed:
             {
-                handleKeyPressed(m_GameWindow, event, deltaTime);
+                handleKeyPressed(m_GameWindow, event, deltaTime, manager);
             }
             }
         }
@@ -108,8 +108,10 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
     }
 }
 
+
+//-----------------------------------------------------------------------------
 void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Event event, const sf::Time delta,
-    GameManager manager)
+    const GameManager& manager)
 {
     std::cout << "inside handle key pressed"<< std::endl;
     switch (event.key.code)

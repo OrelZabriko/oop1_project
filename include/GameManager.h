@@ -23,6 +23,7 @@ public:
 
 	void draw(sf::RenderWindow& window);
 
+
 private:
 	const Level& m_currLevel;
 	Board m_currBoard;

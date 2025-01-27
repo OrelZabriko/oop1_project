@@ -1,12 +1,14 @@
 #pragma once
 
 //-----include section-----
-#include "cell.h"
 #include "Constants.h"
 #include "ResourceManager.h"
 #include "Level.h"
+#include "Wall.h"
+#include "Door.h"
 #include "Robot.h"
 #include "Guard.h"
+#include "Rock.h"
 #include "StaticObjects.h"
 
 #include <SFML/Graphics.hpp>

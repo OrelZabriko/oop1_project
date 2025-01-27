@@ -1,8 +1,6 @@
 //-----include section-----
 #include "Board.h"
-#include "Cell.h"
-#include "Constants.h"
-#include "Wall.h"
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib>
@@ -10,7 +8,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "Door.h"
+
 
 Board::Board()
 {
@@ -31,7 +29,6 @@ void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 	{
 	case 'D': //OBJECT::DOOR
 	{
-		
 		m_StaticObjects.push_back(std::make_unique<Door>(objChar, objLoc));
 		break;
 	}
@@ -45,7 +42,7 @@ void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 	case '@': //OBJECT::ROCK
 	{
 		
-
+		m_StaticObjects.push_back(std::make_unique<Rock>(objChar, objLoc));
 		break;
 	}
 	case '/': //OBJECT::ROBOT

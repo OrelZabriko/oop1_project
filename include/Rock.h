@@ -1,7 +1,7 @@
 #pragma once
 
 //-----include section-----
-#include "UpdatedObjects.h"
+#include "StaticObjects.h"
 #include "ResourceManager.h"
 #include "Constants.h"
 
@@ -9,11 +9,13 @@
 
 
 //-----class section-----
-class Guard : public UpdatedObjects
+class Rock : public StaticObjects
 {
 public:
-	using UpdatedObjects::UpdatedObjects;
-	virtual ~Guard() = default;
+	using StaticObjects::StaticObjects;
+	virtual ~Rock() = default;
+
+
 
 
 private:
