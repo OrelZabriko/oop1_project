@@ -32,6 +32,8 @@ void ResourceManager::loadTextures()
 
 
 	m_backGroundImage.loadFromFile(m_StartBackGroundFileName);
+
+	m_HelpBackGroundImage.loadFromFile(m_HelpBackGroundFileName);
 }
 
 
@@ -61,6 +63,13 @@ void ResourceManager::loadMusic()
 const sf::Texture& ResourceManager::getStartMenuBackground()
 {
 	return m_backGroundImage;
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Texture& ResourceManager::getHelpStartMenuBackground()
+{
+	return m_HelpBackGroundImage;
 }
 
 

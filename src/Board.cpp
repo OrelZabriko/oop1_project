@@ -2,7 +2,7 @@
 #include "Board.h"
 #include "Cell.h"
 #include "Constants.h"
-
+#include "Wall.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cstdlib>
@@ -10,27 +10,35 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "Door.h"
 
+Board::Board()
+{
+}
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Board::Board() : m_rows(0), m_cols(0)
+Board::Board(int rows,int cols) : m_rows(rows), m_cols(cols)
 {}
 
+
 //-----------------------------------------------------------------------------
-Board::Board(const char objChar, const sf::Vector2f objLoc)
+void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 {
+	std::cout << "got objchar:" << objChar << std::endl;
+	std::cout << "got  objloc "<< objLoc.x << objLoc.y <<std::endl;
 	switch (objChar)
 	{
 	case 'D': //OBJECT::DOOR
 	{
 		
-
+		m_StaticObjects.push_back(std::make_unique<Door>(objChar, objLoc));
 		break;
 	}
 	case '#': //OBJECT::WALL
 	{
-		
+		 
+		m_StaticObjects.push_back(std::make_unique<Wall>(objChar, objLoc));
 
 		break;
 	}
@@ -118,33 +126,26 @@ void Board::SetBoardPos(const sf::Vector2f& boardPos)
 
 //-----------------------------------------------------------------------------
 //This function draw the current board on the window (m_gameWindow).
-void Board::Draw(sf::RenderWindow& window, const Level& currLevel) const
+void Board::draw(sf::RenderWindow& window) const
 {
-	if (currLevel.getRows() != m_rows || currLevel.getCols() != m_cols)
+	m_Robot->draw(window);
+	for (int i = 0; i < m_Guards.size(); i++)
 	{
-		std::cerr << "Error: Board and Level sizes do not match!" << std::endl;
-		return;
+		m_Guards[i]->draw(window);
 	}
-
-	std::cout << "Board cols: " << m_cols << " Board rows: " << m_rows << std::endl;
-
-	for (int row = 0; row < m_rows; row++)
+	for (int i = 0; i < m_StaticObjects.size(); i++)
 	{
-		for (int col = 0; col < m_cols; col++)
-		{
-			char objChar = currLevel.GetObjChar(row, col);
-			m_board[row][col].draw(window, objChar);
-		}
+		m_StaticObjects[i]->draw(window);
 	}
 }
 
 
 //-----------------------------------------------------------------------------
 //This function erase all the objects from the board.
-void Board::delete_board()
-{
-	m_board.clear();
-}
+//void Board::delete_board()
+//{
+//	m_board.clear();
+//}
 
 
 //-----------------------------------------------------------------------------

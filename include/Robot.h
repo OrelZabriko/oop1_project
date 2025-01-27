@@ -15,6 +15,8 @@ public:
 	using UpdatedObjects::UpdatedObjects;
 	virtual ~Robot() = default;
 
+	
+
 
 private:
 

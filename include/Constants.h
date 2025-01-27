@@ -14,7 +14,7 @@ const std::string GAME_WINDOW_NAME = "Game Window";
 
 const int START_WINDOW_BUTTONS_NUM = 3;
 const std::string NEW_GAME_BUTTON_NAME = "New Game";
-const std::string HELP_BUTTON_NAME = "Help";
+const std::string HELP_BUTTON_NAME = "HELP";
 const std::string EXIT_BUTTON_NAME = "Exit Game";
 const char START_MENU_INDENTIFIER[START_WINDOW_BUTTONS_NUM] = { 'N', 'H', 'E' };
 

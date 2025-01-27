@@ -20,7 +20,8 @@ class Board
 {
 public:
 	Board();
-	Board(const char objChar, const sf::Vector2f objLoc);
+	Board(int rows, int cols);
+	void createCell(const char objChar, const sf::Vector2f objLoc);
 
 	void resetBoard(const Level& currLevel);
 
@@ -36,9 +37,9 @@ public:
 	//bool CheckIfInBoard(const sf::Vector2f mousePosition, sf::Vector2i& boardCord) const;
 	//void update(const sf::Vector2i boardCord, OBJECT obj, bool& checkExistencePlayer);
 
-	void delete_board();
+	//void delete_board();
 	bool isValidPosition(int row, int col) const;
-	void Draw(sf::RenderWindow& window, const Level& currLevel) const;
+	void draw(sf::RenderWindow& window) const;
 
 	//void CheckHover(sf::Vector2f mousePosition,
 	//sf::RenderWindow& m_gameWindow,

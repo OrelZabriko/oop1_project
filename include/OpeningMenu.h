@@ -25,11 +25,15 @@ public:
 
 	void Draw(sf::RenderWindow& window);
 
+	void CreateHelpWindow(sf::RenderWindow& Window);
+	void ResetSettings();
 
 private:
 	sf::Sprite m_backgroundImage;
+	sf::Sprite m_helpBackgroundImage;
 	sf::Vector2f m_backgroundImageSize;
 	std::vector<std::unique_ptr<Button>> m_menuButtons;
+	sf::Text m_helpText;
 
 	void SetScaleBackgroundImag();
 };

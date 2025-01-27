@@ -48,7 +48,7 @@ void OpeningMenu::Draw(sf::RenderWindow& window)
 
 
 //-----------------------------------------------------------------------------
-//this function will return the constant char of the button that clicked
+//This function will return the constant char of the button that clicked.
 char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
 {
     for (int buttons = 0; buttons < START_WINDOW_BUTTONS_NUM; buttons++)
@@ -63,4 +63,61 @@ char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
     }
 
     return '\0'; //no button clicked
+}
+
+
+//-----------------------------------------------------------------------------
+void OpeningMenu::CreateHelpWindow(sf::RenderWindow& Window)
+{
+    sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game Settings");
+    //load the  setting image background
+    const sf::Texture& helpTexture = ResourceManager::getInstance().getHelpStartMenuBackground();
+
+    sf::Sprite helpBackground(helpTexture);
+
+    //do the scale
+    float scaleX = 1920 / helpBackground.getTexture()->getSize().x;
+    float scaleY = 1080 / helpBackground.getTexture()->getSize().y;
+    helpBackground.setScale(scaleX, scaleY);
+
+
+    ResetSettings(); //create the settings
+
+    while (helpWindow.isOpen())
+    {
+        sf::Event event;
+        while (helpWindow.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                helpWindow.close();
+        }
+
+        helpWindow.clear();
+        helpWindow.draw(helpBackground);
+        helpWindow.draw(m_helpText);
+        helpWindow.display();
+    }
+}
+
+
+//-----------------------------------------------------------------------------
+void OpeningMenu::ResetSettings()
+{
+    m_helpText.setFont(ResourceManager::getInstance().GetTextFont());
+    m_helpText.setString
+    ("Bomberman game settings:\n\n"
+        "- The goal: get out of the maze\n"
+        "- place bombs to destroy the guards \n"
+        "- You can not walk through rocks and walls\n"
+        "- When you touch a guard, you lose life\n"
+        "Movement:\n"
+        "- Arrow Keys: Move character\n"
+        "- 'b': create bomb\n"
+        "Tips:\n"
+        "- Use bombs to explode rocks\n"
+        "- Collect gifts for bonuses");
+
+    m_helpText.setCharacterSize(20);
+    m_helpText.setFillColor(sf::Color::Red);
+    m_helpText.setPosition(50.f, 50.f);
 }

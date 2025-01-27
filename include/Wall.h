@@ -14,6 +14,7 @@ class Wall : public StaticObjects
 public:
 	using StaticObjects::StaticObjects;
 	virtual ~Wall() = default;
+	void draw(sf::RenderWindow& window);
 
 
 private:

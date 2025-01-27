@@ -14,11 +14,23 @@ public:
 	Objects(char objType, sf::Vector2f objPlace);
 	virtual ~Objects() = default;
 
-	virtual void SetTexture() = 0;
+	void SetTexture(const sf::Texture& texture)
+	{
+		m_objSprite.setTexture(texture);
+	};
 
 	//virtual void SetPosition();
-	virtual sf::Vector2f GetPosition() const = 0;
+	sf::Vector2f GetPosition() const
+	{
+		return m_objPlace;
+	};
 
+	void draw(sf::RenderWindow& window);
+
+	sf::Sprite getSprite()
+	{
+		return m_objSprite;
+	};
 
 private:
 	sf::Sprite m_objSprite;

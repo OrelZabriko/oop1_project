@@ -1,11 +1,7 @@
 #pragma once
 
 //-----include section-----
-#include "Constants.h"
-#include "ResourceManager.h"
-#include "Button.h"
 #include "Board.h"
-#include "LoadLevel.h"
 #include "Level.h"
 
 #include <SFML/Graphics.hpp>
@@ -19,14 +15,15 @@
 
 
 //-----class section-----
-class GameWindow
+class GameManager
 {
 public:
-	GameWindow() = default;
-	GameWindow(const Level& currLevel);
+	GameManager() = default;
+	GameManager(const Level& currLevel);
 
+	void draw(sf::RenderWindow& window);
 
 private:
-	Level m_currLevel;
+	const Level& m_currLevel;
 	Board m_currBoard;
 };

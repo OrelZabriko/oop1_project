@@ -44,6 +44,7 @@ const std::vector<std::string>& Level::getMatrix()
 //-----------------------------------------------------------------------------
 void Level::setCell(const std::string line)
 {
+	std::cout << "curr line in matrix:" << line << std::endl;
 	m_matrix.push_back(line);
 }
 
@@ -51,5 +52,6 @@ void Level::setCell(const std::string line)
 //-----------------------------------------------------------------------------
 const char& Level::GetObjChar(int row, int col) const
 {
+	std::cout << "getObjChar returning:" << m_matrix[row][col] << std::endl;
 	return m_matrix[row][col];
 }

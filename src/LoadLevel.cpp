@@ -41,7 +41,7 @@ bool LoadLevel::readAllLevels()
 		Level currLevel;
 		int rows, cols;
 		level >> cols >> rows;
-
+		level.get();
 		std::cout << "read cols:" << cols << " read rows: " << rows << std::endl;
 		currLevel.setLevelRows(rows);
 		currLevel.setLevelCols(cols);
@@ -67,6 +67,7 @@ const Level& LoadLevel::getLevel()
 	{
 		//winner?
 	}
+	std::cout << "load level retruning m_currLevel = " << m_currLevel << std::endl;
 	return m_levels[m_currLevel++];
 }
 

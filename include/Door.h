@@ -14,7 +14,7 @@ class Door : public StaticObjects
 public:
 	using StaticObjects::StaticObjects;
 	virtual ~Door() = default;
-
+	
 
 private:
 

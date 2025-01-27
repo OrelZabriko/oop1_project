@@ -2,7 +2,7 @@
 
 //-----include section-----
 #include "OpeningMenu.h"
-#include "GameWindow.h"
+#include "GameManager.h"
 #include "Objects.h"
 #include "Board.h"
 #include "LoadLevel.h"
@@ -34,7 +34,7 @@ public:
 private:
 	sf::RenderWindow m_GameWindow;
 	bool m_startMenuState = false;   //false == start menu //true == game started
-	Board m_board;
+	
 	Level m_currLevel;
 
 	void handleClicks(sf::Event event);

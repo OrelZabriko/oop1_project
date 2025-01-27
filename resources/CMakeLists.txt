@@ -7,6 +7,7 @@ configure_file ("Level002.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Level003.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("StartMenuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("HELP.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Door.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Robot.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Guard.png" ${CMAKE_BINARY_DIR} COPYONLY)

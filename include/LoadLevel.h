@@ -25,7 +25,7 @@ public:
 
 
 private:
-    int m_currLevel;
+    int m_currLevel = 0;
     std::vector<Level> m_levels;
 };
 

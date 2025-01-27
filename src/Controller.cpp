@@ -16,9 +16,9 @@ void Controller::Run()
         std::cerr << "read levels failed\n";
         return;
     }
-
-    GameWindow currGameWindow(levelManager.getLevel());
-
+    std::cout << " creating the manager " << std::endl;
+    GameManager manager(levelManager.getLevel());
+    std::cout << "finished creating the manager " << std::endl;
     sf::Clock clock;
     
 
@@ -27,6 +27,7 @@ void Controller::Run()
 
     while (m_GameWindow.isOpen())
     {
+        
         const auto deltaTime = clock.restart();
 
         if (!m_startMenuState)
@@ -36,11 +37,7 @@ void Controller::Run()
         else
         {
             m_GameWindow.clear();
-
-            
-
-            m_board.resetBoard(levelManager.getLevel());
-            m_board.Draw(m_GameWindow, levelManager.getLevel());
+            manager.draw(m_GameWindow);
         }
 
         //m_infoBar.draw()      
@@ -62,6 +59,7 @@ void Controller::Run()
             }
         }
         m_GameWindow.display();
+       
     }
 }
 
@@ -81,17 +79,21 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
         switch (clickedButton)
         {
         case 'N': //new game
+        {
             m_startMenuState = true;
             break;
-
+        }
         case 'H': //help
-            std::cout << "Help"; //take care help
+        {
+            window.close();
+            start_menu.CreateHelpWindow(window);
             break;
-
+        }
         case 'E': //exit
+        {
             window.close();
             break;
-
+        }
         default: //no button clicked
             break;
         }

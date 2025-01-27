@@ -27,6 +27,7 @@ public:
     // Get a texture by name
     const sf::Texture& getObjectTexture(enum OBJECT object) const;
     const sf::Texture& getStartMenuBackground();
+    const sf::Texture& getHelpStartMenuBackground();
 
     const sf::Music& GetBackgroundMusic() const;
     const sf::Music& GetWinLevelSound() const;
@@ -46,9 +47,11 @@ private:
     std::vector<std::string> m_objNames =
     { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png", "Bomb.png" };
     std::string m_StartBackGroundFileName = "StartMenuBackground.png";
+    std::string m_HelpBackGroundFileName = "Help.png";
     std::vector<sf::Texture> m_objects;
     std::vector<sf::Texture> m_utility;
     sf::Texture m_backGroundImage;
+    sf::Texture m_HelpBackGroundImage;
 
     //Storage for music
     sf::Music m_backgroundMusic;
