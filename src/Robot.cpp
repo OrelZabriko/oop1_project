@@ -32,6 +32,16 @@ const sf::Vector2f& Robot::getDirection() const
 
 
 //-----------------------------------------------------------------------------
+void Robot::Move(const sf::Keyboard::Key key, const sf::Time& deltaTime)
+{
+	setPrevPosition(getPrevPosition());
+	changeDirection(key);
+	sf::Vector2f moveOffset = getDirection() * PIXELS_FOR_MOVE_ROBOT * deltaTime.asSeconds();
+	getSprite().move(moveOffset);
+}
+
+
+//-----------------------------------------------------------------------------
 void Robot::handleCollision(Objects& otherObject)
 {
 	otherObject.handleCollision(*this);

@@ -31,7 +31,7 @@ public:
 	void handleOpenMenuMouseClick(sf::RenderWindow& window,
 								  OpeningMenu& start_menu,
 								  LoadLevel& levelManager);
-	void handleKeyPressed(sf::RenderWindow& window, sf::Keyboard::Key key, 
+	void handleKeyPressed(sf::Keyboard::Key key, 
 						  const sf::Time deltaTime, GameManager& manager);
 
 	void setMenuState(bool state);

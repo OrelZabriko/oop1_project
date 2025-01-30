@@ -33,9 +33,15 @@ void GameManager::draw(sf::RenderWindow& window)
 
 
 //-----------------------------------------------------------------------------
-void GameManager::moveObjects(sf::RenderWindow& window, 
-							  sf::Keyboard::Key key, 
+void GameManager::updateRobot(sf::Keyboard::Key key, 
 						      const sf::Time deltaTime)
 {
-	m_currBoard.updatePlayer(key, deltaTime);
+	m_currBoard.MoveRobot(key, deltaTime);
+}
+
+
+//-----------------------------------------------------------------------------
+void GameManager::updateGuards(const sf::Time deltaTime)
+{
+	m_currBoard.MoveGuards(deltaTime);
 }

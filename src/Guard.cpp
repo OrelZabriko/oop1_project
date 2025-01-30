@@ -42,6 +42,15 @@ const sf::Vector2f& Guard::getDirection() const
 
 
 //-----------------------------------------------------------------------------
+void Guard::Move(const sf::Time& deltaTime, const sf::Vector2f robotPos)
+{
+    setDirection(robotPos);
+    sf::Vector2f moveGuardOffset = getDirection() * PIXELS_FOR_MOVE_GUARD * deltaTime.asSeconds();
+    getSprite().move(moveGuardOffset);
+}
+
+
+//-----------------------------------------------------------------------------
 void Guard::handleCollision(Objects& otherObject)
 {
     otherObject.handleCollision(*this);

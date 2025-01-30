@@ -39,7 +39,8 @@ const float BOARD_HEIGHT = 720;
 const float CELL_SPACING = 6.f;		//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
-const float PIXELS_FOR_MOVE = 400.f;
+const float PIXELS_FOR_MOVE_ROBOT = 450.f;
+const float PIXELS_FOR_MOVE_GUARD = 50.f;
 
 const int TIME_LIMIT = 300; //the limit time for every level  in seconds
 

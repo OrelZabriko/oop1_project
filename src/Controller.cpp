@@ -69,20 +69,21 @@ void Controller::Run()
             {
                 if (event.key.code == sf::Keyboard::Escape)
                 {
+                    //manager.ResetBoard(); //in case of out the window, reset the location of the updateable object
                     m_GameWindow.clear();
                     start_menu.Draw(m_GameWindow);
                     m_startMenuState = false;
                 }
                 else
                 {
-                    handleKeyPressed(m_GameWindow, event.key.code, deltaTime, manager);
+                    handleKeyPressed(event.key.code, deltaTime, manager);
                 }
                 break;
             }
             }
         }
+        manager.updateGuards(deltaTime);
         
-
         m_GameWindow.display();
     }
 }
@@ -131,10 +132,10 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
 
 
 //-----------------------------------------------------------------------------
-void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Keyboard::Key key,
+void Controller::handleKeyPressed(sf::Keyboard::Key key,
                                   const sf::Time deltaTime, GameManager& manager)
 {
-    manager.moveObjects(window, key, deltaTime);
+    manager.updateRobot(key, deltaTime);
 }
 
 

@@ -25,8 +25,9 @@ public:
 
 	void draw(sf::RenderWindow& window);
 
-	void moveObjects(sf::RenderWindow& window, sf::Keyboard::Key key,
+	void updateRobot(sf::Keyboard::Key key,
 					const sf::Time deltaTime);
+	void updateGuards(const sf::Time deltaTime);
 
 
 private:

@@ -120,34 +120,18 @@ void Board::draw(sf::RenderWindow& window) const
 
 
 //-----------------------------------------------------------------------------
-void Board::updatePlayer(const sf::Keyboard::Key key, const sf::Time& deltaTime)
+void Board::MoveRobot(const sf::Keyboard::Key key, const sf::Time& deltaTime)
 {
-	m_Robot->setPrevPosition(m_Robot->getPrevPosition());
-	m_Robot->changeDirection(key);
-	sf::Vector2f moveOffset = m_Robot->getDirection() * PIXELS_FOR_MOVE * deltaTime.asSeconds();
-	//m_Robot->updateSpritePos(moveOffset);
-	m_Robot->getSprite().move(moveOffset);
+	m_Robot->Move(key, deltaTime);
+}
 
 
-	
-	std::cout << "robot position: " << m_Robot->GetPosition().x << " " << m_Robot->GetPosition().y << std::endl;
-
+//-----------------------------------------------------------------------------
+void Board::MoveGuards(const sf::Time& deltaTime)
+{
 	for (int guardIndex = 0; guardIndex < m_Guards.size(); guardIndex++)
 	{
-		std::cout << "Im in guard: " << guardIndex << std::endl;
-		std::cout << "guard: " << guardIndex << "position is: " << m_Guards[guardIndex]->getDirection().x 
-								<< " " << m_Guards[guardIndex]->getDirection().y << std::endl;
-
-		m_Guards[guardIndex]->setDirection(m_Robot->GetPosition());
-
-		std::cout << "guard: " << guardIndex << "position is: " << m_Guards[guardIndex]->getDirection().x
-			<< " " << m_Guards[guardIndex]->getDirection().y << " after change" << std::endl;
-
-		sf::Vector2f moveGuardOffset = m_Guards[guardIndex]->getDirection() * PIXELS_FOR_MOVE * deltaTime.asSeconds();
-
-		std::cout << "moveGuardOffset position is: " << moveGuardOffset.x << " " << moveGuardOffset.y << std::endl;
-
-		m_Guards[guardIndex]->getSprite().move(moveGuardOffset);
+		m_Guards[guardIndex]->Move(deltaTime, m_Robot->GetPosition());
 	}
 }
 

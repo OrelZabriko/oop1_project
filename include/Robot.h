@@ -19,6 +19,8 @@ public:
 	void updateSpritePos(sf::Vector2f newPos);
 
 	const sf::Vector2f& getDirection() const;
+
+	void Move(const sf::Keyboard::Key key, const sf::Time& deltaTime);
 	
 
 	virtual void handleCollision(Objects& otherObject) override;
