@@ -21,6 +21,7 @@ void UpdatedObjects::setSpritePos(sf::Vector2f newPos)
 	Base::setSpritePos(newPos);
 }
 
+
 //-----------------------------------------------------------------------------
 void UpdatedObjects::setStartPos(const sf::Vector2f& startPos)
 {

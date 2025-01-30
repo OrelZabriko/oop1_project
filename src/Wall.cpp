@@ -18,8 +18,6 @@ void Wall::handleCollision(Objects& otherObject)
 
 
 //-----------------------------------------------------------------------------
-//void Wall::RobotCollide(Robot& robot)
-//{
-//	//robot.setPosition(robot.getPrevLocation());
-//	robot.setPrevPosition(robot.getPrevPosition());
-//}
+void Wall::handleCollision(Robot& robot)
+{
+}
