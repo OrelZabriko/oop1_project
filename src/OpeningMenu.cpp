@@ -69,15 +69,15 @@ char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
 //-----------------------------------------------------------------------------
 void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 {
-    sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game Settings");
+    sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Help Window");
     //load the  setting image background
     const sf::Texture& helpTexture = ResourceManager::getInstance().getHelpStartMenuBackground();
 
     sf::Sprite helpBackground(helpTexture);
 
     //do the scale
-    float scaleX = 1920 / helpBackground.getTexture()->getSize().x;
-    float scaleY = 1080 / helpBackground.getTexture()->getSize().y;
+    float scaleX = WINDOW_WIDTH / helpBackground.getTexture()->getSize().x;
+    float scaleY = WINDOW_HEIGHT / helpBackground.getTexture()->getSize().y;
     helpBackground.setScale(scaleX, scaleY);
 
 
@@ -121,7 +121,7 @@ void OpeningMenu::ResetSettings()
         "- Use bombs to explode rocks\n"
         "- Collect gifts for bonuses");
 
-    m_helpText.setCharacterSize(50);
+    m_helpText.setCharacterSize(35);
     m_helpText.setFillColor(sf::Color::Red);
-    m_helpText.setPosition(WINDOW_WIDTH / 4.f, WINDOW_HEIGHT / 4.f);
+    m_helpText.setPosition(WINDOW_WIDTH / 8.f, WINDOW_HEIGHT / 4.5f);
 }

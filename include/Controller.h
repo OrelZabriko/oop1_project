@@ -36,8 +36,6 @@ public:
 
 	void setMenuState(bool state);
 
-	void PlayLevel();
-
 
 private:
 	sf::RenderWindow m_GameWindow;

@@ -31,7 +31,7 @@ void Controller::Run()
 
     auto& backgroundMusic = ResourceManager::getInstance().GetBackgroundMusic();
     backgroundMusic.setLoop(true);
-    backgroundMusic.setVolume(50.0f);
+    backgroundMusic.setVolume(20.0f);
     backgroundMusic.play();  //Start the music
     
 
@@ -48,7 +48,6 @@ void Controller::Run()
             m_GameWindow.clear();
             manager.draw(m_GameWindow);
             m_infoBar.drawInfoBar(m_GameWindow);
-            PlayLevel();
         }
 
 
@@ -143,11 +142,4 @@ void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Keyboard::Key ke
 void Controller::setMenuState(bool state)
 {
     m_startMenuState = state;
-}
-
-
-//-----------------------------------------------------------------------------
-void Controller::PlayLevel()
-{
-    
 }
