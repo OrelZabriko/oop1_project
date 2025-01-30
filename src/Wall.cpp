@@ -11,10 +11,10 @@ void Wall::draw(sf::RenderWindow& window)
 
 
 //-----------------------------------------------------------------------------
-//void Wall::handleCollision(Objects& otherObject)
-//{
-//	otherObject.handleCollision(*this);
-//}
+void Wall::handleCollision(Objects& otherObject)
+{
+	otherObject.handleCollision(*this);
+}
 
 
 //-----------------------------------------------------------------------------

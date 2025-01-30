@@ -19,7 +19,7 @@ public:
 	const sf::Vector2f& getDirection() const;
 
 	void Move(const sf::Time& deltaTime, const sf::Vector2f robotPos);
-
+	
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override { /* impossible collision, ignore */ };
 	virtual void handleCollision(Guard& guard) override { /* impossible collision, ignore */ };

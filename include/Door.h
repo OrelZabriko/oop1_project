@@ -15,7 +15,6 @@ public:
 	using StaticObjects::StaticObjects;
 	virtual ~Door() = default;
 	
-
 	using StaticObjects::handleCollision;
 
 	void handleCollision(Objects& otherObject) override;

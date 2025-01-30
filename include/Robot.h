@@ -22,9 +22,8 @@ public:
 
 	void Move(const sf::Keyboard::Key key, const sf::Time& deltaTime);
 	
-
 	virtual void handleCollision(Objects& otherObject) override;
-	virtual void handleCollision(Robot& robot) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Robot& robot) override;
 	virtual void handleCollision(Guard& guard) override;
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override { /* impossible collision, ignore */ };

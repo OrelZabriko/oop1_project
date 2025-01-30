@@ -49,6 +49,11 @@ void Robot::handleCollision(Objects& otherObject)
 
 
 //-----------------------------------------------------------------------------
+void Robot::handleCollision(Robot& robot)
+{}
+
+
+//-----------------------------------------------------------------------------
 void Robot::handleCollision(Guard& guard)
 {
 }
