@@ -21,7 +21,12 @@ public:
 	GameManager() = default;
 	GameManager(const Level& currLevel);
 
+	Board& getBoard();
+
 	void draw(sf::RenderWindow& window);
+
+	void moveObjects(sf::RenderWindow& window, sf::Keyboard::Key key,
+					const sf::Time deltaTime);
 
 
 private:

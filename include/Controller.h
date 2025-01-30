@@ -7,6 +7,7 @@
 #include "Board.h"
 #include "LoadLevel.h"
 #include "Level.h"
+#include "InfoBar.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -30,14 +31,17 @@ public:
 	void handleOpenMenuMouseClick(sf::RenderWindow& window,
 								  OpeningMenu& start_menu,
 								  LoadLevel& levelManager);
-	void handleKeyPressed(sf::RenderWindow& window,
-		sf::Event event, const sf::Time delta, const GameManager& manager);
+	void handleKeyPressed(sf::RenderWindow& window, sf::Keyboard::Key key, 
+						  const sf::Time deltaTime, GameManager& manager);
+
+	void setMenuState(bool state);
+
+	void PlayLevel();
+
 
 private:
 	sf::RenderWindow m_GameWindow;
 	bool m_startMenuState = false;   //false == start menu //true == game started
-	
 	Level m_currLevel;
-
-	void handleClicks(sf::Event event);
+	InfoBar m_infoBar;
 };

@@ -2,6 +2,8 @@
 #include "Controller.h"
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 
 //-----functions section------
@@ -16,18 +18,25 @@ void Controller::Run()
         std::cerr << "read levels failed\n";
         return;
     }
-    std::cout << " creating the manager " << std::endl;
+    
     GameManager manager(levelManager.getLevel());
-    std::cout << "finished creating the manager " << std::endl;
+    
     sf::Clock clock;
+    sf::Clock gameTimer;
     
 
     m_GameWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), OPENING_WINDOW_NAME);
     m_GameWindow.setFramerateLimit(60);
 
+
+    auto& backgroundMusic = ResourceManager::getInstance().GetBackgroundMusic();
+    backgroundMusic.setLoop(true);
+    backgroundMusic.setVolume(50.0f);
+    backgroundMusic.play();  //Start the music
+    
+
     while (m_GameWindow.isOpen())
     {
-        
         const auto deltaTime = clock.restart();
 
         if (!m_startMenuState)
@@ -38,9 +47,10 @@ void Controller::Run()
         {
             m_GameWindow.clear();
             manager.draw(m_GameWindow);
+            m_infoBar.drawInfoBar(m_GameWindow);
+            PlayLevel();
         }
 
-        //m_infoBar.draw()      
 
         if (auto event = sf::Event{}; m_GameWindow.pollEvent(event))
         {
@@ -58,12 +68,23 @@ void Controller::Run()
             }
             case sf::Event::KeyPressed:
             {
-                handleKeyPressed(m_GameWindow, event, deltaTime, manager);
+                if (event.key.code == sf::Keyboard::Escape)
+                {
+                    m_GameWindow.clear();
+                    start_menu.Draw(m_GameWindow);
+                    m_startMenuState = false;
+                }
+                else
+                {
+                    handleKeyPressed(m_GameWindow, event.key.code, deltaTime, manager);
+                }
+                break;
             }
             }
         }
+        
+
         m_GameWindow.display();
-       
     }
 }
 
@@ -85,6 +106,7 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
         case 'N': //new game
         {
             m_startMenuState = true;
+            m_infoBar.startTimer();
             break;
         }
         case 'H': //help
@@ -110,18 +132,22 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
 
 
 //-----------------------------------------------------------------------------
-void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Event event, const sf::Time delta,
-    const GameManager& manager)
+void Controller::handleKeyPressed(sf::RenderWindow& window, sf::Keyboard::Key key,
+                                  const sf::Time deltaTime, GameManager& manager)
 {
-    std::cout << "inside handle key pressed"<< std::endl;
-    switch (event.key.code)
-    {
-    case sf::Keyboard::Up:
-        std::cout << "pressed up" << std::endl;
-        //manager.getBoard().updatePlayer(UP,delta);
-            break;
+    manager.moveObjects(window, key, deltaTime);
+}
+
+
+//-----------------------------------------------------------------------------
+void Controller::setMenuState(bool state)
+{
+    m_startMenuState = state;
+}
+
+
+//-----------------------------------------------------------------------------
+void Controller::PlayLevel()
+{
     
-    default:
-        break;
-    }
 }

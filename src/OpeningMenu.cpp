@@ -67,7 +67,7 @@ char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
 
 
 //-----------------------------------------------------------------------------
-void OpeningMenu::CreateHelpWindow(sf::RenderWindow& Window)
+void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 {
     sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Game Settings");
     //load the  setting image background
@@ -90,6 +90,10 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& Window)
         {
             if (event.type == sf::Event::Closed)
                 helpWindow.close();
+            else if (event.type == sf::Keyboard::Escape)
+            {
+                
+            }
         }
 
         helpWindow.clear();
@@ -117,7 +121,7 @@ void OpeningMenu::ResetSettings()
         "- Use bombs to explode rocks\n"
         "- Collect gifts for bonuses");
 
-    m_helpText.setCharacterSize(20);
+    m_helpText.setCharacterSize(50);
     m_helpText.setFillColor(sf::Color::Red);
-    m_helpText.setPosition(50.f, 50.f);
+    m_helpText.setPosition(WINDOW_WIDTH / 4.f, WINDOW_HEIGHT / 4.f);
 }

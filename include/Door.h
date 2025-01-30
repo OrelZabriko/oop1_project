@@ -16,6 +16,14 @@ public:
 	virtual ~Door() = default;
 	
 
-private:
+	using StaticObjects::handleCollision;
 
+	void handleCollision(Objects& otherObject) override;
+	void handleCollision(Robot& robot) override;
+	void handleCollision(Guard& guard) override;
+	virtual void handleCollision(Wall& wall) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Rock& rock) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };
+	//virtual void handleCollision(Bomb& bomb) override;
+	//virtual void handleCollision(Gift& gift) override;
 };

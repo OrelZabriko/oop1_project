@@ -5,6 +5,8 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <thread>
+#include <chrono>
 
 
 //-----functions section------
@@ -42,7 +44,6 @@ bool LoadLevel::readAllLevels()
 		int rows, cols;
 		level >> cols >> rows;
 		level.get();
-		std::cout << "read cols:" << cols << " read rows: " << rows << std::endl;
 		currLevel.setLevelRows(rows);
 		currLevel.setLevelCols(cols);
 	
@@ -66,8 +67,11 @@ const Level& LoadLevel::getLevel()
 	if (m_currLevel > m_levels.size())
 	{
 		//winner?
+
+		ResourceManager::getInstance().GetWinLevelSound().play();
+		std::this_thread::sleep_for(std::chrono::seconds(5)); 
+		ResourceManager::getInstance().GetWinLevelSound().stop();
 	}
-	std::cout << "load level retruning m_currLevel = " << m_currLevel << std::endl;
 	return m_levels[m_currLevel++];
 }
 

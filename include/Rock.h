@@ -15,7 +15,14 @@ public:
 	using StaticObjects::StaticObjects;
 	virtual ~Rock() = default;
 
-
+	virtual void handleCollision(Objects& otherObject) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Robot& robot) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Guard& guard) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Wall& wall) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Rock& rock) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };
+	//virtual void handleCollision(Bomb& bomb) override;
+	//virtual void handleCollision(Gift& gift) override;
 
 
 private:

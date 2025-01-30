@@ -26,9 +26,9 @@ public:
     const sf::Texture& getStartMenuBackground();
     const sf::Texture& getHelpStartMenuBackground();
 
-    const sf::Music& GetBackgroundMusic() const;
-    const sf::Music& GetWinLevelSound() const;
-    const sf::Music& GetLoseLevelSound() const;
+    sf::Music& GetBackgroundMusic();
+    sf::Music& GetWinLevelSound();
+    sf::Music& GetLoseLevelSound();
 
     const sf::Font& GetTextFont() const;
 

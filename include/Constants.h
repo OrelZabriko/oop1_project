@@ -18,9 +18,9 @@ const std::string HELP_BUTTON_NAME = "HELP";
 const std::string EXIT_BUTTON_NAME = "Exit Game";
 const char START_MENU_INDENTIFIER[START_WINDOW_BUTTONS_NUM] = { 'N', 'H', 'E' };
 
-const std::string BOMBERMAN_CAKGROUND_SOUND = "BombermanBackgroundMusic.mp3";
-const std::string WIN_LEVEL_SOUND = "WinLevelSound.wav";
-const std::string LOSE_LEVEL_SOUND = "LoseLevelSound.wav";
+const std::string BOMBERMAN_BACKGROUND_SOUND = "BombermanBackgroundMusic.ogg";
+const std::string WIN_LEVEL_SOUND = "WinLevelSound.ogg";
+const std::string LOSE_LEVEL_SOUND = "LoseLevelSound.ogg";
 
 const int FONT_CHARACTERS_SIZE = 26;
 
@@ -39,10 +39,9 @@ const float BOARD_HEIGHT = 720;
 const float CELL_SPACING = 6.f;		//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
-//These constants are responsible to sign the place in the std::vector of the static objects 
-const int DOOR_PLACE = 0;
-const int WALL_PLACE = 1;
-const int ROCK_PLACE = 2;
+const float PIXELS_FOR_MOVE = 400.f;
+
+const int TIME_LIMIT = 300; //the limit time for every level  in seconds
 
 
 //-----enum section------

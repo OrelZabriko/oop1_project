@@ -17,6 +17,6 @@ configure_file ("Bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("GOUDYSTO.TTF" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("BombermanBackgroundMusic.mp3" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("WinLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("LoseLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("BombermanBackgroundMusic.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("WinLevelSound.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("LoseLevelSound.ogg" ${CMAKE_BINARY_DIR} COPYONLY)

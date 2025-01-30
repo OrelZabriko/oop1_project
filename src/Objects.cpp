@@ -1,15 +1,16 @@
 //-----include section-----
 #include "Objects.h"
 
+#include <iostream>
+
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Objects::Objects(char objType, sf::Vector2f objPlace) : m_objPlace(objPlace)
+Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
 {
 	//sf::Texture new_tex = 
 	m_objSprite.setTexture(ResourceManager::getInstance().getObjectTexture(getObjByChar(objType)));
-	m_objSprite.setPosition(m_objPlace.x * 45.f, m_objPlace.y * 45.f);
-	
+	m_objSprite.setPosition(objPlace.x * 45.f, objPlace.y * 45.f);
 }
 
 
@@ -28,17 +29,42 @@ void Objects::SetTexture(const sf::Texture& texture)
 
 
 //-----------------------------------------------------------------------------
-sf::Vector2f Objects::GetPosition() const
-{
-	return m_objPlace;
-}
+//sf::Vector2f Objects::GetPosition() const
+//{
+//	return m_objPlace;
+//}
 
 
 //-----------------------------------------------------------------------------
-sf::Sprite Objects::getSprite()
+sf::Sprite& Objects::getSprite()
 {
 	return m_objSprite;
 }
 
 
 //-----------------------------------------------------------------------------
+bool Objects::collideWithOthers(const Objects& object)
+{
+	return m_objSprite.getGlobalBounds().intersects(object.m_objSprite.getGlobalBounds());
+}
+
+
+//-----------------------------------------------------------------------------
+//const sf::Vector2f& Objects::getPos() const
+//{
+//	return m_objPlace;
+//}
+
+
+//-----------------------------------------------------------------------------
+void Objects::setSpritePos(sf::Vector2f newPos)
+{
+	m_objSprite.setPosition(newPos);
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Vector2f& Objects::GetPosition() const
+{
+	return m_objSprite.getPosition();
+}

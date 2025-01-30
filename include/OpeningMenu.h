@@ -25,7 +25,7 @@ public:
 
 	void Draw(sf::RenderWindow& window);
 
-	void CreateHelpWindow(sf::RenderWindow& Window);
+	void CreateHelpWindow(sf::RenderWindow& window);
 	void ResetSettings();
 
 private:

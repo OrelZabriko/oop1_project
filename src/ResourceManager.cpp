@@ -48,7 +48,7 @@ void ResourceManager::loadTextures()
 //-----------------------------------------------------------------------------
 void ResourceManager::loadMusic()
 {
-	if (!m_backgroundMusic.openFromFile(BOMBERMAN_CAKGROUND_SOUND))
+	if (!m_backgroundMusic.openFromFile(BOMBERMAN_BACKGROUND_SOUND))
 	{
 		std::cerr << "Error: couldn't load the background music file\n";
 	}
@@ -89,21 +89,21 @@ const sf::Texture& ResourceManager::getObjectTexture(enum OBJECT object) const
 
 
 //-----------------------------------------------------------------------------
-const sf::Music& ResourceManager::GetBackgroundMusic() const
+sf::Music& ResourceManager::GetBackgroundMusic()
 {
 	return m_backgroundMusic;
 }
 
 
 //-----------------------------------------------------------------------------
-const sf::Music& ResourceManager::GetWinLevelSound() const
+sf::Music& ResourceManager::GetWinLevelSound()
 {
 	return m_winLevelSound;
 }
 
 
 //-----------------------------------------------------------------------------
-const sf::Music& ResourceManager::GetLoseLevelSound() const
+sf::Music& ResourceManager::GetLoseLevelSound()
 {
 	return m_loseLevelSound;
 }

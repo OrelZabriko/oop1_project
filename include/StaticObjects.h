@@ -11,7 +11,7 @@ public:
 	using Objects::Objects;
 	virtual ~StaticObjects() = default;
 
+	//virtual void RobotCollide(Objects& otherObject) = 0;
 
 private:
-
 };
