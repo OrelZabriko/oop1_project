@@ -41,10 +41,12 @@ void Controller::Run()
 
         if (!m_startMenuState)
         {
+            manager.SetStartGame(false);
             start_menu.Draw(m_GameWindow);
         }
         else
         {
+            manager.SetStartGame(true);
             m_GameWindow.clear();
             manager.draw(m_GameWindow);
             m_infoBar.drawInfoBar(m_GameWindow);

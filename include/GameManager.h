@@ -30,8 +30,12 @@ public:
 					const sf::Time deltaTime);
 	void updateGuards(const sf::Time deltaTime);
 
+	void SetStartGame(const bool ifStart);
+	const bool& GetIfStartGame() const;
+
 
 private:
 	const Level& m_currLevel;
 	Board m_currBoard;
+	bool m_startGame = false; //only if the player pressend new game it opposite to true and start the guards movement
 };

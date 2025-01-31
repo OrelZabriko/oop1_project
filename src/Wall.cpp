@@ -1,6 +1,7 @@
 //-----include section-----
 #include "Wall.h"
 
+#include <iostream>
 
 //-----functions section------
 //-----------------------------------------------------------------------------

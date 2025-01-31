@@ -50,5 +50,22 @@ void GameManager::updateRobot(sf::Keyboard::Key key,
 //-----------------------------------------------------------------------------
 void GameManager::updateGuards(const sf::Time deltaTime)
 {
-	m_currBoard.MoveGuards(deltaTime);
+	if (GetIfStartGame())
+	{
+		m_currBoard.MoveGuards(deltaTime);
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void GameManager::SetStartGame(const bool ifStart)
+{
+	m_startGame = ifStart;
+}
+
+
+//-----------------------------------------------------------------------------
+const bool& GameManager::GetIfStartGame() const
+{
+	return m_startGame;
 }

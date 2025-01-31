@@ -119,6 +119,7 @@ void Board::draw(sf::RenderWindow& window) const
 }
 
 
+//-----------------------------------------------------------------------------
 void Board::setRobotDirections(const sf::Keyboard::Key key)
 {
 	m_Robot->changeDirection(key);
@@ -158,6 +159,18 @@ void Board::handleObjectCollision()
 		if (m_Robot->collideWithOthers(*guard))
 		{
 			m_Robot->handleCollision(*guard);
+		}
+	}
+
+	//need to change when checking if the guard is alive (?)
+	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
+	{
+		for (const auto& staticObj : m_StaticObjects)
+		{
+			if (m_Guards[guardNum]->collideWithOthers(*staticObj))
+			{
+				m_Guards[guardNum]->handleCollision(*staticObj);
+			}
 		}
 	}
 }
