@@ -21,9 +21,10 @@ public:
 	GameManager() = default;
 	GameManager(const Level& currLevel);
 
-	Board& getBoard();
-
 	void draw(sf::RenderWindow& window);
+
+	void setRobotDirection(sf::Keyboard::Key key);
+	void HandleTheCollision();
 
 	void updateRobot(sf::Keyboard::Key key,
 					const sf::Time deltaTime);

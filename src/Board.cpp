@@ -119,6 +119,12 @@ void Board::draw(sf::RenderWindow& window) const
 }
 
 
+void Board::setRobotDirections(const sf::Keyboard::Key key)
+{
+	m_Robot->changeDirection(key);
+}
+
+
 //-----------------------------------------------------------------------------
 void Board::MoveRobot(const sf::Keyboard::Key key, const sf::Time& deltaTime)
 {
@@ -132,6 +138,27 @@ void Board::MoveGuards(const sf::Time& deltaTime)
 	for (int guardIndex = 0; guardIndex < m_Guards.size(); guardIndex++)
 	{
 		m_Guards[guardIndex]->Move(deltaTime, m_Robot->GetPosition());
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::handleObjectCollision()
+{
+	for (const auto& staticObj : m_StaticObjects)
+	{
+		if (m_Robot->collideWithOthers(*staticObj))
+		{
+			m_Robot->handleCollision(*staticObj);
+		}
+	}
+
+	for (const auto& guard : m_Guards)
+	{
+		if (m_Robot->collideWithOthers(*guard))
+		{
+			m_Robot->handleCollision(*guard);
+		}
 	}
 }
 

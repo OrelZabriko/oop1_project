@@ -32,7 +32,8 @@ public:
 								  OpeningMenu& start_menu,
 								  LoadLevel& levelManager);
 	void handleKeyPressed(sf::Keyboard::Key key, 
-						  const sf::Time deltaTime, GameManager& manager);
+						  const sf::Time deltaTime, 
+						  GameManager& manager);
 
 	void setMenuState(bool state);
 

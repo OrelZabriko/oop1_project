@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "Constants.h"
 #include "Robot.h"
+#include "Guard.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -19,7 +20,7 @@ public:
 
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
-	virtual void handleCollision(Guard& guard) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Guard& guard) override;
 	virtual void handleCollision(Wall& wall) override { /* impossible collision, ignore */ };
 	virtual void handleCollision(Rock& rock) override { /* impossible collision, ignore */ };
 	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };

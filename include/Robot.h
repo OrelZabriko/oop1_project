@@ -21,6 +21,9 @@ public:
 	const sf::Vector2f& getDirection() const;
 
 	void Move(const sf::Keyboard::Key key, const sf::Time& deltaTime);
+
+	void SetWinStat(const bool winStat);
+	const bool GetWinStat() const;
 	
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
@@ -34,4 +37,5 @@ public:
 
 private:
 	sf::Vector2f m_moveDirection;
+	bool m_win = false; //Boolean variable check if the robot win the level
 };

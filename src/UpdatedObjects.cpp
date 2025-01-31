@@ -1,10 +1,13 @@
 //-----include section-----
 #include "UpdatedObjects.h"
 
+#include <iostream>
+
 
 //-----functions section------
 //----------------------------------------------------------------------------- 
-UpdatedObjects::UpdatedObjects() //: m_startPos(this->GetPosition())
+UpdatedObjects::UpdatedObjects()
+	//: m_startPos(this->getSprite().getPosition()), m_previousPos(this->getSprite().getPosition())
 {}
 
 
@@ -15,6 +18,7 @@ void UpdatedObjects::Move(sf::Vector2f offset)
 }
 
 
+//-----------------------------------------------------------------------------
 void UpdatedObjects::setSpritePos(sf::Vector2f newPos)
 {
 	m_previousPos = GetPosition();

@@ -4,6 +4,8 @@
 #include "UpdatedObjects.h"
 #include "ResourceManager.h"
 #include "Constants.h"
+#include "Robot.h"
+#include "Guard.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -19,11 +21,14 @@ public:
 	const sf::Vector2f& getDirection() const;
 
 	void Move(const sf::Time& deltaTime, const sf::Vector2f robotPos);
+
+	void SetGuardDead(const bool& ifAlive);
+	const bool& GetIfGuardAlive() const;
 	
 	virtual void handleCollision(Objects& otherObject) override;
-	virtual void handleCollision(Robot& robot) override { /* impossible collision, ignore */ };
-	virtual void handleCollision(Guard& guard) override { /* impossible collision, ignore */ };
-	virtual void handleCollision(Wall& wall) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Robot& robot) override;
+	virtual void handleCollision(Guard& guard) override;
+	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override { /* impossible collision, ignore */ };
 	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };
 	//virtual void handleCollision(Bomb& bomb) override;
@@ -32,5 +37,5 @@ public:
 
 private:
 	sf::Vector2f m_moveDirection;
-	bool isAlive = true;
+	bool m_isAlive = true;
 };

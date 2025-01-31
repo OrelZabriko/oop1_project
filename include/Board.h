@@ -33,22 +33,15 @@ public:
 	const sf::Vector2f& GetBoardPos();
 	void SetBoardPos(const sf::Vector2f& boardPos);
 
-	//bool CheckIfInBoard(const sf::Vector2f mousePosition, sf::Vector2i& boardCord) const;
-	//void update(const sf::Vector2i boardCord, OBJECT obj, bool& checkExistencePlayer);
-
-	//bool CheckIfInBoard(const sf::Vector2f mousePosition, sf::Vector2i& boardCord) const;
-	//void update(const sf::Vector2i boardCord, OBJECT obj, bool& checkExistencePlayer);
-
 	//void delete_board();
 	bool isValidPosition(int row, int col) const;
 	void draw(sf::RenderWindow& window) const;
-
-	//void CheckHover(sf::Vector2f mousePosition,
-	//sf::RenderWindow& m_gameWindow,
-	//const TextureManager& textures);
 	
+	void setRobotDirections(const sf::Keyboard::Key key);
 	void MoveRobot(const sf::Keyboard::Key key, const sf::Time& deltaTime);
 	void MoveGuards(const sf::Time& deltaTime);
+
+	void handleObjectCollision();
 
 
 private:

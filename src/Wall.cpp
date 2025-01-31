@@ -20,4 +20,12 @@ void Wall::handleCollision(Objects& otherObject)
 //-----------------------------------------------------------------------------
 void Wall::handleCollision(Robot& robot)
 {
+	robot.setSpritePos(robot.getPrevPosition());
+}
+
+
+//-----------------------------------------------------------------------------
+void Wall::handleCollision(Guard& guard)
+{
+	guard.setSpritePos(guard.getPrevPosition());
 }

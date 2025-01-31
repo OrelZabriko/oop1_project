@@ -20,7 +20,17 @@ void Robot::changeDirection(sf::Keyboard::Key key)
 	case sf::Keyboard::Key::Up:
 		m_moveDirection = sf::Vector2f(0, -1);
 		break;
+	default:
+		m_moveDirection = sf::Vector2f(0, 0);
+		break;
 	}
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::updateSpritePos(sf::Vector2f newPos)
+{
+	this->setSpritePos(newPos);
 }
 
 
@@ -34,10 +44,24 @@ const sf::Vector2f& Robot::getDirection() const
 //-----------------------------------------------------------------------------
 void Robot::Move(const sf::Keyboard::Key key, const sf::Time& deltaTime)
 {
-	setPrevPosition(getPrevPosition());
+	setPrevPosition(GetPosition());
 	changeDirection(key);
 	sf::Vector2f moveOffset = getDirection() * PIXELS_FOR_MOVE_ROBOT * deltaTime.asSeconds();
 	getSprite().move(moveOffset);
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::SetWinStat(const bool winStat)
+{
+	m_win = winStat;
+}
+
+
+//-----------------------------------------------------------------------------
+const bool Robot::GetWinStat() const
+{
+	return m_win;
 }
 
 
@@ -63,11 +87,4 @@ void Robot::handleCollision(Guard& guard)
 void Robot::handleCollision(Wall& wall)
 {
 	this->setSpritePos(getPrevPosition());
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::updateSpritePos(sf::Vector2f newPos)
-{
-	this->setSpritePos(newPos);
 }

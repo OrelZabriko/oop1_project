@@ -19,16 +19,23 @@ GameManager::GameManager(const Level& currLevel) : m_currLevel(currLevel)
 
 
 //-----------------------------------------------------------------------------
-Board& GameManager::getBoard()
+void GameManager::draw(sf::RenderWindow& window)
 {
-	return m_currBoard;
+	m_currBoard.draw(window);
 }
 
 
 //-----------------------------------------------------------------------------
-void GameManager::draw(sf::RenderWindow& window)
+void GameManager::setRobotDirection(sf::Keyboard::Key key)
 {
-	m_currBoard.draw(window);
+	m_currBoard.setRobotDirections(key);
+}
+
+
+//-----------------------------------------------------------------------------
+void GameManager::HandleTheCollision()
+{
+	m_currBoard.handleObjectCollision();
 }
 
 

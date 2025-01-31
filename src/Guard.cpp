@@ -51,7 +51,40 @@ void Guard::Move(const sf::Time& deltaTime, const sf::Vector2f robotPos)
 
 
 //-----------------------------------------------------------------------------
+void Guard::SetGuardDead(const bool& ifAlive)
+{
+    m_isAlive = ifAlive;
+}
+
+
+//-----------------------------------------------------------------------------
+const bool& Guard::GetIfGuardAlive() const
+{
+    return m_isAlive;
+}
+
+
+//-----------------------------------------------------------------------------
 void Guard::handleCollision(Objects& otherObject)
 {
     otherObject.handleCollision(*this);
+}
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Robot& robot)
+{
+    /*need to do something*/
+}
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Guard& guard)
+{}
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Wall& wall)
+{
+    this->setSpritePos(getPrevPosition());
 }

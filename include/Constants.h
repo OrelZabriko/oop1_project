@@ -36,7 +36,7 @@ const float BUTTON_HEIGHT = 100;
 const float BOARD_WIDTH = 1400;
 const float BOARD_HEIGHT = 720;
 
-const float CELL_SPACING = 6.f;		//Space adding in calculations between cells in pixels
+const float CELL_SPACING = 10.f;		//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
 const float PIXELS_FOR_MOVE_ROBOT = 450.f;

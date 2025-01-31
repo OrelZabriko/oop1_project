@@ -83,6 +83,8 @@ void Controller::Run()
             }
         }
         manager.updateGuards(deltaTime);
+
+        manager.HandleTheCollision();
         
         m_GameWindow.display();
     }
@@ -133,7 +135,8 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
 
 //-----------------------------------------------------------------------------
 void Controller::handleKeyPressed(sf::Keyboard::Key key,
-                                  const sf::Time deltaTime, GameManager& manager)
+                                  const sf::Time deltaTime, 
+                                  GameManager& manager)
 {
     manager.updateRobot(key, deltaTime);
 }
