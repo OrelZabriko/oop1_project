@@ -25,6 +25,8 @@ public:
     const sf::Texture& getObjectTexture(enum OBJECT object) const;
     const sf::Texture& getStartMenuBackground();
     const sf::Texture& getHelpStartMenuBackground();
+    const sf::Texture& getBombTexture();
+    const sf::Texture& getExplosionTexture();
 
     sf::Music& GetBackgroundMusic();
     sf::Music& GetWinLevelSound();
@@ -42,13 +44,17 @@ private:
 
     //Storage for textures
     std::vector<std::string> m_objNames =
-    { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png", "Bomb.png" };
+    { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png" };
     std::string m_StartBackGroundFileName = "StartMenuBackground.png";
     std::string m_HelpBackGroundFileName = "Help.png";
+    std::string m_BombFileName = "Bomb.png";
+    std::string m_ExplosionBombFileName = "Explosion.png";
     std::vector<sf::Texture> m_objects;
     std::vector<sf::Texture> m_utility;
     sf::Texture m_backGroundImage;
     sf::Texture m_HelpBackGroundImage;
+    sf::Texture m_BombTexture;
+    sf::Texture m_ExplosionTexture;
 
     //Storage for music
     sf::Music m_backgroundMusic;

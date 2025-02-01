@@ -14,6 +14,7 @@ configure_file ("Guard.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Rock.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Wall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Explosion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("GOUDYSTO.TTF" ${CMAKE_BINARY_DIR} COPYONLY)
 

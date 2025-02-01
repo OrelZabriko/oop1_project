@@ -29,6 +29,7 @@ const unsigned int WINDOW_WIDTH = 1920;
 const unsigned int WINDOW_HEIGHT = 1080;
 
 const int OBJECT_COUNT = 5;
+const int EXPLOSION_TIME = 5;
 
 const float BUTTON_WIDTH = 300;
 const float BUTTON_HEIGHT = 100;
@@ -36,12 +37,12 @@ const float BUTTON_HEIGHT = 100;
 const float BOARD_WIDTH = 1400;
 const float BOARD_HEIGHT = 720;
 
-const float CELL_SPACING = 10.f;		//Space adding in calculations between cells in pixels
+const float CELL_SPACING = 10.f;	//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
 
 const float PIXELS_FOR_MOVE_ROBOT = 450.f;
 const float PIXELS_FOR_MOVE_GUARD = 50.f;
-
+const float EXPLOSION_RANGE = 32.f;
 const int TIME_LIMIT = 300; //the limit time for every level  in seconds
 
 

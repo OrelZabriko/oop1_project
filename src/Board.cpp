@@ -116,6 +116,50 @@ void Board::draw(sf::RenderWindow& window) const
 	{
 		m_StaticObjects[objIndex]->draw(window);
 	}
+
+	//draw the bombs
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); bombIndex++)
+	{
+		m_Bombs[bombIndex]->draw(window);
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::addBomb(const sf::Vector2f& position)
+{
+	m_Bombs.push_back(std::make_unique<Bombs>(position));
+	m_Bombs.back()->setBomb(position);
+}
+
+
+//-----------------------------------------------------------------------------
+sf::Vector2f Board::getRobotPosition() const
+{
+	sf::Vector2f robotPos = m_Robot->GetPosition();
+	return robotPos;
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::handleBombs(sf::Time deltaTime)
+{
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); bombIndex++) //take care active bombs
+	{
+		m_Bombs[bombIndex]->updateBomb(deltaTime);
+	}
+
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); ) //delete bomb if finish 
+	{
+		if (!m_Bombs[bombIndex]->isBombActive() && !m_Bombs[bombIndex]->isBombExploding())
+		{
+			m_Bombs.erase(m_Bombs.begin() + bombIndex);
+		}
+		else
+		{
+			bombIndex++;
+		}
+	}
 }
 
 
@@ -177,14 +221,6 @@ void Board::handleObjectCollision()
 
 
 //-----------------------------------------------------------------------------
-//This function erase all the objects from the board.
-//void Board::delete_board()
-//{
-//	m_board.clear();
-//}
-
-
-//-----------------------------------------------------------------------------
 bool Board::isValidPosition(int row, int col) const
 {
 	if (row >= 0 && row < m_rows && col >= 0 && col < m_cols)
@@ -192,7 +228,4 @@ bool Board::isValidPosition(int row, int col) const
 		return true;
 	}
 	return false;
-}
-
-
-//-----------------------------------------------------------------------------
+}	
