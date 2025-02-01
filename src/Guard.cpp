@@ -88,3 +88,10 @@ void Guard::handleCollision(Wall& wall)
 {
     this->setSpritePos(getPrevPosition());
 }
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Rock& rock)
+{
+    this->setSpritePos(getPrevPosition());
+}

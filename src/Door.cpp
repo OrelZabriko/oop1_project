@@ -9,6 +9,7 @@ void Door::handleCollision(Objects& otherObject)
 	otherObject.handleCollision(*this);
 }
 
+
 //-----------------------------------------------------------------------------
 void Door::handleCollision(Robot& robot)
 {}

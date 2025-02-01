@@ -88,3 +88,10 @@ void Robot::handleCollision(Wall& wall)
 {
 	this->setSpritePos(getPrevPosition());
 }
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Rock& rock)
+{
+	this->setSpritePos(getPrevPosition());
+}

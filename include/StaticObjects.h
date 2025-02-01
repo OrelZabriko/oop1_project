@@ -12,5 +12,9 @@ public:
 	virtual ~StaticObjects() = default;
 
 
+	virtual void handleCollision(Wall& wall) override;
+	virtual void handleCollision(Rock& rock) override;
+	virtual void handleCollision(Door& door) override;
+
 private:
 };
