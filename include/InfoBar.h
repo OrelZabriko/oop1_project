@@ -27,7 +27,6 @@ private:
     sf::Text m_scoreText;
     sf::Clock m_gameTimer;
     bool m_timerStarted = false;
-    void initializeFont();
     int m_lives = 5;
     int m_time = 180;
     int m_level = 1;

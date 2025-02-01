@@ -45,3 +45,25 @@ void GameManager::updateGuards(const sf::Time deltaTime)
 {
 	m_currBoard.MoveGuards(deltaTime);
 }
+
+
+//-----------------------------------------------------------------------------
+void GameManager::dropBomb()
+{
+	sf::Vector2f playerPos = m_currBoard.getRobotPosition();
+	m_currBoard.addBomb(playerPos);
+}
+
+
+//-----------------------------------------------------------------------------
+void GameManager::updateBombs(const sf::Time deltaTime)
+{
+	m_currBoard.handleBombs(deltaTime);
+}
+
+
+//-----------------------------------------------------------------------------
+sf::Vector2f GameManager::getPlayerPosition() const
+{
+	return m_currBoard.getRobotPosition();
+}

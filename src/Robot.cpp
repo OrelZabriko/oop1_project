@@ -1,6 +1,6 @@
 //-----include section-----
 #include "Robot.h"
-
+#include <iostream>
 
 //-----functions section------
 //-----------------------------------------------------------------------------
@@ -70,4 +70,10 @@ void Robot::handleCollision(Wall& wall)
 void Robot::updateSpritePos(sf::Vector2f newPos)
 {
 	this->setSpritePos(newPos);
+}
+
+sf::Vector2f Robot::GetPosition() const
+{
+    sf::Vector2f position = UpdatedObjects::GetPosition();
+	return position;
 }

@@ -70,7 +70,7 @@ char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
 void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 {
     sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Help Window");
-    //load the  setting image background
+    //load the setting image background
     const sf::Texture& helpTexture = ResourceManager::getInstance().getHelpStartMenuBackground();
 
     sf::Sprite helpBackground(helpTexture);
@@ -80,8 +80,8 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
     float scaleY = WINDOW_HEIGHT / helpBackground.getTexture()->getSize().y;
     helpBackground.setScale(scaleX, scaleY);
 
-
-    ResetSettings(); //create the settings
+    ResetSettings(); 
+    createBackButton();
 
     while (helpWindow.isOpen())
     {
@@ -89,18 +89,31 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
         while (helpWindow.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                helpWindow.close();
-            else if (event.type == sf::Keyboard::Escape)
             {
-                
+                helpWindow.close();
+            }
+            else if (event.type == sf::Event::MouseButtonPressed) 
+            {
+                int mouseX = event.mouseButton.x;
+                int mouseY = event.mouseButton.y;
+                if (mouseX >= m_backButton.getPosition().x &&
+                    mouseX <= m_backButton.getPosition().x + m_backButton.getSize().x &&
+                    mouseY >= m_backButton.getPosition().y &&
+                    mouseY <= m_backButton.getPosition().y + m_backButton.getSize().y)
+                {
+                    helpWindow.close();
+                }
             }
         }
 
         helpWindow.clear();
         helpWindow.draw(helpBackground);
         helpWindow.draw(m_helpText);
+        helpWindow.draw(m_backButton);
+        helpWindow.draw(m_backButtonText);
         helpWindow.display();
     }
+            
 }
 
 
@@ -124,4 +137,26 @@ void OpeningMenu::ResetSettings()
     m_helpText.setCharacterSize(35);
     m_helpText.setFillColor(sf::Color::Red);
     m_helpText.setPosition(WINDOW_WIDTH / 8.f, WINDOW_HEIGHT / 4.5f);
+
+}
+
+void OpeningMenu::createBackButton()
+{
+    float backButtonX = WINDOW_WIDTH / 2.f - BUTTON_WIDTH / 2.f;
+    float backButtonY = WINDOW_HEIGHT - 200;
+
+    m_backButton.setSize(sf::Vector2f(BUTTON_WIDTH, BUTTON_HEIGHT));
+    m_backButton.setFillColor(sf::Color::Black);
+    m_backButton.setOutlineColor(sf::Color::White);
+    m_backButton.setOutlineThickness(3);
+    m_backButton.setPosition(backButtonX, backButtonY);
+
+    //initialize text
+    m_backButtonText.setFont(ResourceManager::getInstance().GetTextFont());
+    m_backButtonText.setString("Back to Menu");
+    m_backButtonText.setCharacterSize(20);
+    m_backButtonText.setFillColor(sf::Color::White);
+
+    //write inside the button
+    m_backButtonText.setPosition( backButtonX + 20, backButtonY + 20);
 }

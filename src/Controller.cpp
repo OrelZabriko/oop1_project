@@ -74,6 +74,10 @@ void Controller::Run()
                     start_menu.Draw(m_GameWindow);
                     m_startMenuState = false;
                 }
+                else if (event.key.code == sf::Keyboard::B)
+                {
+                    manager.dropBomb();
+                }
                 else
                 {
                     handleKeyPressed(event.key.code, deltaTime, manager);
@@ -83,7 +87,7 @@ void Controller::Run()
             }
         }
         manager.updateGuards(deltaTime);
-        
+        manager.updateBombs(deltaTime);
         m_GameWindow.display();
     }
 }
@@ -111,7 +115,6 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
         }
         case 'H': //help
         {
-            window.close();
             start_menu.CreateHelpWindow(window);
             break;
         }

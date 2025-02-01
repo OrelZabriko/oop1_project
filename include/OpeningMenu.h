@@ -27,6 +27,7 @@ public:
 
 	void CreateHelpWindow(sf::RenderWindow& window);
 	void ResetSettings();
+	void createBackButton();
 
 private:
 	sf::Sprite m_backgroundImage;
@@ -34,6 +35,7 @@ private:
 	sf::Vector2f m_backgroundImageSize;
 	std::vector<std::unique_ptr<Button>> m_menuButtons;
 	sf::Text m_helpText;
-
+	sf::RectangleShape m_backButton;
+	sf::Text m_backButtonText;
 	void SetScaleBackgroundImag();
 };

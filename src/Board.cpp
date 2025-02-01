@@ -116,6 +116,12 @@ void Board::draw(sf::RenderWindow& window) const
 	{
 		m_StaticObjects[objIndex]->draw(window);
 	}
+
+	//draw the bombs
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); bombIndex++)
+	{
+		m_Bombs[bombIndex]->draw(window);
+	}
 }
 
 
@@ -156,3 +162,37 @@ bool Board::isValidPosition(int row, int col) const
 
 
 //-----------------------------------------------------------------------------
+void Board::addBomb(const sf::Vector2f& position)
+{
+	m_Bombs.push_back(std::make_unique<Bombs>(position));
+	m_Bombs.back()->setBomb(position);
+}
+
+
+//-----------------------------------------------------------------------------
+sf::Vector2f Board::getRobotPosition() const
+{
+	sf::Vector2f robotPos = m_Robot->GetPosition();
+	return robotPos;
+}
+
+//-----------------------------------------------------------------------------
+void Board::handleBombs(sf::Time deltaTime)
+{
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); bombIndex++) //take care active bombs
+	{
+		m_Bombs[bombIndex]->updateBomb(deltaTime);
+	}
+
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); ) //delete bomb if finish 
+	{
+		if (!m_Bombs[bombIndex]->isBombActive() && !m_Bombs[bombIndex]->isBombExploding())
+		{
+			m_Bombs.erase(m_Bombs.begin() + bombIndex);  
+		}
+		else
+		{
+			bombIndex++;  
+		}
+	}
+}

@@ -42,6 +42,10 @@ void ResourceManager::loadTextures()
 	m_backGroundImage.loadFromFile(m_StartBackGroundFileName);
 
 	m_HelpBackGroundImage.loadFromFile(m_HelpBackGroundFileName);
+
+	m_BombTexture.loadFromFile(m_BombFileName);
+
+	m_ExplosionTexture.loadFromFile(m_ExplosionBombFileName);
 }
 
 
@@ -78,6 +82,18 @@ const sf::Texture& ResourceManager::getStartMenuBackground()
 const sf::Texture& ResourceManager::getHelpStartMenuBackground()
 {
 	return m_HelpBackGroundImage;
+}
+
+//-----------------------------------------------------------------------------
+const sf::Texture& ResourceManager::getBombTexture()
+{
+	return m_BombTexture;
+}
+
+//-----------------------------------------------------------------------------
+const sf::Texture& ResourceManager::getExplosionTexture()
+{
+	return m_ExplosionTexture;
 }
 
 

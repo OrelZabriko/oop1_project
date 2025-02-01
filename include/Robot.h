@@ -21,7 +21,7 @@ public:
 	const sf::Vector2f& getDirection() const;
 
 	void Move(const sf::Keyboard::Key key, const sf::Time& deltaTime);
-	
+	sf::Vector2f GetPosition() const;
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
 	virtual void handleCollision(Guard& guard) override;

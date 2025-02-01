@@ -10,6 +10,7 @@
 #include "Guard.h"
 #include "Rock.h"
 #include "StaticObjects.h"
+#include "Bombs.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -29,6 +30,10 @@ public:
 
 	int GetRows() const;
 	int GetCols() const;
+
+	void handleBombs(sf::Time deltaTime);
+	void addBomb(const sf::Vector2f& position);
+	sf::Vector2f getRobotPosition() const;
 
 	const sf::Vector2f& GetBoardPos();
 	void SetBoardPos(const sf::Vector2f& boardPos);
@@ -58,5 +63,5 @@ private:
 	std::unique_ptr<Robot> m_Robot;
 	std::vector<std::unique_ptr<Guard>> m_Guards;
 	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
-	//std::vector<std::unique_ptr<Bomb>> m_Bombs;
+	std::vector<std::unique_ptr<Bombs>> m_Bombs;
 };

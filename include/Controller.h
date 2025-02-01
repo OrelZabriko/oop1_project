@@ -8,6 +8,7 @@
 #include "LoadLevel.h"
 #include "Level.h"
 #include "InfoBar.h"
+//#include "Bombs.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
