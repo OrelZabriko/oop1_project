@@ -9,7 +9,6 @@
 #include <string>
 
 
-
 //-----functions section------
 //-----------------------------------------------------------------------------
 InfoBar::InfoBar()
@@ -112,7 +111,3 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     window.draw(m_levelText);
     window.draw(m_scoreText);
 }
-
-
-
-

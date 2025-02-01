@@ -29,6 +29,7 @@ public:
 	void ResetSettings();
 	void createBackButton();
 
+
 private:
 	sf::Sprite m_backgroundImage;
 	sf::Sprite m_helpBackgroundImage;

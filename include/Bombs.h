@@ -20,7 +20,7 @@ public:
 	bool isBombExploding() const;
 	void updateBomb(sf::Time deltaTime);
 	void draw(sf::RenderWindow& window);
-	//std::vector<sf::Vector2f> getBombPosition() const;
+	//const std::vector<sf::Vector2f>& Bombs::getBombPosition() const;
 
 
 	virtual void handleCollision(Objects& otherObject) override { /* impossible collision, ignore */ };
@@ -33,11 +33,11 @@ public:
 
 
 private:
-	sf::Time bomb_timer;
-	sf::Time explosion_timer;
-	bool is_bomb_active;
-	bool is_bomb_exploding;
-	std::vector<sf::Vector2f> activeBombs;
+	sf::Time m_bomb_timer;
+	sf::Time m_explosion_timer;
+	bool m_is_bomb_active;
+	bool m_is_bomb_exploding;
+	std::vector<sf::Vector2f> m_activeBombs;
 
 	void ExplodeBomb();
 };

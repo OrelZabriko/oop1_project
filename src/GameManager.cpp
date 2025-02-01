@@ -54,7 +54,6 @@ void GameManager::updateBombs(const sf::Time deltaTime)
 }
 
 
-
 //-----------------------------------------------------------------------------
 void GameManager::updateRobot(sf::Keyboard::Key key, 
 						      const sf::Time deltaTime)

@@ -91,6 +91,7 @@ void Controller::Run()
         }
         manager.updateGuards(deltaTime);
         manager.updateBombs(deltaTime);
+
         manager.HandleTheCollision();
         
         m_GameWindow.display();

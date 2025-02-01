@@ -24,6 +24,7 @@ public:
 	void setPrevPosition(sf::Vector2f position);
 	sf::Vector2f getPrevPosition() const;
 	
+
 private:
 	sf::Vector2f m_startPos;
 	sf::Vector2f m_previousPos;

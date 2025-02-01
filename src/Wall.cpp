@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+
 //-----functions section------
 //-----------------------------------------------------------------------------
 void Wall::draw(sf::RenderWindow& window)

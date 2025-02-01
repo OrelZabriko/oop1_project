@@ -1,17 +1,16 @@
+//-----include section-----
 #include "Bombs.h"
 
-//-----include section-----
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-
 Bombs::Bombs(sf::Vector2f position)
-    : bomb_timer(sf::seconds(EXPLOSION_TIME))
-    , is_bomb_active(false)
-    , is_bomb_exploding(false)
+    : m_bomb_timer(sf::seconds(EXPLOSION_TIME)),
+      m_is_bomb_active(false),
+      m_is_bomb_exploding(false)
 {
     getSprite().setTexture(ResourceManager::getInstance().getBombTexture());
     getSprite().setScale(0.5f, 0.5f);
@@ -23,11 +22,11 @@ Bombs::Bombs(sf::Vector2f position)
 //-----------------------------------------------------------------------------
 void Bombs::setBomb(sf::Vector2f position)
 {
-    if (!is_bomb_active && !is_bomb_exploding)
+    if (!m_is_bomb_active && !m_is_bomb_exploding)
     {
         setSpritePos(position);
-        is_bomb_active = true;
-        bomb_timer = sf::seconds(EXPLOSION_TIME);
+        m_is_bomb_active = true;
+        m_bomb_timer = sf::seconds(EXPLOSION_TIME);
     }
 }
 
@@ -35,23 +34,23 @@ void Bombs::setBomb(sf::Vector2f position)
 //-----------------------------------------------------------------------------
 void Bombs::updateBomb(sf::Time deltaTime)
 {
-    if (is_bomb_active)
+    if (m_is_bomb_active)
     {
-        bomb_timer -= deltaTime;
-        if (bomb_timer.asSeconds() <= 0)
+        m_bomb_timer -= deltaTime;
+        if (m_bomb_timer.asSeconds() <= 0)
         {
-            is_bomb_active = false;
-            is_bomb_exploding = true;
+            m_is_bomb_active = false;
+            m_is_bomb_exploding = true;
             ExplodeBomb();
         }
     }
-    else if (is_bomb_exploding)
+    else if (m_is_bomb_exploding)
     {
-        explosion_timer -= deltaTime;
-        if (explosion_timer.asSeconds() <= 0)
+        m_explosion_timer -= deltaTime;
+        if (m_explosion_timer.asSeconds() <= 0)
         {
-            is_bomb_exploding = false;
-            activeBombs.clear();
+            m_is_bomb_exploding = false;
+            m_activeBombs.clear();
         }
     }
 }
@@ -60,20 +59,20 @@ void Bombs::updateBomb(sf::Time deltaTime)
 //-----------------------------------------------------------------------------
 void Bombs::draw(sf::RenderWindow& window)
 {
-    if (is_bomb_active)
+    if (m_is_bomb_active)
     {
         sf::Sprite& bombSprite = getSprite();
         bombSprite.setPosition(getSprite().getPosition());
         window.draw(bombSprite);
     }
 
-    if (is_bomb_exploding)
+    if (m_is_bomb_exploding)
     {
         sf::Sprite explosionSprite(ResourceManager::getInstance().getExplosionTexture());
         explosionSprite.setScale(0.15f, 0.15f);
-        for (int bombsNum = 0; bombsNum < activeBombs.size(); bombsNum++)
+        for (int bombsNum = 0; bombsNum < m_activeBombs.size(); bombsNum++)
         {
-            explosionSprite.setPosition(activeBombs[bombsNum]);
+            explosionSprite.setPosition(m_activeBombs[bombsNum]);
             window.draw(explosionSprite);
         }
     }
@@ -83,9 +82,9 @@ void Bombs::draw(sf::RenderWindow& window)
 //-----------------------------------------------------------------------------
 void Bombs::ExplodeBomb()
 {
-    activeBombs.clear();
+    m_activeBombs.clear();
     sf::Vector2f center = getSprite().getPosition();
-    activeBombs.push_back(center);
+    m_activeBombs.push_back(center);
 
     for (int direction = 0; direction < 4; direction++)
     {
@@ -107,29 +106,29 @@ void Bombs::ExplodeBomb()
             break;
         }
 
-        activeBombs.push_back(explosionPos);
+        m_activeBombs.push_back(explosionPos);
     }
-    is_bomb_exploding = true;
-    explosion_timer = sf::seconds(0.3f);
+    m_is_bomb_exploding = true;
+    m_explosion_timer = sf::seconds(0.3f);
 }
 
 
 //-----------------------------------------------------------------------------
 bool Bombs::isBombActive() const
 {
-    return is_bomb_active;
+    return m_is_bomb_active;
 }
 
 
 //-----------------------------------------------------------------------------
 bool Bombs::isBombExploding() const
 {
-    return is_bomb_exploding;
+    return m_is_bomb_exploding;
 }
 
 
 //-----------------------------------------------------------------------------
-//std::vector<sf::Vector2f> Bombs::getBombPosition() const
+//const std::vector<sf::Vector2f>& Bombs::getBombPosition() const
 //{
 //    return Bomb_position;
 //}
