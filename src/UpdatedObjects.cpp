@@ -7,7 +7,7 @@
 //-----functions section------
 //----------------------------------------------------------------------------- 
 UpdatedObjects::UpdatedObjects()
-	//: m_startPos(this->getSprite().getPosition()), m_previousPos(this->getSprite().getPosition())
+	: m_startPos(this->getSprite().getPosition()), m_previousPos(this->getSprite().getPosition())
 {}
 
 

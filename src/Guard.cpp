@@ -1,6 +1,6 @@
 //-----include section-----
 #include "Guard.h"
-
+#include "Controller.h"
 
 //-----functions section------
 //-----------------------------------------------------------------------------
@@ -81,13 +81,33 @@ void Guard::handleCollision(Robot& robot)
 
 //-----------------------------------------------------------------------------
 void Guard::handleCollision(Guard& guard)
-{}
+{
+    this->setSpritePos(getPrevPosition());
+}
 
 
 //-----------------------------------------------------------------------------
 void Guard::handleCollision(Wall& wall)
 {
     this->setSpritePos(getPrevPosition());
+
+
+    //If the guard collide Wall it will change the direction and keep move (?)
+    
+    //this->setSpritePos(getPrevPosition());
+    //// Change direction
+    //sf::Vector2f currentDirection = getDirection();
+    //if (currentDirection.x != 0) {
+    //    // If moving horizontally, change to vertical direction
+    //    m_moveDirection = sf::Vector2f(0, (currentDirection.x > 0) ? 1 : -1);
+    //}
+    //else {
+    //    // If moving vertically, change to horizontal direction
+    //    m_moveDirection = sf::Vector2f((currentDirection.y > 0) ? 1 : -1, 0);
+    //}
+    //// Move again
+    //sf::Vector2f moveGuardOffset = getDirection() * PIXELS_FOR_MOVE_GUARD * deltaTime.asSeconds();
+    //getSprite().move(moveGuardOffset);
 }
 
 
@@ -95,4 +115,22 @@ void Guard::handleCollision(Wall& wall)
 void Guard::handleCollision(Rock& rock)
 {
     this->setSpritePos(getPrevPosition());
+
+
+    //If the guard collide Rock it will change the direction and keep move (?)
+    
+    //this->setSpritePos(getPrevPosition());
+    //// Change direction
+    //sf::Vector2f currentDirection = getDirection();
+    //if (currentDirection.x != 0) {
+    //    // If moving horizontally, change to vertical direction
+    //    m_moveDirection = sf::Vector2f(0, (currentDirection.x > 0) ? 1 : -1);
+    //}
+    //else {
+    //    // If moving vertically, change to horizontal direction
+    //    m_moveDirection = sf::Vector2f((currentDirection.y > 0) ? 1 : -1, 0);
+    //}
+    //// Move again
+    //sf::Vector2f moveGuardOffset = getDirection() * PIXELS_FOR_MOVE_GUARD * deltaTime.asSeconds();
+    //getSprite().move(moveGuardOffset);
 }

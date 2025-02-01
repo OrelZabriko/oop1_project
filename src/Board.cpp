@@ -218,6 +218,18 @@ void Board::handleObjectCollision()
 				m_Guards[guardNum]->handleCollision(*staticObj);
 			}
 		}
+
+		for (int anotherGuard = 0; anotherGuard < m_Guards.size(); anotherGuard++)
+		{
+			if (guardNum == anotherGuard) continue;
+			else
+			{
+				if (m_Guards[guardNum]->collideWithOthers(*m_Guards[anotherGuard]))
+				{
+					m_Guards[guardNum]->handleCollision(*m_Guards[anotherGuard]);
+				}
+			}
+		}
 	}
 }
 
