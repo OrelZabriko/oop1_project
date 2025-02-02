@@ -29,7 +29,7 @@ const unsigned int WINDOW_WIDTH = 1920;
 const unsigned int WINDOW_HEIGHT = 1080;
 
 const int OBJECT_COUNT = 5;
-const int EXPLOSION_TIME = 5;
+const int EXPLOSION_TIME = 4;
 
 const float BUTTON_WIDTH = 300;
 const float BUTTON_HEIGHT = 100;
