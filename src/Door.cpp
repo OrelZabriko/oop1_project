@@ -17,4 +17,6 @@ void Door::handleCollision(Robot& robot)
 
 //-----------------------------------------------------------------------------
 void Door::handleCollision(Guard& guard)
-{}
+{
+	guard.setSpritePos(guard.getPrevPosition());
+}

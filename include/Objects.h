@@ -8,6 +8,7 @@ class Guard;
 class Wall;
 class Rock;
 class Door;
+class Bombs;
 
 #include <SFML/Graphics.hpp>
 
@@ -36,7 +37,7 @@ public:
 	virtual void handleCollision(Wall& wall) = 0;
 	virtual void handleCollision(Rock& rock) = 0;
 	virtual void handleCollision(Door& door) = 0;
-	//virtual void handleCollision(Bomb& bomb) = 0;
+	virtual void handleCollision(Bombs& bomb) = 0;
 	//virtual void handleCollision(Gift& gift) = 0;
 
 

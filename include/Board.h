@@ -17,7 +17,6 @@
 #include <vector>
 
 
-
 //-----class section-----
 class Board
 {

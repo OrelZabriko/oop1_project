@@ -4,7 +4,10 @@
 #include "UpdatedObjects.h"
 #include "ResourceManager.h"
 #include "Constants.h"
-class Rock;
+#include "Robot.h"
+#include "Guard.h"
+#include "Rock.h"
+#include "Bombs.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -36,7 +39,7 @@ public:
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };
-	//virtual void handleCollision(Bomb& bomb) override;
+	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
 	//virtual void handleCollision(Gift& gift) override;
 
 

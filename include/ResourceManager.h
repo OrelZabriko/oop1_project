@@ -18,7 +18,7 @@ public:
     ResourceManager& operator=(const ResourceManager&) = delete;
 
     // Get the singleton instance
-    static ResourceManager& getInstance() ;
+    static ResourceManager& getInstance();
 
 
     // Get a texture by name
@@ -36,8 +36,7 @@ public:
 
 
 private:
-    //Private constructor for singleton
-    ResourceManager();
+    ResourceManager(); //Private constructor for singleton
     void loadTextures();
     void loadMusic();
     void loadTextFont();

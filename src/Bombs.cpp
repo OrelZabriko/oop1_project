@@ -15,7 +15,6 @@ Bombs::Bombs(sf::Vector2f position)
     getSprite().setTexture(ResourceManager::getInstance().getBombTexture());
     getSprite().setScale(0.5f, 0.5f);
     setSpritePos(position);
-
 }
 
 
@@ -77,6 +76,45 @@ void Bombs::draw(sf::RenderWindow& window)
         }
     }
 }
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Objects& otherObject)
+{
+    otherObject.handleCollision(*this);
+}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Robot& robot)
+{
+    /*need to do something*/
+}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Guard& guard)
+{
+    /*need to do something*/
+    guard.SetGuardDead(true);
+}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Wall& wall)
+{}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Rock & rock)
+{
+    /*need to erase this rock*/
+}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Door& door)
+{}
 
 
 //-----------------------------------------------------------------------------

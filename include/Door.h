@@ -4,6 +4,8 @@
 #include "StaticObjects.h"
 #include "ResourceManager.h"
 #include "Constants.h"
+#include "Robot.h"
+#include "Guard.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -20,6 +22,6 @@ public:
 	void handleCollision(Objects& otherObject) override;
 	void handleCollision(Robot& robot) override;
 	void handleCollision(Guard& guard) override;
-	//virtual void handleCollision(Bomb& bomb) override;
+	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
 	//virtual void handleCollision(Gift& gift) override;
 };

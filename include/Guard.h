@@ -6,6 +6,8 @@
 #include "Constants.h"
 #include "Robot.h"
 #include "Guard.h"
+#include "Rock.h"
+#include "Bombs.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -30,8 +32,8 @@ public:
 	virtual void handleCollision(Guard& guard) override;
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
-	virtual void handleCollision(Door& door) override { /* impossible collision, ignore */ };
-	//virtual void handleCollision(Bomb& bomb) override;
+	virtual void handleCollision(Door& door) override;
+	virtual void handleCollision(Bombs& bomb) override;
 	//virtual void handleCollision(Gift& gift) override;
 
 

@@ -134,3 +134,16 @@ void Guard::handleCollision(Rock& rock)
     //sf::Vector2f moveGuardOffset = getDirection() * PIXELS_FOR_MOVE_GUARD * deltaTime.asSeconds();
     //getSprite().move(moveGuardOffset);
 }
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Door& door)
+{
+    this->setSpritePos(getPrevPosition());
+}
+
+
+//-----------------------------------------------------------------------------
+void Guard::handleCollision(Bombs& bomb)
+{
+}

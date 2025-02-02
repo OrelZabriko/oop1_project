@@ -105,6 +105,8 @@ void Robot::handleCollision(Robot& robot)
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Guard& guard)
 {
+	this->decLives();
+	/* need to do more things (?) */
 }
 
 

@@ -39,11 +39,12 @@ const float BOARD_HEIGHT = 720;
 
 const float CELL_SPACING = 10.f;	//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
+const float INFOBAR_SPACE = 50.f; //Spasce between the top ot the RenderWindow to the board for the InfoBar
 
 const float PIXELS_FOR_MOVE_ROBOT = 450.f;
 const float PIXELS_FOR_MOVE_GUARD = 50.f;
 const float EXPLOSION_RANGE = 32.f;
-const int TIME_LIMIT = 300; //the limit time for every level  in seconds
+const int TIME_LIMIT = 300; //the limit time for every level in seconds
 
 const int ROBOT_LIVES = 5;
 
