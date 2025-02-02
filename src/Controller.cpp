@@ -29,10 +29,9 @@ void Controller::Run()
     m_GameWindow.setFramerateLimit(60);
 
 
-    auto& backgroundMusic = ResourceManager::getInstance().GetBackgroundMusic();
-    backgroundMusic.setLoop(true);
-    backgroundMusic.setVolume(20.0f);
-    backgroundMusic.play();  //Start the music
+    ResourceManager::getInstance().GetBackgroundMusic().setLoop(true);
+    ResourceManager::getInstance().GetBackgroundMusic().setVolume(20.0f);
+    ResourceManager::getInstance().GetBackgroundMusic().play();  //Start the music
     
 
     while (m_GameWindow.isOpen())
