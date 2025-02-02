@@ -17,12 +17,6 @@ InfoBar::InfoBar()
 }
 
 //-----------------------------------------------------------------------------
-void InfoBar::setLives(int lives)
-{
-    m_lives = lives;
-}
-
-//-----------------------------------------------------------------------------
 void InfoBar::setTime(int time)
 {
     m_time = time;
@@ -73,7 +67,7 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     m_livesText.setFont(m_font);
     m_livesText.setCharacterSize(20);
     m_livesText.setFillColor(sf::Color::White);
-    m_livesText.setString("Lives: " + std::to_string(m_lives));
+    m_livesText.setString("Lives: " + std::to_string(Robot::getLivesNum()));
 
     //initialize the time
     m_timeText.setFont(m_font);
@@ -93,10 +87,6 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     m_scoreText.setFillColor(sf::Color::White);
     m_scoreText.setString("Score: " + std::to_string(m_score));
 
-    m_livesText.setString("Lives: " + std::to_string(m_lives));
-    m_timeText.setString("Time: " + std::to_string(m_time));
-    m_levelText.setString("Level: " + std::to_string(m_level));
-    m_scoreText.setString("Score: " + std::to_string(m_score));
 
     float x_position = 10.f;
     float y_Position = x_position;

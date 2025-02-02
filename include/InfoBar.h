@@ -1,10 +1,13 @@
 #pragma once
 
 //-----include section-----
+#include "Robot.h"
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <Constants.h>
+
 
 //-----class section-----
 class InfoBar
@@ -13,7 +16,6 @@ public:
     InfoBar();
 
     void drawInfoBar(sf::RenderWindow& window);
-    void setLives(int lives);
     void setTime(int time);
     void setLevel(int level);
     void setScore(int score);
@@ -32,7 +34,6 @@ private:
 
     void initializeFont();
 
-    int m_lives = 5;
     int m_time = 180;
     int m_level = 1;
     int m_score = 0;

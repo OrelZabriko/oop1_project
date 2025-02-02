@@ -25,6 +25,10 @@ public:
 
 	void SetWinStat(const bool winStat);
 	const bool GetWinStat() const;
+
+	static void incLives();
+	static void decLives();
+	static const int& getLivesNum();
 	
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
@@ -39,4 +43,5 @@ public:
 private:
 	sf::Vector2f m_moveDirection;
 	bool m_win = false; //Boolean variable check if the robot win the level
+	static int m_livesNum;
 };

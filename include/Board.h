@@ -47,6 +47,8 @@ public:
 
 	void handleObjectCollision();
 
+	void restartBoard();
+
 
 private:
 	int m_rows;

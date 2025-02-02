@@ -4,6 +4,10 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+//Defines the static member of the robot that hold it's number of lives.
+int Robot::m_livesNum = ROBOT_LIVES;
+
+//-----------------------------------------------------------------------------
 void Robot::changeDirection(sf::Keyboard::Key key)
 {
 	switch (key)
@@ -62,6 +66,27 @@ void Robot::SetWinStat(const bool winStat)
 const bool Robot::GetWinStat() const
 {
 	return m_win;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::incLives()
+{
+	m_livesNum++;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::decLives()
+{
+	m_livesNum--;
+}
+
+
+//-----------------------------------------------------------------------------
+const int& Robot::getLivesNum()
+{
+	return m_livesNum;
 }
 
 

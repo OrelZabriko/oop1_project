@@ -45,6 +45,7 @@ const float PIXELS_FOR_MOVE_GUARD = 50.f;
 const float EXPLOSION_RANGE = 32.f;
 const int TIME_LIMIT = 300; //the limit time for every level  in seconds
 
+const int ROBOT_LIVES = 5;
 
 //-----enum section------
 enum OBJECT {

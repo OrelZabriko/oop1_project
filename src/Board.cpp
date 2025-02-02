@@ -205,6 +205,8 @@ void Board::handleObjectCollision()
 		if (m_Robot->collideWithOthers(*guard))
 		{
 			m_Robot->handleCollision(*guard);
+			//restartBoard();
+			//break;
 		}
 	}
 
@@ -230,6 +232,20 @@ void Board::handleObjectCollision()
 				}
 			}
 		}
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+//When the robot is disqualified and you have to start the level from the 
+//beginning and load the whole level from the beginning
+void Board::restartBoard()
+{
+	m_Robot->setSpritePos(m_Robot->getStartPosition());
+
+	for (const auto& guard : m_Guards)
+	{
+		guard->setSpritePos(guard->getStartPosition());
 	}
 }
 

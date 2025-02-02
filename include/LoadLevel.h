@@ -20,6 +20,8 @@ public:
 
     const Level& getLevel();
 
+    void setNextLevel();
+
     int getCurrentLevelRows() const;
     int getCurrentLevelCols() const;
 

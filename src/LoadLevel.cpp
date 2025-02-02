@@ -54,7 +54,6 @@ bool LoadLevel::readAllLevels()
 		m_levels.push_back(currLevel);
 		level.close();
 	}
-	
 
 	file.close();
 	return true;
@@ -68,11 +67,19 @@ const Level& LoadLevel::getLevel()
 	{
 		//winner?
 
+		ResourceManager::getInstance().GetBackgroundMusic().stop();
 		ResourceManager::getInstance().GetWinLevelSound().play();
 		std::this_thread::sleep_for(std::chrono::seconds(5)); 
 		ResourceManager::getInstance().GetWinLevelSound().stop();
 	}
 	return m_levels[m_currLevel++];
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::setNextLevel()
+{
+	m_currLevel++;
 }
 
 
@@ -83,7 +90,7 @@ int LoadLevel::getCurrentLevelRows() const
 	{
 		return 0;
 	}
-	else return m_levels[0].getRows();
+	else return m_levels[m_currLevel].getRows();
 }
 
 
@@ -94,5 +101,5 @@ int LoadLevel::getCurrentLevelCols() const
 	{
 		return 0;
 	}
-	else return m_levels[0].getCols();
+	else return m_levels[m_currLevel].getCols();
 }
