@@ -31,7 +31,13 @@ public:
 
 	static void incLives();
 	static void decLives();
-	static const int& getLivesNum();
+	static void restartLivesNum();
+	static const int getLivesNum();
+
+	static void incScore(const int morePoints);
+	static void decScore(const int lessPoints);
+	static void restartRobotScore();
+	static const int getCurrScore();
 	
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
@@ -47,4 +53,5 @@ private:
 	sf::Vector2f m_moveDirection;
 	bool m_win = false; //Boolean variable check if the robot win the level
 	static int m_livesNum;
+	static int m_currScore;
 };

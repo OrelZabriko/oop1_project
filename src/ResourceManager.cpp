@@ -142,3 +142,17 @@ const sf::Font& ResourceManager::GetTextFont() const
 {
 	return m_txtFont;
 }
+
+
+//-----------------------------------------------------------------------------
+const sf::Time& ResourceManager::getDeltaTime() const
+{
+	return m_deltaTime;
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::setDeltaTime(const sf::Time& newDeltaTime)
+{
+	m_deltaTime = newDeltaTime;
+}

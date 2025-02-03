@@ -36,7 +36,7 @@ void Controller::Run()
 
     while (m_GameWindow.isOpen())
     {
-        const auto deltaTime = clock.restart();
+        ResourceManager::getInstance().setDeltaTime(clock.restart());
 
         if (!m_startMenuState)
         {
@@ -81,15 +81,15 @@ void Controller::Run()
                 }
                 else
                 {
-                    handleKeyPressed(event.key.code, deltaTime, manager);
+                    handleKeyPressed(event.key.code, ResourceManager::getInstance().getDeltaTime(), manager);
                 }
 
                 break;
             }
             }
         }
-        manager.updateGuards(deltaTime);
-        manager.updateBombs(deltaTime);
+        manager.updateGuards(ResourceManager::getInstance().getDeltaTime());
+        manager.updateBombs(ResourceManager::getInstance().getDeltaTime());
 
         manager.HandleTheCollision();
         

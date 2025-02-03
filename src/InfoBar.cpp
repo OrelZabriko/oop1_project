@@ -85,7 +85,7 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     m_scoreText.setFont(m_font);
     m_scoreText.setCharacterSize(FONT_CHARACTERS_SIZE);
     m_scoreText.setFillColor(sf::Color::White);
-    m_scoreText.setString("Score: " + std::to_string(m_score));
+    m_scoreText.setString("Score: " + std::to_string(Robot::getCurrScore()));
 
 
     float x_position = 10.f;

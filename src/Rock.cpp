@@ -19,5 +19,5 @@ void Rock::handleCollision(Robot& robot)
 //-----------------------------------------------------------------------------
 void Rock::handleCollision(Guard& guard)
 {
-	guard.setSpritePos(guard.getPrevPosition());
+    guard.setSpritePos(guard.getPrevPosition());
 }

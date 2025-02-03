@@ -47,6 +47,8 @@ const float EXPLOSION_RANGE = 32.f;
 const int TIME_LIMIT = 300; //the limit time for every level in seconds
 
 const int ROBOT_LIVES = 5;
+const int RESTART_ROBOT_SCORE = 0;
+
 
 //-----enum section------
 enum OBJECT {

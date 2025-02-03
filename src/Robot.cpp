@@ -6,6 +6,8 @@
 //-----------------------------------------------------------------------------
 //Defines the static member of the robot that hold it's number of lives.
 int Robot::m_livesNum = ROBOT_LIVES;
+int Robot::m_currScore = RESTART_ROBOT_SCORE;
+
 
 //-----------------------------------------------------------------------------
 void Robot::changeDirection(sf::Keyboard::Key key)
@@ -84,9 +86,44 @@ void Robot::decLives()
 
 
 //-----------------------------------------------------------------------------
-const int& Robot::getLivesNum()
+void Robot::restartLivesNum()
+{
+	m_livesNum = ROBOT_LIVES;
+}
+
+
+//-----------------------------------------------------------------------------
+const int Robot::getLivesNum()
 {
 	return m_livesNum;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::incScore(const int morePoints)
+{
+	m_currScore += morePoints;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::decScore(const int lessPoints)
+{
+	m_currScore -= lessPoints;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::restartRobotScore()
+{
+	m_currScore = RESTART_ROBOT_SCORE;
+}
+
+
+//-----------------------------------------------------------------------------
+const int Robot::getCurrScore()
+{
+	return m_currScore;
 }
 
 

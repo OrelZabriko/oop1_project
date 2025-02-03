@@ -1,7 +1,4 @@
-﻿#configure_file ("Wall.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
-
-configure_file ("LevelList.txt" ${CMAKE_BINARY_DIR} COPYONLY)
+﻿configure_file ("LevelList.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Level001.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Level002.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Level003.txt" ${CMAKE_BINARY_DIR} COPYONLY)

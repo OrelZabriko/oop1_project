@@ -21,8 +21,7 @@ public:
     static ResourceManager& getInstance();
 
 
-    // Get a texture by name
-    const sf::Texture& getObjectTexture(enum OBJECT object) const;
+    const sf::Texture& getObjectTexture(enum OBJECT object) const; //Get a texture by name
     const sf::Texture& getStartMenuBackground();
     const sf::Texture& getHelpStartMenuBackground();
     const sf::Texture& getBombTexture();
@@ -33,6 +32,9 @@ public:
     sf::Music& GetLoseLevelSound();
 
     const sf::Font& GetTextFont() const;
+
+    const sf::Time& getDeltaTime() const;
+    void setDeltaTime(const sf::Time& newDeltaTime);
 
 
 private:
@@ -62,4 +64,7 @@ private:
 
     //Storage for font
     sf::Font m_txtFont;
+
+    //Storage the Delta time of the game
+    sf::Time m_deltaTime;
 };
