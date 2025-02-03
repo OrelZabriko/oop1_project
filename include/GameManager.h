@@ -37,7 +37,7 @@ public:
 
 	void SetStartGame(const bool ifStart);
 	const bool& GetIfStartGame() const;
-
+	
 
 private:
 	const Level& m_currLevel;

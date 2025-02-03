@@ -9,9 +9,13 @@
 Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
 {
 	m_objSprite.setTexture(ResourceManager::getInstance().getObjectTexture(getObjByChar(objType)));
+	sf::Texture tex = ResourceManager::getInstance().getObjectTexture(getObjByChar(objType));
 	m_objSprite.setPosition(objPlace.x * 55.f + 7.5f, objPlace.y * 55.f + INFOBAR_SPACE);
 	m_defaultPos.x = objPlace.x * 55.f + 7.5f;
 	m_defaultPos.y = objPlace.y * 55.f + INFOBAR_SPACE;
+	sf::Vector2f scale = { 50.0f / tex.getSize().x,50.0f / tex.getSize().y };
+	m_objSprite.setScale(scale);
+
 }
 
 
@@ -38,8 +42,6 @@ bool Objects::collideWithExplosiveBombs(Objects& object)
 			result = true;
 	}
 	return result;
-
-
 }
 
 

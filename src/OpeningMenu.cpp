@@ -121,6 +121,8 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 void OpeningMenu::ResetSettings()
 {
     m_helpText.setFont(ResourceManager::getInstance().GetTextFont());
+    m_helpText.setOutlineColor(sf::Color::Black);
+    m_helpText.setOutlineThickness(10.0f);
     m_helpText.setString
     ("Bomberman game settings:\n\n"
         "- The goal: get out of the maze\n"

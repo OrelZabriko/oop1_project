@@ -73,6 +73,34 @@ const bool Robot::GetWinStat() const
 
 
 //-----------------------------------------------------------------------------
+void Robot::setHideGift(bool val)
+{
+	m_isHideGuardGift = val;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::setFreezeGift(bool val)
+{
+	m_isFrozenGift = val;
+}
+
+
+//-----------------------------------------------------------------------------
+bool Robot::getHideGift() const
+{
+	return m_isHideGuardGift;
+}
+
+
+//-----------------------------------------------------------------------------
+bool Robot::getFreezeGift() const
+{
+	return m_isFrozenGift;
+}
+
+
+//-----------------------------------------------------------------------------
 void Robot::incLives()
 {
 	m_livesNum++;
@@ -174,4 +202,11 @@ void Robot::handleCollision(Door& door)
 
 	this->restartLivesNum();
 	LoadLevel::setNextLevel(true);
+}
+
+void Robot::handleCollision(HideGuard& gift)
+{
+	this->setHideGift(false);
+	gift.giftWasTaken();
+	std::cout << "touched a hide gift" << std::endl;
 }

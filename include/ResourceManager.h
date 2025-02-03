@@ -45,7 +45,7 @@ private:
 
     //Storage for textures
     std::vector<std::string> m_objNames =
-    { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png" };
+    { "Door.png", "Wall.png", "Rock.png", "Robot.png", "Guard.png" , "Clock.png" , "Life.png" , "Frozen.png" , "HideGuard.png" };
     std::string m_StartBackGroundFileName = "StartMenuBackground.png";
     std::string m_HelpBackGroundFileName = "Help.png";
     std::string m_BombFileName = "Bomb.png";

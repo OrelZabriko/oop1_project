@@ -52,7 +52,7 @@ void Guard::Move(const sf::Time& deltaTime, const sf::Vector2f robotPos)
 
 
 //-----------------------------------------------------------------------------
-void Guard::SetGuardDead(const bool& ifAlive)
+void Guard::SetGuardDead(bool ifAlive)
 {
     m_isAlive = ifAlive;
 }

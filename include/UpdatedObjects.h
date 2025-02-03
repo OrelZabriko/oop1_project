@@ -15,8 +15,7 @@ public:
 
 	//virtual sf::Vector2f updateMovement(ENUM DIRECTIONS,DELATTIME);
 	void Move(sf::Vector2f offset);
-
-
+	
 	void setSpritePos(sf::Vector2f newPos);
 
 	void setStartPos(const sf::Vector2f& startPos);

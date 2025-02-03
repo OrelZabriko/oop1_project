@@ -9,8 +9,9 @@ class Wall;
 class Rock;
 class Door;
 class Bombs;
-
+class HideGuard;
 #include <SFML/Graphics.hpp>
+
 
 
 //-----class section-----
@@ -38,11 +39,11 @@ public:
 	virtual void handleCollision(Rock& rock) = 0;
 	virtual void handleCollision(Door& door) = 0;
 	virtual void handleCollision(Bombs& bomb) = 0;
-	//virtual void handleCollision(Gift& gift) = 0;
+	
+	virtual void handleCollision(HideGuard& gift) = 0;
 
 
 private:
 	sf::Sprite m_objSprite;
 	sf::Vector2f m_defaultPos;
-	//sf::Vector2f m_objPlace;
 };

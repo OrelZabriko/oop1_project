@@ -26,6 +26,7 @@ Board::Board(int rows,int cols) : m_rows(rows), m_cols(cols)
 //-----------------------------------------------------------------------------
 void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 {
+	std::cout << "got the following objchar: " << objChar << std::endl;
 	switch (objChar)
 	{
 	case 'D': //OBJECT::DOOR
@@ -58,7 +59,32 @@ void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 
 		break;
 	}
+	case 'T': //GIFT::TIME
+	{
+		m_Gifts.push_back(std::make_unique<AddTime>(objChar, objLoc));
+		std::cout << "pushed add time into gifts vector" << std::endl;
+		std::cout << "m_gifts size:" << m_Gifts.size() << std::endl;
+		break;
 	}
+	case 'L': //GIFT::LIFE
+	{
+		m_Gifts.push_back(std::make_unique<AddLife>(objChar, objLoc));
+
+		break;
+	}
+	case 'F': //GIFT::FROZEN GUARD
+	{
+		m_Gifts.push_back(std::make_unique<FrozenGuard>(objChar, objLoc));
+
+		break;
+	}
+	case 'H': //GIFT::HIDE GUARD
+	{
+		m_Gifts.push_back(std::make_unique<HideGuard>(objChar, objLoc));
+		break;
+	}
+	}
+
 }
 
 
@@ -124,6 +150,14 @@ void Board::draw(sf::RenderWindow& window) const
 	{
 		m_Bombs[bombIndex]->draw(window);
 	}
+	//std::cout << "m_gifts size in draw:  " << m_Gifts.size() << std::endl;
+	for (int giftIndex = 0; giftIndex < m_Gifts.size(); giftIndex++)
+	{
+		//std::cout << "printing gift in index:" << giftIndex << std::endl;
+		m_Gifts[giftIndex]->draw(window);
+	}
+
+	
 }
 
 
@@ -196,6 +230,14 @@ void Board::handleObjectCollision()
 		}
 	}
 
+	for (const auto& gift : m_Gifts)
+	{
+		if (m_Robot->collideWithOthers(*gift))
+		{
+			m_Robot->handleCollision(*gift);
+		}
+	}
+
 	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
 	{
 		if (m_Robot->collideWithOthers(*m_Guards[guardNum]))
@@ -253,6 +295,34 @@ void Board::handleObjectCollision()
 void Board::updateGuards()
 {
 	std::erase_if(m_Guards, [](const std::unique_ptr<Guard>& g) {return !g->GetIfGuardAlive(); });
+}
+
+//-----------------------------------------------------------------------------
+void Board::updateGifts()
+{
+	//std::cout << "deleting gift" << std::endl;
+	std::erase_if(m_Gifts, [](const std::unique_ptr<Gifts>& g) {return !g->isGiftTaken(); });
+}
+
+bool Board::getHideGiftStatus()
+{
+	return m_Robot->getHideGift();
+}
+
+void Board::HideSingleGuard()
+{
+	
+		//rand a random number between 0 and guard.size()
+		if (m_Guards.size() == 0)
+			return;
+
+		int val = rand() % m_Guards.size() - 1;
+		std::cout << "deleted this random guard: " << val << std::endl;
+
+		m_Guards[val]->SetGuardDead(false);
+
+		m_Robot->setHideGift(false);
+	
 }
 
 

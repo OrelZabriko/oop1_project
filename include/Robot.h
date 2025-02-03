@@ -31,6 +31,12 @@ public:
 	void SetWinStat(const bool winStat);
 	const bool GetWinStat() const;
 
+	void setHideGift(bool val);
+	void setFreezeGift(bool val);
+
+	bool getHideGift() const;
+	bool getFreezeGift() const;
+
 	static void incLives();
 	static void decLives();
 	static void restartLivesNum();
@@ -48,12 +54,14 @@ public:
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
 	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
-	//virtual void handleCollision(Gift& gift) override;
+	virtual void handleCollision(HideGuard& gift) override;
 
 
 private:
 	sf::Vector2f m_moveDirection;
 	bool m_win = false; //Boolean variable check if the robot win the level
+	bool m_isFrozenGift = false;
+	bool m_isHideGuardGift = false;
 	static int m_livesNum;
 	static int m_currScore;
 };

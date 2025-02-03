@@ -16,17 +16,13 @@ InfoBar::InfoBar()
     m_font = ResourceManager::getInstance().GetTextFont();
 }
 
+
 //-----------------------------------------------------------------------------
 void InfoBar::setTime(int time)
 {
     m_time = time;
 }
 
-//-----------------------------------------------------------------------------
-void InfoBar::setLevel(int level)
-{
-    m_level = level;
-}
 
 //-----------------------------------------------------------------------------
 void InfoBar::setScore(int score)

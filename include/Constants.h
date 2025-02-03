@@ -57,7 +57,11 @@ enum OBJECT {
 	ROCK,
 	ROBOT,
 	GUARD,
-	NONE	//in case of creating default value
+	AddTimeGIFT,
+	AddLifeGift,
+	FrozenGuardGift,
+	HideGuardGift,
+	NONE //in case of creating default value
 };
 
 enum START_MENU_BUTTON {

@@ -24,7 +24,7 @@ public:
 
 	void Move(const sf::Time& deltaTime, const sf::Vector2f robotPos);
 
-	void SetGuardDead(const bool& ifAlive);
+	void SetGuardDead( bool ifAlive);
 	const bool& GetIfGuardAlive() const;
 	
 	virtual void handleCollision(Objects& otherObject) override;
@@ -34,6 +34,7 @@ public:
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
 	virtual void handleCollision(Bombs& bomb) override;
+	virtual void handleCollision(HideGuard& gift) override {};
 	//virtual void handleCollision(Gift& gift) override;
 
 

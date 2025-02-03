@@ -13,6 +13,11 @@ configure_file ("Wall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Explosion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("Clock.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Frozen.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("HideGuard.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Life.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("GOUDYSTO.TTF" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("BombermanBackgroundMusic.ogg" ${CMAKE_BINARY_DIR} COPYONLY)

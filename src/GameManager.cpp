@@ -39,8 +39,33 @@ void GameManager::setRobotDirection(sf::Keyboard::Key key)
 //-----------------------------------------------------------------------------
 void GameManager::HandleTheCollision()
 {
-	m_currBoard.handleObjectCollision();
+	m_currBoard.handleObjectCollision();//if something happened
+
+	//check special status of the robot
+	if (m_currBoard.getHideGiftStatus())
+	{
+		m_currBoard.HideSingleGuard();
+		
+	}
+	//if m_CurrBoard.getFreezeGiftStatus -- check from the robot!!! if he ate a freeze gift
+	/*
+	* m_currBoard.Freeze()  ---- change all guards speed to 0; DONT FORGET TO TIME AND return their speed to default values
+	
+	*/
+	// if he ate a time 
+	// m_currBoard.Add Time,  - maybe manager can do it alone
+
+	// if he ate life
+	// life++;
+	
+
+
 	m_currBoard.updateGuards(); // will go over guard, and delete if neeeded
+
+	
+	m_currBoard.updateGifts();
+	
+	
 }
 
 

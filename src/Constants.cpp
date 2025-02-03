@@ -18,6 +18,14 @@ char getObjCharByEnum(OBJECT obj)
 		return '/';
 	case OBJECT::GUARD:
 		return '!';
+	case OBJECT::AddTimeGIFT:
+		return 'T';
+	case OBJECT::AddLifeGift:
+		return 'L';
+	case OBJECT::FrozenGuardGift:
+		return 'F';
+	case OBJECT::HideGuardGift:
+		return 'H';
 	}
 }
 
@@ -37,6 +45,14 @@ OBJECT getObjByChar(char obj)
 		return OBJECT::ROBOT;
 	case '!':
 		return OBJECT::GUARD;
+	case 'T':
+		return OBJECT::AddTimeGIFT;
+	case 'L':
+		return OBJECT::AddLifeGift;
+	case 'F':
+		return OBJECT::FrozenGuardGift;
+	case 'H':
+		return OBJECT::HideGuardGift;
 	}
 }
 

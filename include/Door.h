@@ -23,6 +23,7 @@ public:
 	void handleCollision(Objects& otherObject) override;
 	void handleCollision(Robot& robot) override;
 	void handleCollision(Guard& guard) override;
+	virtual void handleCollision(HideGuard& gift) override {};
 	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
 	//virtual void handleCollision(Gift& gift) override;
 };

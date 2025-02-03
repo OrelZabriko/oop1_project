@@ -84,12 +84,16 @@ const Level& LoadLevel::getLevel()
 void LoadLevel::setNextLevel(bool val)
 {
 	m_nextLevel = val;
-};
+}
 
+
+//-----------------------------------------------------------------------------
 bool LoadLevel::getIsNextLevel()
 {
 	return m_nextLevel;
 }
+
+
 //-----------------------------------------------------------------------------
 const int& LoadLevel::getCurrLevel()
 {

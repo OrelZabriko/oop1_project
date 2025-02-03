@@ -11,6 +11,10 @@
 #include "Rock.h"
 #include "StaticObjects.h"
 #include "Bombs.h"
+#include "AddTime.h"
+#include "AddLife.h"
+#include "FrozenGuard.h"
+#include "HideGuard.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -48,6 +52,11 @@ public:
 
 	void updateGuards();
 
+	void updateGifts();
+	bool getHideGiftStatus();
+
+	void HideSingleGuard();
+	
 
 private:
 	int m_rows;
@@ -56,5 +65,6 @@ private:
 	std::unique_ptr<Robot> m_Robot;
 	std::vector<std::unique_ptr<Guard>> m_Guards;
 	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
+	std::vector<std::unique_ptr<Gifts>> m_Gifts;
 	std::vector<std::unique_ptr<Bombs>> m_Bombs;
 };

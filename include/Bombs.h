@@ -35,6 +35,7 @@ public:
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
 	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(HideGuard& gift) override {};
 
 
 private:
