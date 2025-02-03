@@ -196,23 +196,28 @@ void Board::handleObjectCollision()
 		}
 	}
 
-	/*for (const auto& guard : m_Guards)
-	{
-		if (m_Robot->collideWithOthers(*guard))
-		{
-			m_Robot->handleCollision(*guard);
-			guard->setSpritePos(guard->getDefPos());
-		}
-	}*/
-
 	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
 	{
 		if (m_Robot->collideWithOthers(*m_Guards[guardNum]))
 		{
 			m_Robot->handleCollision(*m_Guards[guardNum]);
+
 			for (int reLocGuard = 0; reLocGuard < m_Guards.size(); reLocGuard++)
 			{
 				m_Guards[reLocGuard]->setSpritePos(m_Guards[reLocGuard]->getDefPos());
+			}
+
+			m_Bombs.clear();
+		}
+
+		for (int bombNum = 0; bombNum < m_Bombs.size() ;bombNum++)
+		{
+			if (m_Bombs[bombNum]->isBombExploding())
+			{
+				if (m_Guards[guardNum]->collideWithExplosiveBombs(*m_Bombs[bombNum]))
+				{
+					m_Guards[guardNum]->SetGuardDead(false);
+				}
 			}
 		}
 	}
@@ -245,16 +250,9 @@ void Board::handleObjectCollision()
 
 
 //-----------------------------------------------------------------------------
-//When the robot is disqualified and you have to start the level from the 
-//beginning and load the whole level from the beginning
-void Board::restartBoard()
+void Board::updateGuards()
 {
-	//m_Robot->setSpritePos(m_Robot->getStartPosition());
-
-	for (const auto& guard : m_Guards)
-	{
-		guard->setSpritePos(guard->getStartPosition());
-	}
+	std::erase_if(m_Guards, [](const std::unique_ptr<Guard>& g) {return !g->GetIfGuardAlive(); });
 }
 
 

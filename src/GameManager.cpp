@@ -40,6 +40,7 @@ void GameManager::setRobotDirection(sf::Keyboard::Key key)
 void GameManager::HandleTheCollision()
 {
 	m_currBoard.handleObjectCollision();
+	m_currBoard.updateGuards(); // will go over guard, and delete if neeeded
 }
 
 

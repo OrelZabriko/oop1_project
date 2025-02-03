@@ -112,4 +112,6 @@ void Guard::handleCollision(Door& door)
 //-----------------------------------------------------------------------------
 void Guard::handleCollision(Bombs& bomb)
 {
+    //if(bomb.getIsExplosive)
+        //check 4 directions 
 }

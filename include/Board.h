@@ -46,7 +46,7 @@ public:
 
 	void handleObjectCollision();
 
-	void restartBoard();
+	void updateGuards();
 
 
 private:

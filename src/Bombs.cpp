@@ -30,6 +30,7 @@ void Bombs::setBomb(sf::Vector2f position)
 }
 
 
+
 //-----------------------------------------------------------------------------
 void Bombs::updateBomb(sf::Time deltaTime)
 {

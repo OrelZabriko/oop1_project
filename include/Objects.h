@@ -27,7 +27,7 @@ public:
 	const sf::Vector2f& GetPosition() const;
 	sf::Vector2f getDefPos() const;
 	void draw(sf::RenderWindow& window);
-
+	bool collideWithExplosiveBombs(Objects& object);
 	sf::Sprite& getSprite();
 
 	virtual bool collideWithOthers(const Objects& object);

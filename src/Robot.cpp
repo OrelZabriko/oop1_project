@@ -165,7 +165,6 @@ void Robot::handleCollision(Rock& rock)
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Door& door)
 {
-	std::cout << "player collided with door " << std::endl;
 	this->setSpritePos(getPrevPosition());
 
 	ResourceManager::getInstance().GetBackgroundMusic().setLoop(false);
@@ -173,5 +172,6 @@ void Robot::handleCollision(Door& door)
 
 	ResourceManager::getInstance().GetWinLevelSound().play();
 
+	this->restartLivesNum();
 	LoadLevel::setNextLevel(true);
 }
