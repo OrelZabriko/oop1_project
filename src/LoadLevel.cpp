@@ -10,6 +10,10 @@
 
 
 //-----functions section------
+int LoadLevel::m_currLevel = 0;
+bool LoadLevel::m_nextLevel = false;
+
+
 //-----------------------------------------------------------------------------
 LoadLevel::LoadLevel()
 {
@@ -77,9 +81,19 @@ const Level& LoadLevel::getLevel()
 
 
 //-----------------------------------------------------------------------------
-void LoadLevel::setNextLevel()
+void LoadLevel::setNextLevel(bool val)
 {
-	m_currLevel++;
+	m_nextLevel = val;
+};
+
+bool LoadLevel::getIsNextLevel()
+{
+	return m_nextLevel;
+}
+//-----------------------------------------------------------------------------
+const int& LoadLevel::getCurrLevel()
+{
+	return m_currLevel;
 }
 
 

@@ -22,6 +22,8 @@ public:
 	GameManager() = default;
 	GameManager(const Level& currLevel);
 
+	void loadLevel(const Level& currLevel);
+
 	void draw(sf::RenderWindow& window);
 	
 	void setRobotDirection(sf::Keyboard::Key key);

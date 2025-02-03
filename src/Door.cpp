@@ -12,7 +12,17 @@ void Door::handleCollision(Objects& otherObject)
 
 //-----------------------------------------------------------------------------
 void Door::handleCollision(Robot& robot)
-{}
+{
+	//std::cout << "player collided with door " << std::endl;
+	robot.setSpritePos(robot.getPrevPosition());
+
+	ResourceManager::getInstance().GetBackgroundMusic().setLoop(false);
+	ResourceManager::getInstance().GetBackgroundMusic().stop();
+
+	ResourceManager::getInstance().GetWinLevelSound().play();
+
+	LoadLevel::setNextLevel(true);
+}
 
 
 //-----------------------------------------------------------------------------

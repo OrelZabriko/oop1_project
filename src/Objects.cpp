@@ -10,6 +10,8 @@ Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
 { 
 	m_objSprite.setTexture(ResourceManager::getInstance().getObjectTexture(getObjByChar(objType)));
 	m_objSprite.setPosition(objPlace.x * 55.f + 7.5f, objPlace.y * 55.f + INFOBAR_SPACE);
+	m_defaultPos.x = objPlace.x * 55.f + 7.5f;
+	m_defaultPos.y = objPlace.y * 55.f + INFOBAR_SPACE;
 }
 
 
@@ -38,6 +40,11 @@ void Objects::SetTexture(const sf::Texture& texture)
 sf::Sprite& Objects::getSprite()
 {
 	return m_objSprite;
+}
+
+sf::Vector2f Objects::getDefPos() const
+{
+	return m_defaultPos;
 }
 
 

@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "Robot.h"
+#include "LoadLevel.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

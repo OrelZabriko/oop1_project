@@ -1,10 +1,11 @@
 //-----include section-----
 #include "Robot.h"
+#include <iostream>
 
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-//Defines the static member of the robot that hold it's number of lives.
+//Defines the static members of the robot.
 int Robot::m_livesNum = ROBOT_LIVES;
 int Robot::m_currScore = RESTART_ROBOT_SCORE;
 
@@ -143,7 +144,7 @@ void Robot::handleCollision(Robot& robot)
 void Robot::handleCollision(Guard& guard)
 {
 	this->decLives();
-	/* need to do more things (?) */
+	this->setSpritePos(this->getDefPos());
 }
 
 
@@ -158,4 +159,19 @@ void Robot::handleCollision(Wall& wall)
 void Robot::handleCollision(Rock& rock)
 {
 	this->setSpritePos(getPrevPosition());
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Door& door)
+{
+	std::cout << "player collided with door " << std::endl;
+	this->setSpritePos(getPrevPosition());
+
+	ResourceManager::getInstance().GetBackgroundMusic().setLoop(false);
+	ResourceManager::getInstance().GetBackgroundMusic().stop();
+
+	ResourceManager::getInstance().GetWinLevelSound().play();
+
+	LoadLevel::setNextLevel(true);
 }

@@ -20,14 +20,20 @@ public:
 
     const Level& getLevel();
 
-    void setNextLevel();
+    static void setNextLevel(bool val);
+
+    bool getIsNextLevel();
+
+    
+    static const int& getCurrLevel();
 
     int getCurrentLevelRows() const;
     int getCurrentLevelCols() const;
 
 
 private:
-    int m_currLevel = 0;
+    static int m_currLevel;
+    static bool m_nextLevel;
     std::vector<Level> m_levels;
 };
 

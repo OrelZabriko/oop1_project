@@ -25,7 +25,7 @@ public:
 
 	void setSpritePos(sf::Vector2f newPos);
 	const sf::Vector2f& GetPosition() const;
-
+	sf::Vector2f getDefPos() const;
 	void draw(sf::RenderWindow& window);
 
 	sf::Sprite& getSprite();
@@ -43,6 +43,6 @@ public:
 
 private:
 	sf::Sprite m_objSprite;
-
+	sf::Vector2f m_defaultPos;
 	//sf::Vector2f m_objPlace;
 };

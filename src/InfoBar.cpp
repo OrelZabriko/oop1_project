@@ -79,7 +79,7 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     m_levelText.setFont(m_font);
     m_levelText.setCharacterSize(FONT_CHARACTERS_SIZE);
     m_levelText.setFillColor(sf::Color::White);
-    m_levelText.setString("Level: " + std::to_string(m_level));
+    m_levelText.setString("Level: " + std::to_string(LoadLevel::getCurrLevel()));
 
     //initialize the player score
     m_scoreText.setFont(m_font);

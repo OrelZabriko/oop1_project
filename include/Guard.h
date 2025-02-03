@@ -40,6 +40,4 @@ public:
 private:
 	sf::Vector2f m_moveDirection;
 	bool m_isAlive = true;
-
-	void moveGuardCollideWallGuard();
 };

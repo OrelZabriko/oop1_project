@@ -27,16 +27,15 @@ void Controller::Run()
 
     m_GameWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), OPENING_WINDOW_NAME);
     m_GameWindow.setFramerateLimit(60);
-
-
+    
     ResourceManager::getInstance().GetBackgroundMusic().setLoop(true);
     ResourceManager::getInstance().GetBackgroundMusic().setVolume(20.0f);
     ResourceManager::getInstance().GetBackgroundMusic().play();  //Start the music
-    
 
     while (m_GameWindow.isOpen())
     {
         ResourceManager::getInstance().setDeltaTime(clock.restart());
+
 
         if (!m_startMenuState)
         {
@@ -90,9 +89,15 @@ void Controller::Run()
         }
         manager.updateGuards(ResourceManager::getInstance().getDeltaTime());
         manager.updateBombs(ResourceManager::getInstance().getDeltaTime());
-
-        manager.HandleTheCollision();
         
+        manager.HandleTheCollision();
+
+        if (levelManager.getIsNextLevel())
+        {
+            manager.loadLevel(levelManager.getLevel());
+            levelManager.setNextLevel(false);
+        }
+       
         m_GameWindow.display();
     }
 }

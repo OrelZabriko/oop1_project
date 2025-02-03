@@ -6,6 +6,11 @@
 //-----------------------------------------------------------------------------
 GameManager::GameManager(const Level& currLevel) : m_currLevel(currLevel)
 {
+	loadLevel(currLevel);
+}
+
+void GameManager::loadLevel(const Level& currLevel)
+{
 	m_currBoard = Board(currLevel.getRows(), currLevel.getCols());
 	for (int row = 0; row < currLevel.getRows(); row++)
 	{
@@ -16,7 +21,6 @@ GameManager::GameManager(const Level& currLevel) : m_currLevel(currLevel)
 		}
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 void GameManager::draw(sf::RenderWindow& window)

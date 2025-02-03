@@ -151,15 +151,11 @@ void Board::handleBombs(sf::Time deltaTime)
 		m_Bombs[bombIndex]->updateBomb(deltaTime);
 	}
 
-	for (int bombIndex = 0; bombIndex < m_Bombs.size(); ) //delete bomb if finish 
+	for (int bombIndex = 0; bombIndex < m_Bombs.size(); bombIndex++) //delete bomb if finish 
 	{
 		if (!m_Bombs[bombIndex]->isBombActive() && !m_Bombs[bombIndex]->isBombExploding())
 		{
 			m_Bombs.erase(m_Bombs.begin() + bombIndex);
-		}
-		else
-		{
-			bombIndex++;
 		}
 	}
 }
@@ -200,15 +196,27 @@ void Board::handleObjectCollision()
 		}
 	}
 
-	for (const auto& guard : m_Guards)
+	/*for (const auto& guard : m_Guards)
 	{
 		if (m_Robot->collideWithOthers(*guard))
 		{
 			m_Robot->handleCollision(*guard);
-			//restartBoard();
-			//break;
+			guard->setSpritePos(guard->getDefPos());
+		}
+	}*/
+
+	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
+	{
+		if (m_Robot->collideWithOthers(*m_Guards[guardNum]))
+		{
+			m_Robot->handleCollision(*m_Guards[guardNum]);
+			for (int reLocGuard = 0; reLocGuard < m_Guards.size(); reLocGuard++)
+			{
+				m_Guards[reLocGuard]->setSpritePos(m_Guards[reLocGuard]->getDefPos());
+			}
 		}
 	}
+
 
 	//need to change when checking if the guard is alive (?)
 	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
@@ -241,7 +249,7 @@ void Board::handleObjectCollision()
 //beginning and load the whole level from the beginning
 void Board::restartBoard()
 {
-	m_Robot->setSpritePos(m_Robot->getStartPosition());
+	//m_Robot->setSpritePos(m_Robot->getStartPosition());
 
 	for (const auto& guard : m_Guards)
 	{

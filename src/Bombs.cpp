@@ -40,7 +40,7 @@ void Bombs::updateBomb(sf::Time deltaTime)
         {
             m_is_bomb_active = false;
             m_is_bomb_exploding = true;
-            ExplodeBomb();
+            this->ExplodeBomb();
         }
     }
     else if (m_is_bomb_exploding)
