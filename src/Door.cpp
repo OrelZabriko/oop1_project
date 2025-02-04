@@ -14,11 +14,12 @@ void Door::handleCollision(Objects& otherObject)
 void Door::handleCollision(Robot& robot)
 {
 	robot.setSpritePos(robot.getPrevPosition());
+	robot.incScore(WIN_LEVEL_SCORE);
 
-	ResourceManager::getInstance().GetBackgroundMusic().setLoop(false);
-	ResourceManager::getInstance().GetBackgroundMusic().stop();
-
+	ResourceManager::getInstance().GetBackgroundMusic().pause();
 	ResourceManager::getInstance().GetWinLevelSound().play();
+	ResourceManager::getInstance().GetWinLevelSound().stop();
+	ResourceManager::getInstance().GetBackgroundMusic().play();
 
 	robot.restartLivesNum();
 	LoadLevel::setNextLevel(true);

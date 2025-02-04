@@ -7,13 +7,11 @@
 //-----class section-----
 class UpdatedObjects : public Objects
 {
-	using Base = Objects;
 public:
 	using Objects::Objects;
 	UpdatedObjects();
 	virtual ~UpdatedObjects() = default;
-
-	//virtual sf::Vector2f updateMovement(ENUM DIRECTIONS,DELATTIME);
+	
 	void Move(sf::Vector2f offset);
 	
 	void setSpritePos(sf::Vector2f newPos);

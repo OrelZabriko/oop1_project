@@ -26,7 +26,9 @@ public:
 
 	void setSpritePos(sf::Vector2f newPos);
 	const sf::Vector2f& GetPosition() const;
+
 	sf::Vector2f getDefPos() const;
+
 	void draw(sf::RenderWindow& window);
 	bool collideWithExplodingBombs(Objects& object);
 	sf::Sprite& getSprite();

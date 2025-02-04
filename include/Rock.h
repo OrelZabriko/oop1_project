@@ -21,6 +21,6 @@ public:
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
 	virtual void handleCollision(Guard& guard) override;
-	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Bombs& bomb) override;
 	virtual void handleCollision(HideGuard& gift) override {};
 };

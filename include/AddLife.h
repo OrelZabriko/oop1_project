@@ -12,8 +12,8 @@ class AddLife : public Gifts
 {
 public:
     using Gifts::Gifts;
+    ~AddLife() = default;
     AddLife(char objType, sf::Vector2f objPlace);
-    // void draw(sf::RenderWindow& window);
 
     virtual void handleCollision(Objects& otherObject) override {}
     virtual void handleCollision(Robot& robot) override;

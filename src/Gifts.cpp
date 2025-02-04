@@ -7,15 +7,20 @@
 //-----------------------------------------------------------------------------
 Gifts::Gifts(char objType, sf::Vector2f objPlace)
     : StaticObjects(objType, objPlace)
-{
-
-}
+{}
 
 
 //-----------------------------------------------------------------------------
 void Gifts::draw(sf::RenderWindow& window)
 {
     window.draw(getSprite());
+}
+
+
+//-----------------------------------------------------------------------------
+void Gifts::handleCollision(Objects& otherObject)
+{
+    otherObject.handleCollision(*this);
 }
 
 

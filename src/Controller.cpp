@@ -69,7 +69,6 @@ void Controller::Run()
             {
                 if (event.key.code == sf::Keyboard::Escape)
                 {
-                    //manager.ResetBoard(); //in case of out the window, reset the location of the updateable object
                     m_GameWindow.clear();
                     start_menu.Draw(m_GameWindow);
                     m_startMenuState = false;

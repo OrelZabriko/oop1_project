@@ -54,7 +54,7 @@ public:
 	bool returnIfNeedToDecLife();
 
 	void updateGuards();
-
+	void updateRocks();
 	void updateGifts();
 	bool getHideGiftStatus();
 

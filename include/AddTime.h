@@ -7,12 +7,15 @@
 
 #include <SFML/Graphics.hpp>
 
+
+//-----class section-----
 class AddTime : public Gifts
 {
 public:
     using Gifts::Gifts;
+    ~AddTime() = default;
     AddTime(char objType, sf::Vector2f objPlace);
-    // void draw(sf::RenderWindow& window);
+
 
     virtual void handleCollision(Objects& otherObject) override {}
     virtual void handleCollision(Robot& robot) override;

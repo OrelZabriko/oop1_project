@@ -185,9 +185,6 @@ void Robot::handleCollision(Robot& robot)
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Guard& guard)
 {
-	/*this->decLives();
-	this->setSpritePos(this->getDefPos());*/
-
 	handleRobotDeath();
 }
 
@@ -209,12 +206,13 @@ void Robot::handleCollision(Rock& rock)
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Door& door)
 {
-	this->setSpritePos(getPrevPosition());
-
-	ResourceManager::getInstance().GetBackgroundMusic().setLoop(false);
-	ResourceManager::getInstance().GetBackgroundMusic().stop();
-
+	this->setSpritePos(getPrevPosition()); 
+	this->incScore(WIN_LEVEL_SCORE);
+	
+	ResourceManager::getInstance().GetBackgroundMusic().pause();
 	ResourceManager::getInstance().GetWinLevelSound().play();
+	ResourceManager::getInstance().GetWinLevelSound().stop();
+	ResourceManager::getInstance().GetBackgroundMusic().play();
 
 	this->restartLivesNum();
 	LoadLevel::setNextLevel(true);

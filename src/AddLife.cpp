@@ -14,17 +14,8 @@ AddLife::AddLife(char objType, sf::Vector2f objPlace)
 
 
 //-----------------------------------------------------------------------------
-//void AddLife::draw(sf::RenderWindow& window)
-//{
-//    if (!isGiftTaken())
-//    {
-//        window.draw(getSprite());
-//    }
-//}
-
-
-//-----------------------------------------------------------------------------
 void AddLife::handleCollision(Robot& robot)
 {
+    //robot.setLifeGift(true);
     giftWasTaken();
 }

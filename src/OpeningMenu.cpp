@@ -69,7 +69,7 @@ char OpeningMenu::getClickedButton(const sf::Vector2f& mousePosition) const
 //-----------------------------------------------------------------------------
 void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 {
-    sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Help Window");
+    sf::RenderWindow helpWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), HELP_WINDOW_NAME);
     //load the  setting image background
     const sf::Texture& helpTexture = ResourceManager::getInstance().getHelpStartMenuBackground();
 
@@ -82,7 +82,7 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
 
 
     ResetSettings();      //create the settings
-    createBackButton();  //create the back buttin
+    createBackButton();  //create the back button
 
     while (helpWindow.isOpen())
     {

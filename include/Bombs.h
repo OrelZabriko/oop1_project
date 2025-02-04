@@ -32,7 +32,7 @@ public:
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
-	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Bombs& bomb) override;
 	virtual void handleCollision(HideGuard& gift) override {};
 
 

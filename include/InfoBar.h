@@ -18,7 +18,6 @@ public:
 
     void drawInfoBar(sf::RenderWindow& window);
     void setTime(int time);
-    void setScore(int score);
     void updateTime();
     void startTimer();
 
@@ -33,5 +32,4 @@ private:
     bool m_timerStarted = false;
 
     int m_time = 180;
-    int m_score = 0;
 };

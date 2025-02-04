@@ -9,6 +9,7 @@ void Rock::handleCollision(Objects& otherObject)
 	otherObject.handleCollision(*this);
 }
 
+
 //-----------------------------------------------------------------------------
 void Rock::handleCollision(Robot& robot)
 {
@@ -21,3 +22,8 @@ void Rock::handleCollision(Guard& guard)
 {
     guard.setSpritePos(guard.getPrevPosition());
 }
+
+
+//-----------------------------------------------------------------------------
+void Rock::handleCollision(Bombs& bomb)
+{}

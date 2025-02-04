@@ -11,6 +11,7 @@ const std::string TOOLBAROBJECTS = "ToolBar.txt";
 const std::string LEVELS_FILE = "LevelList.txt";
 const std::string OPENING_WINDOW_NAME = "Opening Window";
 const std::string GAME_WINDOW_NAME = "Game Window";
+const std::string HELP_WINDOW_NAME = "Help Window";
 
 const int START_WINDOW_BUTTONS_NUM = 3;
 const std::string NEW_GAME_BUTTON_NAME = "New Game";
@@ -48,6 +49,8 @@ const int TIME_LIMIT = 300; //the limit time for every level in seconds
 
 const int ROBOT_LIVES = 5;
 const int RESTART_ROBOT_SCORE = 0;
+const int WIN_LEVEL_SCORE = 30;
+const int KILL_GUARD_SCORE = 10;
 
 
 //-----enum section------

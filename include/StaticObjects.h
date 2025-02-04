@@ -17,4 +17,11 @@ public:
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
+
+	void setToDisappear(bool ifDisappear);
+	const bool getNeedToDisappear() const;
+
+
+private:
+	bool m_needToDisappear = false;
 };

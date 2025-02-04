@@ -75,10 +75,6 @@ void Guard::handleCollision(Objects& otherObject)
 //-----------------------------------------------------------------------------
 void Guard::handleCollision(Robot& robot)
 {
-    /*robot.decLives();
-    robot.setSpritePos(robot.getStartPosition());*/
-    /*need to do something*/
-
     robot.handleRobotDeath();
 }
 

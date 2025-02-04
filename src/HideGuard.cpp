@@ -15,20 +15,10 @@ HideGuard::HideGuard(char objType, sf::Vector2f objPlace)
 
 
 //-----------------------------------------------------------------------------
-//void HideGuard::draw(sf::RenderWindow& window)
-//{
-//    if (!isGiftTaken())
-//    {
-//        window.draw(getSprite());
-//    }
-//}
-
-
-//-----------------------------------------------------------------------------
 void HideGuard::handleCollision(Robot& robot)
 {
 	robot.setHideGift(true);
-	this->giftWasTaken();//automaticly turn the bool into false;
+	this->giftWasTaken();//automatically turn the bool into false;
 	std::cout << "touched a hide gift" << std::endl;
 }
 

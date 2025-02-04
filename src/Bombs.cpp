@@ -14,6 +14,7 @@ Bombs::Bombs(sf::Vector2f position)
 {
     getSprite().setTexture(ResourceManager::getInstance().getBombTexture());
     getSprite().setScale(0.5f, 0.5f);
+    sf::Vector2f setNewPos ;
     setSpritePos(position);
 }
 
@@ -87,9 +88,7 @@ void Bombs::handleCollision(Objects& otherObject)
 
 //-----------------------------------------------------------------------------
 void Bombs::handleCollision(Robot& robot)
-{
-    /*-------------------*/
-}
+{}
 
 
 //-----------------------------------------------------------------------------
@@ -107,12 +106,17 @@ void Bombs::handleCollision(Wall& wall)
 //-----------------------------------------------------------------------------
 void Bombs::handleCollision(Rock & rock)
 {
-    /*need to erase this rock*/
+    rock.setToDisappear(true);
 }
 
 
 //-----------------------------------------------------------------------------
 void Bombs::handleCollision(Door& door)
+{}
+
+
+//-----------------------------------------------------------------------------
+void Bombs::handleCollision(Bombs & bomb)
 {}
 
 
@@ -162,10 +166,3 @@ bool Bombs::isBombExploding() const
 {
     return m_is_bomb_exploding;
 }
-
-
-//-----------------------------------------------------------------------------
-//const std::vector<sf::Vector2f>& Bombs::getBombPosition() const
-//{
-//    return Bomb_position;
-//}

@@ -218,7 +218,6 @@ void Board::handleObjectCollision()
 		}
 	}
 
-
 	for (int bombNum = 0; bombNum < m_Bombs.size(); bombNum++)
 	{
 		if (m_Bombs[bombNum]->isBombExploding())
@@ -230,6 +229,17 @@ void Board::handleObjectCollision()
 				for (int reLocGuard = 0; reLocGuard < m_Guards.size(); reLocGuard++)
 				{
 					m_Guards[reLocGuard]->setSpritePos(m_Guards[reLocGuard]->getDefPos());
+				}
+			}
+
+			for (const auto& staticObj : m_StaticObjects)
+			{
+				if (staticObj->collideWithExplodingBombs(*m_Bombs[bombNum]))
+				{
+					if (Rock* rock = dynamic_cast<Rock*>(staticObj.get()))
+					{
+						staticObj->setToDisappear(true);
+					}
 				}
 			}
 		}
@@ -244,8 +254,32 @@ void Board::handleObjectCollision()
 		}
 	}
 
+
 	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
 	{
+		//check collision of each guard with each static object
+		for (const auto& staticObj : m_StaticObjects)
+		{
+			if (m_Guards[guardNum]->collideWithOthers(*staticObj))
+			{
+				m_Guards[guardNum]->handleCollision(*staticObj);
+			}
+		}
+
+		//check collision with another guard
+		for (int anotherGuard = 0; anotherGuard < m_Guards.size(); anotherGuard++)
+		{
+			if (guardNum == anotherGuard) continue;
+			else
+			{
+				if (m_Guards[guardNum]->collideWithOthers(*m_Guards[anotherGuard]))
+				{
+					m_Guards[guardNum]->handleCollision(*m_Guards[anotherGuard]);
+				}
+			}
+		}
+
+		//check collision of robot with guard
 		if (m_Robot->collideWithOthers(*m_Guards[guardNum]))
 		{
 			m_Robot->handleCollision(*m_Guards[guardNum]);
@@ -258,38 +292,16 @@ void Board::handleObjectCollision()
 			m_Bombs.clear();
 		}
 
-		for (int bombNum = 0; bombNum < m_Bombs.size() ;bombNum++)
+		//check collision of each guard with a exploding bomb
+		for (int bombNum = 0; bombNum < m_Bombs.size(); bombNum++)
 		{
 			if (m_Bombs[bombNum]->isBombExploding())
 			{
 				if (m_Guards[guardNum]->collideWithExplodingBombs(*m_Bombs[bombNum]))
 				{
 					m_Guards[guardNum]->SetGuardDead(false);
-				}
-			}
-		}
-	}
 
-
-	//need to change when checking if the guard is alive (?)
-	for (int guardNum = 0; guardNum < m_Guards.size(); guardNum++)
-	{
-		for (const auto& staticObj : m_StaticObjects)
-		{
-			if (m_Guards[guardNum]->collideWithOthers(*staticObj))
-			{
-				m_Guards[guardNum]->handleCollision(*staticObj);
-			}
-		}
-
-		for (int anotherGuard = 0; anotherGuard < m_Guards.size(); anotherGuard++)
-		{
-			if (guardNum == anotherGuard) continue;
-			else
-			{
-				if (m_Guards[guardNum]->collideWithOthers(*m_Guards[anotherGuard]))
-				{
-					m_Guards[guardNum]->handleCollision(*m_Guards[anotherGuard]);
+					m_Robot->incScore(KILL_GUARD_SCORE);
 				}
 			}
 		}
@@ -307,7 +319,14 @@ bool Board::returnIfNeedToDecLife()
 //-----------------------------------------------------------------------------
 void Board::updateGuards()
 {
-	std::erase_if(m_Guards, [](const std::unique_ptr<Guard>& g) {return !g->GetIfGuardAlive(); });
+	std::erase_if(m_Guards, [](const std::unique_ptr<Guard>& guard) {return !guard->GetIfGuardAlive(); });
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::updateRocks()
+{
+	std::erase_if(m_StaticObjects, [](const std::unique_ptr<StaticObjects>& rock) {return rock->getNeedToDisappear(); });
 }
 
 
@@ -315,7 +334,7 @@ void Board::updateGuards()
 void Board::updateGifts()
 {
 	//std::cout << "deleting gift" << std::endl;
-	std::erase_if(m_Gifts, [](const std::unique_ptr<Gifts>& g) {return !g->isGiftTaken(); });
+	std::erase_if(m_Gifts, [](const std::unique_ptr<Gifts>& gift) {return !gift->isGiftTaken(); });
 }
 
 

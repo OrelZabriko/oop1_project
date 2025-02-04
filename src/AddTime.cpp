@@ -14,16 +14,6 @@ AddTime::AddTime(char objType, sf::Vector2f objPlace)
 
 
 //-----------------------------------------------------------------------------
-//void AddTime::draw(sf::RenderWindow& window)
-//{
-//    if (!isGiftTaken())
-//    {
-//        window.draw(getSprite());
-//    }
-//}
-
-
-//-----------------------------------------------------------------------------
 void AddTime::handleCollision(Robot& robot)
 {
     //logic robot ate the time gift; // bool in the robot for the time.

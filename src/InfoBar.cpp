@@ -25,13 +25,6 @@ void InfoBar::setTime(int time)
 
 
 //-----------------------------------------------------------------------------
-void InfoBar::setScore(int score)
-{
-    m_score = score;
-}
-
-
-//-----------------------------------------------------------------------------
 void InfoBar::startTimer()
 {
     m_gameTimer.restart();

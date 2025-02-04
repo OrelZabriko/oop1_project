@@ -62,8 +62,8 @@ void GameManager::HandleTheCollision()
 	
 
 
-	m_currBoard.updateGuards(); // will go over guard, and delete if needed
-
+	m_currBoard.updateGuards();  //will go over guard, and delete if needed
+	m_currBoard.updateRocks();  //will go over static objects, and delete if needed a rocks
 	
 	m_currBoard.updateGifts();
 }

@@ -22,7 +22,7 @@ void UpdatedObjects::Move(sf::Vector2f offset)
 void UpdatedObjects::setSpritePos(sf::Vector2f newPos)
 {
 	m_previousPos = GetPosition();
-	Base::setSpritePos(newPos);
+	Objects::setSpritePos(newPos);
 }
 
 

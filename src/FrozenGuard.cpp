@@ -14,16 +14,6 @@ FrozenGuard::FrozenGuard(char objType, sf::Vector2f objPlace)
 
 
 //-----------------------------------------------------------------------------
-//void FrozenGuard::draw(sf::RenderWindow& window)
-//{
-//    if (!isGiftTaken())
-//    {
-//        window.draw(getSprite());
-//    }
-//}
-
-
-//-----------------------------------------------------------------------------
 void FrozenGuard::handleCollision(Robot& robot)
 {
     giftWasTaken();
