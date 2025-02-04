@@ -49,22 +49,23 @@ void GameManager::HandleTheCollision()
 	{
 		m_currBoard.HideSingleGuard();
 	}
-	//if m_CurrBoard.getFreezeGiftStatus -- check from the robot!!! if he ate a freeze gift
-	/*
-	* m_currBoard.Freeze()  ---- change all guards speed to 0; DONT FORGET TO TIME AND return their speed to default values
-	
-	*/
-	// if he ate a time 
-	// m_currBoard.Add Time,  - maybe manager can do it alone
+	if (m_currBoard.getFreezeGiftStatus())
+	{
+		m_currBoard.freezeGuards();
+	}
 
-	// if he ate life
-	// life++;
-	
+	if (m_currBoard.getLifeGiftStatus())
+	{
+		m_currBoard.addLife();
+	}
 
+	if (m_currBoard.getTimeGiftStatus())
+	{
+		m_currBoard.addTime();
+	}
 
 	m_currBoard.updateGuards();  //will go over guard, and delete if needed
 	m_currBoard.updateRocks();  //will go over static objects, and delete if needed a rocks
-	
 	m_currBoard.updateGifts();
 }
 

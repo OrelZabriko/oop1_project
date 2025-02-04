@@ -10,8 +10,11 @@ class Rock;
 class Door;
 class Bombs;
 class HideGuard;
-#include <SFML/Graphics.hpp>
+class FrozenGuard;
+class AddLife;
+class AddTime;
 
+#include <SFML/Graphics.hpp>
 
 
 //-----class section-----
@@ -41,8 +44,10 @@ public:
 	virtual void handleCollision(Rock& rock) = 0;
 	virtual void handleCollision(Door& door) = 0;
 	virtual void handleCollision(Bombs& bomb) = 0;
-	
 	virtual void handleCollision(HideGuard& gift) = 0;
+	virtual void handleCollision(FrozenGuard& gift) = 0;
+	virtual void handleCollision(AddLife& gift) = 0;
+	virtual void handleCollision(AddTime& gift) = 0;
 
 
 private:

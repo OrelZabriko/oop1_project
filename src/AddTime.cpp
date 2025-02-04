@@ -16,6 +16,6 @@ AddTime::AddTime(char objType, sf::Vector2f objPlace)
 //-----------------------------------------------------------------------------
 void AddTime::handleCollision(Robot& robot)
 {
-    //logic robot ate the time gift; // bool in the robot for the time.
-    giftWasTaken();
+    robot.setTimeGift(true);
+    this->giftWasTaken();
 }

@@ -17,9 +17,6 @@ public:
     InfoBar();
 
     void drawInfoBar(sf::RenderWindow& window);
-    void setTime(int time);
-    void updateTime();
-    void startTimer();
 
 
 private:
@@ -28,8 +25,4 @@ private:
     sf::Text m_timeText;
     sf::Text m_levelText;
     sf::Text m_scoreText;
-    sf::Clock m_gameTimer;
-    bool m_timerStarted = false;
-
-    int m_time = 180;
 };

@@ -16,6 +16,6 @@ AddLife::AddLife(char objType, sf::Vector2f objPlace)
 //-----------------------------------------------------------------------------
 void AddLife::handleCollision(Robot& robot)
 {
-    //robot.setLifeGift(true);
+    robot.setLifeGift(true);
     giftWasTaken();
 }

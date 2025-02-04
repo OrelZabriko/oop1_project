@@ -198,16 +198,6 @@ void Board::MoveRobot(const sf::Keyboard::Key key, const sf::Time& deltaTime)
 
 
 //-----------------------------------------------------------------------------
-void Board::MoveGuards(const sf::Time& deltaTime)
-{
-	for (int guardIndex = 0; guardIndex < m_Guards.size(); guardIndex++)
-	{
-		m_Guards[guardIndex]->Move(deltaTime, m_Robot->GetPosition());
-	}
-}
-
-
-//-----------------------------------------------------------------------------
 void Board::handleObjectCollision()
 {
 	for (const auto& staticObj : m_StaticObjects)
@@ -333,15 +323,7 @@ void Board::updateRocks()
 //-----------------------------------------------------------------------------
 void Board::updateGifts()
 {
-	//std::cout << "deleting gift" << std::endl;
 	std::erase_if(m_Gifts, [](const std::unique_ptr<Gifts>& gift) {return !gift->isGiftTaken(); });
-}
-
-
-//-----------------------------------------------------------------------------
-bool Board::getHideGiftStatus()
-{
-	return m_Robot->getHideGift();
 }
 
 
@@ -370,4 +352,81 @@ bool Board::isValidPosition(int row, int col) const
 		return true;
 	}
 	return false;
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::freezeGuards()
+{
+	if (m_Robot->getFreezeGift())
+	{
+		if (!m_freezeStarted)
+		{
+			freezeGuardTimer.restart();
+			m_freezeStarted = true;
+		}
+
+		if (freezeGuardTimer.getElapsedTime().asSeconds() >= 3.0f)
+		{
+			m_Robot->setFreezeGift(false);
+			m_freezeStarted = false;
+		}
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::MoveGuards(const sf::Time& deltaTime)
+{
+	if (!getFreezeGiftStatus())
+	{
+		for (int guardIndex = 0; guardIndex < m_Guards.size(); guardIndex++)
+		{
+			m_Guards[guardIndex]->Move(deltaTime, m_Robot->GetPosition());
+		}
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+bool Board::getHideGiftStatus()
+{
+	return m_Robot->getHideGift();
+}
+
+
+//-----------------------------------------------------------------------------
+bool Board::getFreezeGiftStatus()
+{
+	return m_Robot->getFreezeGift();
+}
+
+
+//-----------------------------------------------------------------------------
+bool Board::getLifeGiftStatus()
+{
+	return m_Robot->getLifeGift();
+}
+
+
+//-----------------------------------------------------------------------------
+bool Board::getTimeGiftStatus()
+{
+	return m_Robot->getTimeGift();
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::addLife()
+{
+	m_Robot->incLives();
+	m_Robot->setLifeGift(false);
+}
+
+
+//-----------------------------------------------------------------------------
+void Board::addTime()
+{
+	LoadLevel::addLevelTime();
+	m_Robot->setTimeGift(false);
 }

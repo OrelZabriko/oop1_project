@@ -33,9 +33,11 @@ public:
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
-	virtual void handleCollision(Bombs& bomb) override;
+	virtual void handleCollision(Bombs& bomb) override; 
 	virtual void handleCollision(HideGuard& gift) override {};
-	//virtual void handleCollision(Gift& gift) override;
+	virtual void handleCollision(FrozenGuard& gift) override {};
+	virtual void handleCollision(AddLife& gift) override {};
+	virtual void handleCollision(AddTime& gift) override {};
 
 
 private:

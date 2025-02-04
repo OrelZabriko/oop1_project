@@ -87,6 +87,27 @@ void Robot::setFreezeGift(bool val)
 
 
 //-----------------------------------------------------------------------------
+void Robot::setLifeGift(bool val)
+{
+	m_isLifeGift = val;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::setTimeGift(bool val)
+{
+	m_isTimeGift = val;
+}
+
+
+//-----------------------------------------------------------------------------
+bool Robot::getLifeGift() const
+{
+	return m_isLifeGift;
+}
+
+
+//-----------------------------------------------------------------------------
 bool Robot::getHideGift() const
 {
 	return m_isHideGuardGift;
@@ -97,6 +118,45 @@ bool Robot::getHideGift() const
 bool Robot::getFreezeGift() const
 {
 	return m_isFrozenGift;
+}
+
+
+//-----------------------------------------------------------------------------
+bool Robot::getTimeGift() const
+{
+	return m_isTimeGift;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(HideGuard& gift)
+{
+	this->setHideGift(false);
+	gift.giftWasTaken();
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(FrozenGuard& gift)
+{
+	this->setFreezeGift(true);
+	gift.giftWasTaken();
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(AddLife& gift)
+{
+	this->setLifeGift(true);
+	gift.giftWasTaken();
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(AddTime& gift)
+{
+	this->setTimeGift(true);
+	gift.giftWasTaken();
 }
 
 
@@ -221,18 +281,7 @@ void Robot::handleCollision(Door& door)
 
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Bombs& bomb)
-{
-	/*-------------------------*/
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(HideGuard& gift)
-{
-	this->setHideGift(false);
-	gift.giftWasTaken();
-	std::cout << "touched a hide gift" << std::endl;
-}
+{}
 
 
 //-----------------------------------------------------------------------------

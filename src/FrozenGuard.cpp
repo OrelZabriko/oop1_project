@@ -16,5 +16,6 @@ FrozenGuard::FrozenGuard(char objType, sf::Vector2f objPlace)
 //-----------------------------------------------------------------------------
 void FrozenGuard::handleCollision(Robot& robot)
 {
-    giftWasTaken();
+    robot.setFreezeGift(true);
+    this->giftWasTaken();
 }

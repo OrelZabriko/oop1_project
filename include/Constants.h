@@ -51,6 +51,7 @@ const int ROBOT_LIVES = 5;
 const int RESTART_ROBOT_SCORE = 0;
 const int WIN_LEVEL_SCORE = 30;
 const int KILL_GUARD_SCORE = 10;
+const int TIME_ADD = 5;
 
 
 //-----enum section------

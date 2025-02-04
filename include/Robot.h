@@ -33,9 +33,13 @@ public:
 
 	void setHideGift(bool val);
 	void setFreezeGift(bool val);
-
+	void setLifeGift(bool val);
+	void setTimeGift(bool val);
+	bool getLifeGift() const;
 	bool getHideGift() const;
 	bool getFreezeGift() const;
+	bool getTimeGift() const;
+
 
 	static void incLives();
 	static void decLives();
@@ -58,6 +62,9 @@ public:
 	virtual void handleCollision(Door& door) override;
 	virtual void handleCollision(Bombs& bomb) override;
 	virtual void handleCollision(HideGuard& gift) override;
+	virtual void handleCollision(FrozenGuard& gift) override;
+	virtual void handleCollision(AddLife& gift) override;
+	virtual void handleCollision(AddTime& gift) override;
 
 	void handleRobotDeath();
 
@@ -68,6 +75,8 @@ private:
 	bool m_needToDecLives = false;
 	bool m_isFrozenGift = false;
 	bool m_isHideGuardGift = false;
+	bool m_isLifeGift = false;
+	bool m_isTimeGift = false;
 	static int m_livesNum;
 	static int m_currScore;
 };

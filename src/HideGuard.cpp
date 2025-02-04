@@ -10,7 +10,7 @@
 HideGuard::HideGuard(char objType, sf::Vector2f objPlace)
     : Gifts(objType, objPlace)
 {
-    // SetTexture(ResourceManager::getInstance().getObjectTexture(OBJECT::HideGuardGift));
+	SetTexture(ResourceManager::getInstance().getObjectTexture(OBJECT::HideGuardGift));
 }
 
 
@@ -18,12 +18,5 @@ HideGuard::HideGuard(char objType, sf::Vector2f objPlace)
 void HideGuard::handleCollision(Robot& robot)
 {
 	robot.setHideGift(true);
-	this->giftWasTaken();//automatically turn the bool into false;
-	std::cout << "touched a hide gift" << std::endl;
-}
-
-
-//-----------------------------------------------------------------------------
-void HideGuard::handleCollision(HideGuard& gift)
-{
+	this->giftWasTaken();  //automatically turn the bool into false;
 }

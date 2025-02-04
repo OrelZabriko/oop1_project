@@ -18,40 +18,8 @@ InfoBar::InfoBar()
 
 
 //-----------------------------------------------------------------------------
-void InfoBar::setTime(int time)
-{
-    m_time = time;
-}
-
-
-//-----------------------------------------------------------------------------
-void InfoBar::startTimer()
-{
-    m_gameTimer.restart();
-    m_timerStarted = true;
-}
-
-
-//-----------------------------------------------------------------------------
-void InfoBar::updateTime()
-{
-    if (m_timerStarted)
-    {
-        int gameTime = TIME_LIMIT - static_cast<int>(m_gameTimer.getElapsedTime().asSeconds());
-        if (gameTime < 0)
-        {
-            gameTime = 0;
-        }
-        m_time = gameTime;
-    }
-}
-
-
-//-----------------------------------------------------------------------------
 void InfoBar::drawInfoBar(sf::RenderWindow& window)
 {
-    updateTime();
-
     //initialize the lives
     m_livesText.setFont(m_font);
     m_livesText.setCharacterSize(FONT_CHARACTERS_SIZE);
@@ -62,7 +30,7 @@ void InfoBar::drawInfoBar(sf::RenderWindow& window)
     m_timeText.setFont(m_font);
     m_timeText.setCharacterSize(FONT_CHARACTERS_SIZE);
     m_timeText.setFillColor(sf::Color::White);
-    m_timeText.setString("Time: " + std::to_string(m_time));
+    m_timeText.setString("Time: " + std::to_string(LoadLevel::getLevelTime()));
 
     //initialize the level number
     m_levelText.setFont(m_font);

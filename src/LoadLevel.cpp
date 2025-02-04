@@ -12,6 +12,8 @@
 //-----functions section------
 int LoadLevel::m_currLevel = 0;
 bool LoadLevel::m_nextLevel = false;
+int LoadLevel::m_addTime = 0;
+int LoadLevel::gameTime = TIME_LIMIT;
 
 
 //-----------------------------------------------------------------------------
@@ -120,4 +122,40 @@ int LoadLevel::getCurrentLevelCols() const
 		return 0;
 	}
 	else return m_levels[m_currLevel].getCols();
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::startTimer()
+{
+	m_gameTimer.restart();
+	m_timerStarted = true;
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::updateTime()
+{
+	if (m_timerStarted)
+	{
+		gameTime = TIME_LIMIT + m_addTime - static_cast<int>(m_gameTimer.getElapsedTime().asSeconds());
+		if (gameTime < 0)
+		{
+			gameTime = 0;
+		}
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+int LoadLevel::getLevelTime()
+{
+	return gameTime;
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::addLevelTime()
+{
+	m_addTime += TIME_ADD;
 }

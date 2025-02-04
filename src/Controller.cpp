@@ -88,7 +88,7 @@ void Controller::Run()
         }
         manager.updateGuards(ResourceManager::getInstance().getDeltaTime());
         manager.updateBombs(ResourceManager::getInstance().getDeltaTime());
-        
+        levelManager.updateTime();
         manager.HandleTheCollision();
 
         if (levelManager.getIsNextLevel())
@@ -119,7 +119,7 @@ void Controller::handleOpenMenuMouseClick(sf::RenderWindow& window,
         case 'N': //new game
         {
             m_startMenuState = true;
-            m_infoBar.startTimer();
+            levelManager.startTimer();
             break;
         }
         case 'H': //help

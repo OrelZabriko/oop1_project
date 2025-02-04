@@ -56,9 +56,16 @@ public:
 	void updateGuards();
 	void updateRocks();
 	void updateGifts();
-	bool getHideGiftStatus();
 
 	void HideSingleGuard();
+
+	bool getHideGiftStatus();
+	bool getFreezeGiftStatus();
+	bool getLifeGiftStatus();
+	bool getTimeGiftStatus();
+	void addLife();
+	void addTime();
+	void freezeGuards();
 	
 
 private:
@@ -70,4 +77,6 @@ private:
 	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
 	std::vector<std::unique_ptr<Gifts>> m_Gifts;
 	std::vector<std::unique_ptr<Bombs>> m_Bombs;
+	sf::Clock freezeGuardTimer;
+	bool m_freezeStarted = false;
 };
