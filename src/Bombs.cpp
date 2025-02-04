@@ -14,17 +14,17 @@ Bombs::Bombs(sf::Vector2f position)
 {
     getSprite().setTexture(ResourceManager::getInstance().getBombTexture());
     getSprite().setScale(0.5f, 0.5f);
-    sf::Vector2f setNewPos ;
     setSpritePos(position);
 }
 
 
 //-----------------------------------------------------------------------------
-void Bombs::setBomb(sf::Vector2f position)
+void Bombs::setBomb(sf::Vector2f position, sf::Vector2f robotOrigin)
 {
     if (!m_is_bomb_active && !m_is_bomb_exploding)
     {
         setSpritePos(position);
+        this->getSprite().setOrigin(robotOrigin);
         m_is_bomb_active = true;
         m_bomb_timer = sf::seconds(EXPLOSION_TIME);
     }

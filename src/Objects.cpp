@@ -6,7 +6,7 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
+Objects::Objects(char objType, sf::Vector2f objPlace) 
 {
 	m_objSprite.setTexture(ResourceManager::getInstance().getObjectTexture(getObjByChar(objType)));
 	sf::Texture tex = ResourceManager::getInstance().getObjectTexture(getObjByChar(objType));
@@ -15,7 +15,7 @@ Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
 	m_defaultPos.y = objPlace.y * 55.f + INFOBAR_SPACE;
 	sf::Vector2f scale = { 50.0f / tex.getSize().x, 50.0f / tex.getSize().y };
 	m_objSprite.setScale(scale);
-
+	m_objSprite.setOrigin(tex.getSize().x / 2.0f, tex.getSize().y / 2.0f);
 }
 
 
@@ -33,12 +33,12 @@ bool Objects::collideWithExplodingBombs(Objects& object)
 	bool result = false;
 	sf::FloatRect objRect = m_objSprite.getGlobalBounds();
 	sf::Vector2f center = object.getSprite().getPosition();
-	std::cout << "Robot rect pos  x : " << objRect.getPosition().x << "Robot rect pos y: " << objRect.getPosition().y << std::endl;
-	std::cout << "center of bomb x: " << center.x << "y: " << center.y << std::endl;
-	std::vector<sf::Vector2f> positions = { {center.x + EXPLOSION_RANGE,center.y},
+	
+	std::vector<sf::Vector2f> positions = { {center.x,center.y},
+											{center.x + EXPLOSION_RANGE,center.y},
 											{center.x - EXPLOSION_RANGE,center.y},
 											{center.x,center.y - EXPLOSION_RANGE},
-											{center.x,center.y + EXPLOSION_RANGE} }; //right, left, up, down
+											{center.x,center.y + EXPLOSION_RANGE} }; //right, left, up, down, same place
 
 	for (auto& vector : positions)
 	{

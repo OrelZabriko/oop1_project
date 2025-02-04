@@ -1,6 +1,5 @@
 //-----include section-----
 #include "Robot.h"
-#include <iostream>
 
 
 //-----functions section------
@@ -276,6 +275,7 @@ void Robot::handleCollision(Door& door)
 
 	this->restartLivesNum();
 	LoadLevel::setNextLevel(true);
+	LoadLevel::restartGameTime();
 }
 
 

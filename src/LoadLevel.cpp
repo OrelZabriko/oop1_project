@@ -10,10 +10,12 @@
 
 
 //-----functions section------
+//-----------------------------------------------------------------------------
+//Defines the static members of the LoadLevel
 int LoadLevel::m_currLevel = 0;
 bool LoadLevel::m_nextLevel = false;
 int LoadLevel::m_addTime = 0;
-int LoadLevel::gameTime = TIME_LIMIT;
+int LoadLevel::m_gameTime = TIME_LIMIT;
 
 
 //-----------------------------------------------------------------------------
@@ -126,8 +128,16 @@ int LoadLevel::getCurrentLevelCols() const
 
 
 //-----------------------------------------------------------------------------
+void LoadLevel::restartGameTime()
+{
+	m_gameTime = TIME_LIMIT;
+}
+
+
+//-----------------------------------------------------------------------------
 void LoadLevel::startTimer()
 {
+	m_addTime = 0;
 	m_gameTimer.restart();
 	m_timerStarted = true;
 }
@@ -138,10 +148,10 @@ void LoadLevel::updateTime()
 {
 	if (m_timerStarted)
 	{
-		gameTime = TIME_LIMIT + m_addTime - static_cast<int>(m_gameTimer.getElapsedTime().asSeconds());
-		if (gameTime < 0)
+		m_gameTime = TIME_LIMIT + m_addTime - static_cast<int>(m_gameTimer.getElapsedTime().asSeconds());
+		if (m_gameTime < 0)
 		{
-			gameTime = 0;
+			m_gameTime = 0;
 		}
 	}
 }
@@ -150,7 +160,7 @@ void LoadLevel::updateTime()
 //-----------------------------------------------------------------------------
 int LoadLevel::getLevelTime()
 {
-	return gameTime;
+	return m_gameTime;
 }
 
 

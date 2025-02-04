@@ -19,7 +19,7 @@ public:
 	Bombs(sf::Vector2f position);
 	virtual ~Bombs() = default;
 
-	void setBomb(sf::Vector2f position);
+	void setBomb(sf::Vector2f position, sf::Vector2f robotOrigin);
 	bool isBombActive() const;
 	bool isBombExploding() const;
 	void updateBomb(sf::Time deltaTime);

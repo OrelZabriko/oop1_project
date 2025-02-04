@@ -24,6 +24,7 @@ const std::string WIN_LEVEL_SOUND = "WinLevelSound.ogg";
 const std::string LOSE_LEVEL_SOUND = "LoseLevelSound.ogg";
 
 const int FONT_CHARACTERS_SIZE = 26;
+const int INFOBAR_FONT_CHARACTERS_SIZE = 22;
 
 //I define Full-HD resolution to fit as many different computer screens as possible.
 const unsigned int WINDOW_WIDTH = 1920;
@@ -40,7 +41,7 @@ const float BOARD_HEIGHT = 720;
 
 const float CELL_SPACING = 10.f;	//Space adding in calculations between cells in pixels
 const float BUTTON_SPACING = 40.f; //Space between buttons in pixels
-const float INFOBAR_SPACE = 50.f; //Space between the top ot the RenderWindow to the board for the InfoBar
+const float INFOBAR_SPACE = 60.f; //Space between the top ot the RenderWindow to the board for the InfoBar
 
 const float PIXELS_FOR_MOVE_ROBOT = 450.f;
 const float PIXELS_FOR_MOVE_GUARD = 50.f;

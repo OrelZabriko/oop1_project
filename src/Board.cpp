@@ -13,11 +13,6 @@
 
 
 //-----functions section------
-// //-----------------------------------------------------------------------------
-Board::Board()
-{}
-
-
 //-----------------------------------------------------------------------------
 Board::Board(int rows,int cols) : m_rows(rows), m_cols(cols)
 {}
@@ -153,7 +148,8 @@ void Board::draw(sf::RenderWindow& window) const
 void Board::addBomb(const sf::Vector2f& position)
 {
 	m_Bombs.push_back(std::make_unique<Bombs>(position));
-	m_Bombs.back()->setBomb(position);
+	sf::Vector2f robotOrigin = m_Robot->getSprite().getOrigin();
+	m_Bombs.back()->setBomb(position, robotOrigin);
 }
 
 
@@ -207,6 +203,7 @@ void Board::handleObjectCollision()
 			m_Robot->handleCollision(*staticObj);
 		}
 	}
+	
 
 	for (int bombNum = 0; bombNum < m_Bombs.size(); bombNum++)
 	{
@@ -335,7 +332,6 @@ void Board::HideSingleGuard()
 			return;
 
 		int val = rand() % m_Guards.size() - 1;
-		std::cout << "deleted this random guard: " << val << std::endl;
 
 		m_Guards[val]->SetGuardDead(false);
 

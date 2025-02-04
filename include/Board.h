@@ -25,7 +25,7 @@
 class Board
 {
 public:
-	Board();
+	Board() = default;
 	Board(int rows, int cols);
 	void createCell(const char objChar, const sf::Vector2f objLoc);
 

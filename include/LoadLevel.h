@@ -29,6 +29,7 @@ public:
     int getCurrentLevelRows() const;
     int getCurrentLevelCols() const;
 
+    static void restartGameTime();
     void startTimer();
     static int getLevelTime();
     static void addLevelTime();
@@ -36,7 +37,7 @@ public:
 
 
 private:
-    static int gameTime;
+    static int m_gameTime;
     static int m_addTime;
     sf::Clock m_gameTimer;
     bool m_timerStarted = false;

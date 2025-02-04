@@ -23,6 +23,7 @@ void Door::handleCollision(Robot& robot)
 
 	robot.restartLivesNum();
 	LoadLevel::setNextLevel(true);
+	LoadLevel::restartGameTime();
 }
 
 

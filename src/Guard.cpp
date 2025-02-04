@@ -2,6 +2,7 @@
 #include "Guard.h"
 #include "Controller.h"
 
+
 //-----functions section------
 //-----------------------------------------------------------------------------
 void Guard::setDirection(sf::Vector2f position)
@@ -109,7 +110,4 @@ void Guard::handleCollision(Door& door)
 
 //-----------------------------------------------------------------------------
 void Guard::handleCollision(Bombs& bomb)
-{
-    //if(bomb.getIsExplosive)
-        //check 4 directions 
-}
+{}

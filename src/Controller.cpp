@@ -93,6 +93,7 @@ void Controller::Run()
 
         if (levelManager.getIsNextLevel())
         {
+            levelManager.startTimer();
             manager.loadLevel(levelManager.getLevel());
             levelManager.setNextLevel(false);
         }
