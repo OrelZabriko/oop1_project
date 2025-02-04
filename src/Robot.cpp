@@ -157,6 +157,20 @@ const int Robot::getCurrScore()
 
 
 //-----------------------------------------------------------------------------
+void Robot::setNeedToDecLives(bool ifDecLife)
+{
+	m_needToDecLives = ifDecLife;
+}
+
+
+//-----------------------------------------------------------------------------
+const bool Robot::getNeedToDecLife() const
+{
+	return m_needToDecLives;
+}
+
+
+//-----------------------------------------------------------------------------
 void Robot::handleCollision(Objects& otherObject)
 {
 	otherObject.handleCollision(*this);
@@ -171,8 +185,10 @@ void Robot::handleCollision(Robot& robot)
 //-----------------------------------------------------------------------------
 void Robot::handleCollision(Guard& guard)
 {
-	this->decLives();
-	this->setSpritePos(this->getDefPos());
+	/*this->decLives();
+	this->setSpritePos(this->getDefPos());*/
+
+	handleRobotDeath();
 }
 
 
@@ -204,9 +220,26 @@ void Robot::handleCollision(Door& door)
 	LoadLevel::setNextLevel(true);
 }
 
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Bombs& bomb)
+{
+	/*-------------------------*/
+}
+
+
+//-----------------------------------------------------------------------------
 void Robot::handleCollision(HideGuard& gift)
 {
 	this->setHideGift(false);
 	gift.giftWasTaken();
 	std::cout << "touched a hide gift" << std::endl;
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleRobotDeath()
+{
+	this->decLives();
+	this->setSpritePos(this->getDefPos());
 }

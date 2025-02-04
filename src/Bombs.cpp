@@ -30,7 +30,6 @@ void Bombs::setBomb(sf::Vector2f position)
 }
 
 
-
 //-----------------------------------------------------------------------------
 void Bombs::updateBomb(sf::Time deltaTime)
 {
@@ -89,14 +88,13 @@ void Bombs::handleCollision(Objects& otherObject)
 //-----------------------------------------------------------------------------
 void Bombs::handleCollision(Robot& robot)
 {
-    /*need to do something*/
+    /*-------------------*/
 }
 
 
 //-----------------------------------------------------------------------------
 void Bombs::handleCollision(Guard& guard)
 {
-    /*need to do something*/
     guard.SetGuardDead(true);
 }
 
@@ -140,7 +138,7 @@ void Bombs::ExplodeBomb()
         case 2: //down
             explosionPos.y += EXPLOSION_RANGE;
             break;
-        case 3: //down
+        case 3: //up
             explosionPos.y -= EXPLOSION_RANGE;
             break;
         }

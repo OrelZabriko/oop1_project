@@ -26,56 +26,46 @@ Board::Board(int rows,int cols) : m_rows(rows), m_cols(cols)
 //-----------------------------------------------------------------------------
 void Board::createCell(const char objChar, const sf::Vector2f objLoc)
 {
-	std::cout << "got the following objchar: " << objChar << std::endl;
 	switch (objChar)
 	{
 	case 'D': //OBJECT::DOOR
 	{
 		m_StaticObjects.push_back(std::make_unique<Door>(objChar, objLoc));
-
 		break;
 	}
 	case '#': //OBJECT::WALL
 	{
 		m_StaticObjects.push_back(std::make_unique<Wall>(objChar, objLoc));
-
 		break;
 	}
 	case '@': //OBJECT::ROCK
 	{
 		m_StaticObjects.push_back(std::make_unique<Rock>(objChar, objLoc));
-
 		break;
 	}
 	case '/': //OBJECT::ROBOT
 	{
 		m_Robot = std::make_unique<Robot>(objChar, objLoc);
-
 		break;
 	}
 	case '!': //OBJECT::GUARD
 	{
 		m_Guards.push_back(std::make_unique<Guard>(objChar, objLoc));
-
 		break;
 	}
 	case 'T': //GIFT::TIME
 	{
 		m_Gifts.push_back(std::make_unique<AddTime>(objChar, objLoc));
-		std::cout << "pushed add time into gifts vector" << std::endl;
-		std::cout << "m_gifts size:" << m_Gifts.size() << std::endl;
 		break;
 	}
 	case 'L': //GIFT::LIFE
 	{
 		m_Gifts.push_back(std::make_unique<AddLife>(objChar, objLoc));
-
 		break;
 	}
 	case 'F': //GIFT::FROZEN GUARD
 	{
 		m_Gifts.push_back(std::make_unique<FrozenGuard>(objChar, objLoc));
-
 		break;
 	}
 	case 'H': //GIFT::HIDE GUARD
@@ -150,14 +140,12 @@ void Board::draw(sf::RenderWindow& window) const
 	{
 		m_Bombs[bombIndex]->draw(window);
 	}
-	//std::cout << "m_gifts size in draw:  " << m_Gifts.size() << std::endl;
+
+	//draw the bombs gifts
 	for (int giftIndex = 0; giftIndex < m_Gifts.size(); giftIndex++)
 	{
-		//std::cout << "printing gift in index:" << giftIndex << std::endl;
 		m_Gifts[giftIndex]->draw(window);
 	}
-
-	
 }
 
 
@@ -230,6 +218,24 @@ void Board::handleObjectCollision()
 		}
 	}
 
+
+	for (int bombNum = 0; bombNum < m_Bombs.size(); bombNum++)
+	{
+		if (m_Bombs[bombNum]->isBombExploding())
+		{
+			if (m_Robot->collideWithExplodingBombs(*m_Bombs[bombNum]))
+			{
+				m_Robot->handleRobotDeath();
+
+				for (int reLocGuard = 0; reLocGuard < m_Guards.size(); reLocGuard++)
+				{
+					m_Guards[reLocGuard]->setSpritePos(m_Guards[reLocGuard]->getDefPos());
+				}
+			}
+		}
+	}
+
+
 	for (const auto& gift : m_Gifts)
 	{
 		if (m_Robot->collideWithOthers(*gift))
@@ -256,7 +262,7 @@ void Board::handleObjectCollision()
 		{
 			if (m_Bombs[bombNum]->isBombExploding())
 			{
-				if (m_Guards[guardNum]->collideWithExplosiveBombs(*m_Bombs[bombNum]))
+				if (m_Guards[guardNum]->collideWithExplodingBombs(*m_Bombs[bombNum]))
 				{
 					m_Guards[guardNum]->SetGuardDead(false);
 				}
@@ -292,10 +298,18 @@ void Board::handleObjectCollision()
 
 
 //-----------------------------------------------------------------------------
+bool Board::returnIfNeedToDecLife()
+{
+	return m_Robot->getNeedToDecLife();
+}
+
+
+//-----------------------------------------------------------------------------
 void Board::updateGuards()
 {
 	std::erase_if(m_Guards, [](const std::unique_ptr<Guard>& g) {return !g->GetIfGuardAlive(); });
 }
+
 
 //-----------------------------------------------------------------------------
 void Board::updateGifts()
@@ -304,14 +318,17 @@ void Board::updateGifts()
 	std::erase_if(m_Gifts, [](const std::unique_ptr<Gifts>& g) {return !g->isGiftTaken(); });
 }
 
+
+//-----------------------------------------------------------------------------
 bool Board::getHideGiftStatus()
 {
 	return m_Robot->getHideGift();
 }
 
+
+//-----------------------------------------------------------------------------
 void Board::HideSingleGuard()
 {
-	
 		//rand a random number between 0 and guard.size()
 		if (m_Guards.size() == 0)
 			return;
@@ -334,4 +351,4 @@ bool Board::isValidPosition(int row, int col) const
 		return true;
 	}
 	return false;
-}	
+}

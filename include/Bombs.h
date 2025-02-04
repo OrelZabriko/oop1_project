@@ -24,8 +24,6 @@ public:
 	bool isBombExploding() const;
 	void updateBomb(sf::Time deltaTime);
 	void draw(sf::RenderWindow& window);
-	//const std::vector<sf::Vector2f>& Bombs::getBombPosition() const;
-	
 
 
 	virtual void handleCollision(Objects& otherObject) override;

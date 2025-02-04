@@ -9,6 +9,8 @@ GameManager::GameManager(const Level& currLevel) : m_currLevel(currLevel)
 	loadLevel(currLevel);
 }
 
+
+//-----------------------------------------------------------------------------
 void GameManager::loadLevel(const Level& currLevel)
 {
 	m_currBoard = Board(currLevel.getRows(), currLevel.getCols());
@@ -21,6 +23,7 @@ void GameManager::loadLevel(const Level& currLevel)
 		}
 	}
 }
+
 
 //-----------------------------------------------------------------------------
 void GameManager::draw(sf::RenderWindow& window)
@@ -39,13 +42,12 @@ void GameManager::setRobotDirection(sf::Keyboard::Key key)
 //-----------------------------------------------------------------------------
 void GameManager::HandleTheCollision()
 {
-	m_currBoard.handleObjectCollision();//if something happened
+	m_currBoard.handleObjectCollision(); //if something happened
 
 	//check special status of the robot
 	if (m_currBoard.getHideGiftStatus())
 	{
 		m_currBoard.HideSingleGuard();
-		
 	}
 	//if m_CurrBoard.getFreezeGiftStatus -- check from the robot!!! if he ate a freeze gift
 	/*
@@ -60,12 +62,10 @@ void GameManager::HandleTheCollision()
 	
 
 
-	m_currBoard.updateGuards(); // will go over guard, and delete if neeeded
+	m_currBoard.updateGuards(); // will go over guard, and delete if needed
 
 	
 	m_currBoard.updateGifts();
-	
-	
 }
 
 
@@ -95,7 +95,7 @@ void GameManager::updateRobot(sf::Keyboard::Key key,
 //-----------------------------------------------------------------------------
 void GameManager::updateGuards(const sf::Time deltaTime)
 {
-	if (GetIfStartGame())
+	if (GetIfStartGame()) //The guards will move just if we will start the new game
 	{
 		m_currBoard.MoveGuards(deltaTime);
 	}

@@ -46,6 +46,9 @@ public:
 	static void decScore(const int lessPoints);
 	static void restartRobotScore();
 	static const int getCurrScore();
+
+	void setNeedToDecLives(bool ifDecLife);
+	const bool getNeedToDecLife() const;
 	
 	virtual void handleCollision(Objects& otherObject) override;
 	virtual void handleCollision(Robot& robot) override;
@@ -53,13 +56,16 @@ public:
 	virtual void handleCollision(Wall& wall) override;
 	virtual void handleCollision(Rock& rock) override;
 	virtual void handleCollision(Door& door) override;
-	virtual void handleCollision(Bombs& bomb) override { /* impossible collision, ignore */ };
+	virtual void handleCollision(Bombs& bomb) override;
 	virtual void handleCollision(HideGuard& gift) override;
+
+	void handleRobotDeath();
 
 
 private:
 	sf::Vector2f m_moveDirection;
 	bool m_win = false; //Boolean variable check if the robot win the level
+	bool m_needToDecLives = false;
 	bool m_isFrozenGift = false;
 	bool m_isHideGuardGift = false;
 	static int m_livesNum;

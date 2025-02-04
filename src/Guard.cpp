@@ -13,11 +13,11 @@ void Guard::setDirection(sf::Vector2f position)
     {
         if (yDistance > 0)
         {
-            m_moveDirection = sf::Vector2f(0, -1);//up
+            m_moveDirection = sf::Vector2f(0, -1); //up
         }
         else
         {
-            m_moveDirection = sf::Vector2f(0, 1);//down
+            m_moveDirection = sf::Vector2f(0, 1); //down
         }
     }
     else
@@ -78,6 +78,8 @@ void Guard::handleCollision(Robot& robot)
     /*robot.decLives();
     robot.setSpritePos(robot.getStartPosition());*/
     /*need to do something*/
+
+    robot.handleRobotDeath();
 }
 
 

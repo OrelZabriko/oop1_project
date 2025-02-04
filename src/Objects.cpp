@@ -13,7 +13,7 @@ Objects::Objects(char objType, sf::Vector2f objPlace) //: m_objPlace(objPlace)
 	m_objSprite.setPosition(objPlace.x * 55.f + 7.5f, objPlace.y * 55.f + INFOBAR_SPACE);
 	m_defaultPos.x = objPlace.x * 55.f + 7.5f;
 	m_defaultPos.y = objPlace.y * 55.f + INFOBAR_SPACE;
-	sf::Vector2f scale = { 50.0f / tex.getSize().x,50.0f / tex.getSize().y };
+	sf::Vector2f scale = { 50.0f / tex.getSize().x, 50.0f / tex.getSize().y };
 	m_objSprite.setScale(scale);
 
 }
@@ -25,20 +25,24 @@ void Objects::draw(sf::RenderWindow& window)
 	window.draw(m_objSprite);
 }
 
-bool Objects::collideWithExplosiveBombs(Objects& object)
+
+//-----------------------------------------------------------------------------
+//This function check if an object collide with the explosion of the bomb.
+bool Objects::collideWithExplodingBombs(Objects& object)
 {
-	bool  result = false;
-	sf::FloatRect guardRect = m_objSprite.getGlobalBounds();
+	bool result = false;
+	sf::FloatRect objRect = m_objSprite.getGlobalBounds();
 	sf::Vector2f center = object.getSprite().getPosition();
-	std::cout << "guard rect pos  x : " << guardRect.getPosition().x << "guard rect pos y: " << guardRect.getPosition().y << std::endl;
+	std::cout << "Robot rect pos  x : " << objRect.getPosition().x << "Robot rect pos y: " << objRect.getPosition().y << std::endl;
 	std::cout << "center of bomb x: " << center.x << "y: " << center.y << std::endl;
 	std::vector<sf::Vector2f> positions = { {center.x + EXPLOSION_RANGE,center.y},
-		{center.x - EXPLOSION_RANGE,center.y},
-		{center.x,center.y - EXPLOSION_RANGE},
-		{center.x,center.y + EXPLOSION_RANGE} }; // right left, up down
+											{center.x - EXPLOSION_RANGE,center.y},
+											{center.x,center.y - EXPLOSION_RANGE},
+											{center.x,center.y + EXPLOSION_RANGE} }; //right, left, up, down
+
 	for (auto& vector : positions)
 	{
-		if (guardRect.contains(vector))
+		if (objRect.contains(vector))
 			result = true;
 	}
 	return result;
@@ -53,23 +57,17 @@ void Objects::SetTexture(const sf::Texture& texture)
 
 
 //-----------------------------------------------------------------------------
-//sf::Vector2f Objects::GetPosition() const
-//{
-//	return m_objPlace;
-//}
-
-
-//-----------------------------------------------------------------------------
 sf::Sprite& Objects::getSprite()
 {
 	return m_objSprite;
 }
 
+
+//-----------------------------------------------------------------------------
 sf::Vector2f Objects::getDefPos() const
 {
 	return m_defaultPos;
 }
-
 
 
 //-----------------------------------------------------------------------------
@@ -77,16 +75,6 @@ bool Objects::collideWithOthers(const Objects& object)
 {
 	return m_objSprite.getGlobalBounds().intersects(object.m_objSprite.getGlobalBounds());
 }
-
-
-
-
-
-//-----------------------------------------------------------------------------
-//const sf::Vector2f& Objects::getPos() const
-//{
-//	return m_objPlace;
-//}
 
 
 //-----------------------------------------------------------------------------

@@ -38,6 +38,7 @@ public:
 	void SetBoardPos(const sf::Vector2f& boardPos);
 
 	bool isValidPosition(int row, int col) const;
+	
 	void draw(sf::RenderWindow& window) const;
 	
 	void handleBombs(sf::Time deltaTime);
@@ -49,6 +50,8 @@ public:
 	void MoveGuards(const sf::Time& deltaTime);
 
 	void handleObjectCollision();
+
+	bool returnIfNeedToDecLife();
 
 	void updateGuards();
 
