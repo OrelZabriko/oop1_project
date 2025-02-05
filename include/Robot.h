@@ -43,7 +43,6 @@ public:
 
 	static void incLives();
 	static void decLives();
-	static void restartLivesNum();
 	static const int getLivesNum();
 
 	static void incScore(const int morePoints);

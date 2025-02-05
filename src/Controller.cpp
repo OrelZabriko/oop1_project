@@ -86,14 +86,14 @@ void Controller::Run()
         }
         manager.updateGuards(ResourceManager::getInstance().getDeltaTime());
         manager.updateBombs(ResourceManager::getInstance().getDeltaTime());
-        levelManager.updateTime();
+        levelManager.updateTime(m_GameWindow);
         manager.HandleTheCollision();
 
         if (levelManager.getIsNextLevel())
         {
             if (levelManager.finishAllLevels())
             {
-                levelManager.createFinishGame(m_GameWindow);
+                levelManager.createFinishGame();
                 m_GameWindow.close();
                 break; //get out from the loop
             }
@@ -102,6 +102,16 @@ void Controller::Run()
             manager.loadLevel(levelManager.getLevel());
             levelManager.setNextLevel(false);
         }
+
+        /*if (manager.checkIfRobotDead())
+        {
+            levelManager.createLoseWindow();
+            std::this_thread::sleep_for(std::chrono::seconds(2));
+            levelManager.closeLoseWindow();
+            m_GameWindow.clear();
+            start_menu.Draw(m_GameWindow);
+            m_startMenuState = false;
+        }*/
 
         if (manager.checkIfRobotDead())
         {

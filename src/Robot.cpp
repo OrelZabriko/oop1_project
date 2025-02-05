@@ -202,13 +202,6 @@ void Robot::decLives()
 
 
 //-----------------------------------------------------------------------------
-void Robot::restartLivesNum()
-{
-	m_livesNum = ROBOT_LIVES;
-}
-
-
-//-----------------------------------------------------------------------------
 const int Robot::getLivesNum()
 {
 	return m_livesNum;
@@ -260,6 +253,8 @@ const bool Robot::getNeedToDecLife() const
 //-----------------------------------------------------------------------------
 void Robot::handleRobotDeath()
 {
+	ResourceManager::getInstance().playLoseMusic();
+
 	this->decLives();
 	this->setSpritePos(this->getDefPos());
 }

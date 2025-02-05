@@ -140,7 +140,7 @@ void LoadLevel::startTimer()
 
 
 //-----------------------------------------------------------------------------
-void LoadLevel::updateTime()
+void LoadLevel::updateTime(sf::RenderWindow& window)
 {
 	if (m_timerStarted)
 	{
@@ -148,6 +148,7 @@ void LoadLevel::updateTime()
 		if (m_gameTime < 0)
 		{
 			m_gameTime = 0;
+			createLoseWindow(window);
 		}
 	}
 }
@@ -182,7 +183,7 @@ void LoadLevel::resetAddTime()
 
 
 //-----------------------------------------------------------------------------
-void LoadLevel::createFinishGame(sf::RenderWindow& window)
+void LoadLevel::createFinishGame()
 {
 	sf::RenderWindow finishWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), END_GAME_WINDOW_NAME);
 

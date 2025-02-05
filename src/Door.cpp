@@ -17,8 +17,7 @@ void Door::handleCollision(Robot& robot)
 	robot.incScore(WIN_LEVEL_SCORE);
 
 	ResourceManager::getInstance().playWinMusic();
-
-	robot.restartLivesNum();
+	
 	LoadLevel::setNextLevel(true);
 	LoadLevel::restartGameTime();
 }

@@ -18,6 +18,7 @@
 #include <fstream>
 #include <memory>
 #include <vector>
+#include <thread>
 
 
 //-----class section-----
