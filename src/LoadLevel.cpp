@@ -140,7 +140,7 @@ void LoadLevel::startTimer()
 
 
 //-----------------------------------------------------------------------------
-void LoadLevel::updateTime(sf::RenderWindow& window)
+void LoadLevel::updateTime()
 {
 	if (m_timerStarted)
 	{
@@ -148,7 +148,7 @@ void LoadLevel::updateTime(sf::RenderWindow& window)
 		if (m_gameTime < 0)
 		{
 			m_gameTime = 0;
-			createLoseWindow(window);
+			createLoseWindow();
 		}
 	}
 }
@@ -212,7 +212,7 @@ void LoadLevel::createFinishGame()
 
 
 //-----------------------------------------------------------------------------
-void LoadLevel::createLoseWindow(sf::RenderWindow& window)
+void LoadLevel::createLoseWindow()
 {
 	sf::RenderWindow loseWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), LOSE_GAME_WINDOW_NAME);
 

@@ -64,13 +64,25 @@ void ResourceManager::loadMusic()
 
 	if (!m_winLevelSound.openFromFile(WIN_LEVEL_SOUND))
 	{
-		std::cerr << "Error: couldn't load the background music file\n";
+		std::cerr << "Error: couldn't load the win sound file\n";
 	}
 
 
 	if (!m_loseLevelSound.openFromFile(LOSE_LEVEL_SOUND))
 	{
-		std::cerr << "Error: couldn't load the background music file\n";
+		std::cerr << "Error: couldn't load the lose sound file\n";
+	}
+
+
+	if (!m_gameOverSound.openFromFile(GAME_OVER_SOUND))
+	{
+		std::cerr << "Error: couldn't load the game-over sound file\n";
+	}
+
+
+	if (!m_explosionSound.openFromFile(EXPLOSION_SOUND))
+	{
+		std::cerr << "Error: couldn't load the explosion sound file\n";
 	}
 }
 
@@ -146,6 +158,20 @@ sf::Music& ResourceManager::GetLoseLevelSound()
 
 
 //-----------------------------------------------------------------------------
+sf::Music& ResourceManager::GetGameOverSound()
+{
+	return m_gameOverSound;
+}
+
+
+//-----------------------------------------------------------------------------
+sf::Music& ResourceManager::GetExplosionSound()
+{
+	return m_explosionSound;
+}
+
+
+//-----------------------------------------------------------------------------
 void ResourceManager::loadTextFont()
 {
 	if (!m_txtFont.loadFromFile("GOUDYSTO.TTF"))
@@ -159,20 +185,6 @@ void ResourceManager::loadTextFont()
 const sf::Font& ResourceManager::GetTextFont() const
 {
 	return m_txtFont;
-}
-
-
-//-----------------------------------------------------------------------------
-const sf::Time& ResourceManager::getDeltaTime() const
-{
-	return m_deltaTime;
-}
-
-
-//-----------------------------------------------------------------------------
-void ResourceManager::setDeltaTime(const sf::Time& newDeltaTime)
-{
-	m_deltaTime = newDeltaTime;
 }
 
 
@@ -201,5 +213,23 @@ void ResourceManager::playLoseMusic()
 	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
 	m_loseLevelSound.setVolume(WIN_MUSIC_REGULAR_VOLUME);
 	m_loseLevelSound.play();
-	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_REGULAR_VOLUME);
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::playGameOverMusic()
+{
+	m_gameOverSound.setVolume(GAME_OVER_REGULAR_VOLUME);
+	m_backgroundMusic.stop();
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	m_gameOverSound.play();
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::playExplosionMusic()
+{
+	m_explosionSound.setVolume(EXPLOSION_REGULAR_VOLUME);
+	m_explosionSound.play();
 }

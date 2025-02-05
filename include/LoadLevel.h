@@ -33,13 +33,13 @@ public:
     void startTimer();
     static int getLevelTime();
     static void addLevelTime();
-    void updateTime(sf::RenderWindow& window);
+    void updateTime();
 
     bool finishAllLevels();
     void resetAddTime();
 
     void createFinishGame();
-    void createLoseWindow(sf::RenderWindow& window);
+    void createLoseWindow();
 
 
 private:

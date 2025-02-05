@@ -76,8 +76,8 @@ void OpeningMenu::CreateHelpWindow(sf::RenderWindow& window)
     sf::Sprite helpBackground(helpTexture);
 
     //do the scale
-    float scaleX = WINDOW_WIDTH / helpBackground.getTexture()->getSize().x;
-    float scaleY = WINDOW_HEIGHT / helpBackground.getTexture()->getSize().y;
+    float scaleX = static_cast<float>(WINDOW_WIDTH) / helpBackground.getTexture()->getSize().x;
+    float scaleY = static_cast<float>(WINDOW_HEIGHT) / helpBackground.getTexture()->getSize().y;
     helpBackground.setScale(scaleX, scaleY);
 
 
@@ -137,7 +137,7 @@ void OpeningMenu::ResetSettings()
         "- Collect gifts for bonuses");
 
     m_helpText.setCharacterSize(35);
-    m_helpText.setFillColor(sf::Color::Red);
+    m_helpText.setFillColor(sf::Color::White);
     m_helpText.setPosition(WINDOW_WIDTH / 8.f, WINDOW_HEIGHT / 4.5f);
 }
 

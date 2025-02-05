@@ -32,7 +32,7 @@ void Controller::Run()
 
     while (m_GameWindow.isOpen())
     {
-        ResourceManager::getInstance().setDeltaTime(clock.restart());
+        const auto deltaTime = clock.restart();
 
 
         if (!m_startMenuState)
@@ -77,16 +77,16 @@ void Controller::Run()
                 }
                 else
                 {
-                    handleKeyPressed(event.key.code, ResourceManager::getInstance().getDeltaTime(), manager);
+                    handleKeyPressed(event.key.code, deltaTime, manager);
                 }
 
                 break;
             }
             }
         }
-        manager.updateGuards(ResourceManager::getInstance().getDeltaTime());
-        manager.updateBombs(ResourceManager::getInstance().getDeltaTime());
-        levelManager.updateTime(m_GameWindow);
+        manager.updateGuards(deltaTime);
+        manager.updateBombs(deltaTime);
+        levelManager.updateTime();
         manager.HandleTheCollision();
 
         if (levelManager.getIsNextLevel())
@@ -103,19 +103,9 @@ void Controller::Run()
             levelManager.setNextLevel(false);
         }
 
-        /*if (manager.checkIfRobotDead())
-        {
-            levelManager.createLoseWindow();
-            std::this_thread::sleep_for(std::chrono::seconds(2));
-            levelManager.closeLoseWindow();
-            m_GameWindow.clear();
-            start_menu.Draw(m_GameWindow);
-            m_startMenuState = false;
-        }*/
-
         if (manager.checkIfRobotDead())
         {
-            levelManager.createLoseWindow(m_GameWindow);
+            levelManager.createLoseWindow();
             m_GameWindow.close();
             break;
         }

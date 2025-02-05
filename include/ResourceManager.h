@@ -7,17 +7,18 @@
 #include <SFML/Audio.hpp>
 #include <string>
 #include <memory>
+#include <thread>
 
 
 //-----class section-----
 class ResourceManager
 {
 public:
-    // Deleted copy constructor and assignment operator to ensure singleton
+    //Deleted copy constructor and assignment operator to ensure singleton
     ResourceManager(const ResourceManager&) = delete;
     ResourceManager& operator=(const ResourceManager&) = delete;
 
-    // Get the singleton instance
+    //Get the singleton instance
     static ResourceManager& getInstance();
 
 
@@ -32,15 +33,16 @@ public:
     sf::Music& GetBackgroundMusic();
     sf::Music& GetWinLevelSound();
     sf::Music& GetLoseLevelSound();
+    sf::Music& GetGameOverSound();
+    sf::Music& GetExplosionSound();
 
     const sf::Font& GetTextFont() const;
-
-    const sf::Time& getDeltaTime() const;
-    void setDeltaTime(const sf::Time& newDeltaTime);
 
     void playBackgroundMusic();
     void playWinMusic();
     void playLoseMusic();
+    void playGameOverMusic();
+    void playExplosionMusic();
 
 
 private:
@@ -72,10 +74,9 @@ private:
     sf::Music m_backgroundMusic;
     sf::Music m_winLevelSound;
     sf::Music m_loseLevelSound;
+    sf::Music m_gameOverSound;
+    sf::Music m_explosionSound;
 
     //Storage for font
     sf::Font m_txtFont;
-
-    //Storage the Delta time of the game
-    sf::Time m_deltaTime;
 };

@@ -209,6 +209,8 @@ void Board::handleObjectCollision()
 	{
 		if (m_Bombs[bombNum]->isBombExploding())
 		{
+			ResourceManager::getInstance().playExplosionMusic();
+
 			if (m_Robot->collideWithExplodingBombs(*m_Bombs[bombNum]))
 			{
 				m_Robot->handleRobotDeath();
@@ -286,6 +288,8 @@ void Board::handleObjectCollision()
 		{
 			if (m_Bombs[bombNum]->isBombExploding())
 			{
+				ResourceManager::getInstance().playExplosionMusic();
+
 				if (m_Guards[guardNum]->collideWithExplodingBombs(*m_Bombs[bombNum]))
 				{
 					m_Guards[guardNum]->SetGuardDead(false);
@@ -294,6 +298,12 @@ void Board::handleObjectCollision()
 				}
 			}
 		}
+	}
+
+
+	if (checkRobotEndOfLife())
+	{
+		ResourceManager::getInstance().playGameOverMusic();
 	}
 }
 

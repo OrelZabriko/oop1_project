@@ -121,5 +121,4 @@ const bool& GameManager::GetIfStartGame() const
 bool GameManager::checkIfRobotDead()
 {
 	return (m_currBoard.checkRobotEndOfLife());
-
 }

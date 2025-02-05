@@ -23,6 +23,8 @@ const char START_MENU_INDENTIFIER[START_WINDOW_BUTTONS_NUM] = { 'N', 'H', 'E' };
 const std::string BOMBERMAN_BACKGROUND_SOUND = "BombermanBackgroundMusic.ogg";
 const std::string WIN_LEVEL_SOUND = "WinLevelSound.ogg";
 const std::string LOSE_LEVEL_SOUND = "LoseLevelSound.ogg";
+const std::string GAME_OVER_SOUND = "GameOverSound.ogg";
+const std::string EXPLOSION_SOUND = "ExplosionSound.ogg";
 
 const int FONT_CHARACTERS_SIZE = 26;
 const int INFOBAR_FONT_CHARACTERS_SIZE = 22;
@@ -58,9 +60,11 @@ const int NUMBER_OF_LIFE_FOR_DEATH = 0;
 const int TIME_ADD = 5;
 
 const float BACKGROUND_MUSIC_REGULAR_VOLUME = 20.f;
-const float BACKGROUND_MUSIC_LOWER_VOLUME = 15.f;
-const float WIN_MUSIC_REGULAR_VOLUME = 20.f;
-const float LOSE_MUSIC_LOWER_VOLUME = 20.f;
+const float BACKGROUND_MUSIC_LOWER_VOLUME = 10.f;
+const float WIN_MUSIC_REGULAR_VOLUME = 25.f;
+const float LOSE_MUSIC_REGULAR_VOLUME = 25.f;
+const float GAME_OVER_REGULAR_VOLUME = 25.f;
+const float EXPLOSION_REGULAR_VOLUME = 25.f;
 
 
 //-----enum section------
