@@ -12,6 +12,8 @@ configure_file ("Rock.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Wall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Explosion.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("WIN.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("LOSE.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Clock.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Frozen.png" ${CMAKE_BINARY_DIR} COPYONLY)

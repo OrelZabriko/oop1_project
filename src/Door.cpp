@@ -16,10 +16,7 @@ void Door::handleCollision(Robot& robot)
 	robot.setSpritePos(robot.getPrevPosition());
 	robot.incScore(WIN_LEVEL_SCORE);
 
-	ResourceManager::getInstance().GetBackgroundMusic().pause();
-	ResourceManager::getInstance().GetWinLevelSound().play();
-	ResourceManager::getInstance().GetWinLevelSound().stop();
-	ResourceManager::getInstance().GetBackgroundMusic().play();
+	ResourceManager::getInstance().playWinMusic();
 
 	robot.restartLivesNum();
 	LoadLevel::setNextLevel(true);

@@ -37,6 +37,8 @@ public:
 
 	void SetStartGame(const bool ifStart);
 	const bool& GetIfStartGame() const;
+
+	bool checkIfRobotDead();
 	
 
 private:

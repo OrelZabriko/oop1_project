@@ -25,12 +25,10 @@ void Controller::Run()
     sf::Clock gameTimer;
     
 
-    m_GameWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), OPENING_WINDOW_NAME);
+    m_GameWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), GAME_WINDOW_NAME);
     m_GameWindow.setFramerateLimit(60);
     
-    ResourceManager::getInstance().GetBackgroundMusic().setLoop(true);
-    ResourceManager::getInstance().GetBackgroundMusic().setVolume(20.0f);
-    ResourceManager::getInstance().GetBackgroundMusic().play();  //Start the music
+    ResourceManager::getInstance().playBackgroundMusic();
 
     while (m_GameWindow.isOpen())
     {
@@ -93,9 +91,23 @@ void Controller::Run()
 
         if (levelManager.getIsNextLevel())
         {
+            if (levelManager.finishAllLevels())
+            {
+                levelManager.createFinishGame(m_GameWindow);
+                m_GameWindow.close();
+                break; //get out from the loop
+            }
+            levelManager.resetAddTime();
             levelManager.startTimer();
             manager.loadLevel(levelManager.getLevel());
             levelManager.setNextLevel(false);
+        }
+
+        if (manager.checkIfRobotDead())
+        {
+            levelManager.createLoseWindow(m_GameWindow);
+            m_GameWindow.close();
+            break;
         }
        
         m_GameWindow.display();

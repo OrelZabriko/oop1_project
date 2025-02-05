@@ -20,9 +20,7 @@ int LoadLevel::m_gameTime = TIME_LIMIT;
 
 //-----------------------------------------------------------------------------
 LoadLevel::LoadLevel()
-{
-	readAllLevels();
-}
+{}
 
 
 //-----------------------------------------------------------------------------
@@ -40,8 +38,10 @@ bool LoadLevel::readAllLevels()
 	int row = 0;
 	while (std::getline(file, line))
 	{
+		//std::cout << "The level I read is: " << line << std::endl;
+
 		std::ifstream level(line);
-		if (!file.is_open())
+		if (!level.is_open())
 		{
 			std::cerr << "Could not open level file: "  << std::endl;
 			return false;
@@ -59,6 +59,7 @@ bool LoadLevel::readAllLevels()
 		{
 			currLevel.setCell(temp);
 		}
+		
 		m_levels.push_back(currLevel);
 		level.close();
 	}
@@ -73,12 +74,7 @@ const Level& LoadLevel::getLevel()
 {
 	if (m_currLevel > m_levels.size())
 	{
-		//winner?
-
-		ResourceManager::getInstance().GetBackgroundMusic().stop();
-		ResourceManager::getInstance().GetWinLevelSound().play();
-		std::this_thread::sleep_for(std::chrono::seconds(5)); 
-		ResourceManager::getInstance().GetWinLevelSound().stop();
+		ResourceManager::getInstance().playWinMusic();
 	}
 	return m_levels[m_currLevel++];
 }
@@ -168,4 +164,75 @@ int LoadLevel::getLevelTime()
 void LoadLevel::addLevelTime()
 {
 	m_addTime += TIME_ADD;
+}
+
+
+//-----------------------------------------------------------------------------
+bool LoadLevel::finishAllLevels()
+{
+	return m_currLevel == m_levels.size();
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::resetAddTime()
+{
+	m_addTime = 0;
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::createFinishGame(sf::RenderWindow& window)
+{
+	sf::RenderWindow finishWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), END_GAME_WINDOW_NAME);
+
+	const sf::Texture& EndGameTexture = ResourceManager::getInstance().getFinishGameBackground();
+	sf::Sprite EndGameBackground(EndGameTexture);
+
+	float scaleX = static_cast<float>(WINDOW_WIDTH) / EndGameBackground.getTexture()->getSize().x;
+	float scaleY = static_cast<float>(WINDOW_HEIGHT) / EndGameBackground.getTexture()->getSize().y;
+	EndGameBackground.setScale(scaleX, scaleY);
+
+	while (finishWindow.isOpen())
+	{
+		sf::Event event;
+		while (finishWindow.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				finishWindow.close();
+			}
+		}
+		finishWindow.clear();
+		finishWindow.draw(EndGameBackground);
+		finishWindow.display();
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void LoadLevel::createLoseWindow(sf::RenderWindow& window)
+{
+	sf::RenderWindow loseWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), LOSE_GAME_WINDOW_NAME);
+
+	const sf::Texture& LoseGameTexture = ResourceManager::getInstance().getLoseBackground();
+	sf::Sprite LoseGameBackground(LoseGameTexture);
+	float scaleX = static_cast<float>(WINDOW_WIDTH) / LoseGameBackground.getTexture()->getSize().x;
+	float scaleY = static_cast<float>(WINDOW_HEIGHT) / LoseGameBackground.getTexture()->getSize().y;
+	LoseGameBackground.setScale(scaleX, scaleY);
+
+	while (loseWindow.isOpen())
+	{
+		sf::Event event;
+		while (loseWindow.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				loseWindow.close();
+			}
+		}
+		loseWindow.clear();
+		loseWindow.draw(LoseGameBackground);
+		loseWindow.display();
+	}
 }

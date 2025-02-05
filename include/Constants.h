@@ -9,9 +9,10 @@
 const std::string BOARD_FILE_NAME = "Board.txt";
 const std::string TOOLBAROBJECTS = "ToolBar.txt";
 const std::string LEVELS_FILE = "LevelList.txt";
-const std::string OPENING_WINDOW_NAME = "Opening Window";
 const std::string GAME_WINDOW_NAME = "Game Window";
 const std::string HELP_WINDOW_NAME = "Help Window";
+const std::string END_GAME_WINDOW_NAME = "End Game Window";
+const std::string LOSE_GAME_WINDOW_NAME = "Lose Game Window";
 
 const int START_WINDOW_BUTTONS_NUM = 3;
 const std::string NEW_GAME_BUTTON_NAME = "New Game";
@@ -45,14 +46,21 @@ const float INFOBAR_SPACE = 60.f; //Space between the top ot the RenderWindow to
 
 const float PIXELS_FOR_MOVE_ROBOT = 450.f;
 const float PIXELS_FOR_MOVE_GUARD = 50.f;
-const float EXPLOSION_RANGE = 32.f;
-const int TIME_LIMIT = 300; //the limit time for every level in seconds
+const float EXPLOSION_RANGE = 35.f;
+const float LATENCY_EXPOLDE_TIME = 0.3f;
+const int TIME_LIMIT = 300;	     //The limit time for every level in seconds
 
 const int ROBOT_LIVES = 5;
 const int RESTART_ROBOT_SCORE = 0;
 const int WIN_LEVEL_SCORE = 30;
 const int KILL_GUARD_SCORE = 10;
+const int NUMBER_OF_LIFE_FOR_DEATH = 0;
 const int TIME_ADD = 5;
+
+const float BACKGROUND_MUSIC_REGULAR_VOLUME = 20.f;
+const float BACKGROUND_MUSIC_LOWER_VOLUME = 15.f;
+const float WIN_MUSIC_REGULAR_VOLUME = 20.f;
+const float LOSE_MUSIC_LOWER_VOLUME = 20.f;
 
 
 //-----enum section------

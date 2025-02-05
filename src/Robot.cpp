@@ -128,6 +128,34 @@ bool Robot::getTimeGift() const
 
 
 //-----------------------------------------------------------------------------
+void Robot::handleCollision(Objects& otherObject)
+{
+	otherObject.handleCollision(*this);
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Guard& guard)
+{
+	handleRobotDeath();
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Wall& wall)
+{
+	this->setSpritePos(getPrevPosition());
+}
+
+
+//-----------------------------------------------------------------------------
+void Robot::handleCollision(Rock& rock)
+{
+	this->setSpritePos(getPrevPosition());
+}
+
+
+//-----------------------------------------------------------------------------
 void Robot::handleCollision(HideGuard& gift)
 {
 	this->setHideGift(false);
@@ -227,61 +255,6 @@ const bool Robot::getNeedToDecLife() const
 {
 	return m_needToDecLives;
 }
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Objects& otherObject)
-{
-	otherObject.handleCollision(*this);
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Robot& robot)
-{}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Guard& guard)
-{
-	handleRobotDeath();
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Wall& wall)
-{
-	this->setSpritePos(getPrevPosition());
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Rock& rock)
-{
-	this->setSpritePos(getPrevPosition());
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Door& door)
-{
-	this->setSpritePos(getPrevPosition()); 
-	this->incScore(WIN_LEVEL_SCORE);
-	
-	ResourceManager::getInstance().GetBackgroundMusic().pause();
-	ResourceManager::getInstance().GetWinLevelSound().play();
-	ResourceManager::getInstance().GetWinLevelSound().stop();
-	ResourceManager::getInstance().GetBackgroundMusic().play();
-
-	this->restartLivesNum();
-	LoadLevel::setNextLevel(true);
-	LoadLevel::restartGameTime();
-}
-
-
-//-----------------------------------------------------------------------------
-void Robot::handleCollision(Bombs& bomb)
-{}
 
 
 //-----------------------------------------------------------------------------

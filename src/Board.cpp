@@ -211,12 +211,17 @@ void Board::handleObjectCollision()
 		{
 			if (m_Robot->collideWithExplodingBombs(*m_Bombs[bombNum]))
 			{
+				//if(RobotDefPosSameAsBomb()) m_Robot->setNeedToDecLivesOnce(true);
+				//else m_Robot->setNeedToDecLivesOnce(false);
+
 				m_Robot->handleRobotDeath();
 
 				for (int reLocGuard = 0; reLocGuard < m_Guards.size(); reLocGuard++)
 				{
 					m_Guards[reLocGuard]->setSpritePos(m_Guards[reLocGuard]->getDefPos());
 				}
+
+				//m_Bombs.clear();
 			}
 
 			for (const auto& staticObj : m_StaticObjects)
@@ -232,7 +237,7 @@ void Board::handleObjectCollision()
 		}
 	}
 
-
+	//check collision of the robot with each gift
 	for (const auto& gift : m_Gifts)
 	{
 		if (m_Robot->collideWithOthers(*gift))
@@ -293,6 +298,20 @@ void Board::handleObjectCollision()
 			}
 		}
 	}
+}
+
+
+//-----------------------------------------------------------------------------
+//This function check if the guard is in the same place as its deffault place.
+bool Board::RobotDefPosSameAsBomb()
+{
+	bool result = false;
+	sf::FloatRect bombRect = m_Robot->getSprite().getGlobalBounds();
+	sf::Vector2f robotRect = m_Robot->getDefPos();
+
+	if (bombRect.contains(robotRect)) result = true;
+
+	return result;
 }
 
 
@@ -425,4 +444,15 @@ void Board::addTime()
 {
 	LoadLevel::addLevelTime();
 	m_Robot->setTimeGift(false);
+}
+
+
+//-----------------------------------------------------------------------------
+bool Board::checkRobotEndOfLife()
+{
+	if (m_Robot->getLivesNum() <= NUMBER_OF_LIFE_FOR_DEATH)
+	{
+		return true;
+	}
+	return false;
 }

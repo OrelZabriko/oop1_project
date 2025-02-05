@@ -46,6 +46,10 @@ void ResourceManager::loadTextures()
 	m_BombTexture.loadFromFile(m_BombFileName);
 
 	m_ExplosionTexture.loadFromFile(m_ExplosionBombFileName);
+
+	m_EndGameImage.loadFromFile(m_EndGameFileName);
+
+	m_LoseGameImage.loadFromFile(m_LoseFileName);
 }
 
 
@@ -107,6 +111,20 @@ const sf::Texture& ResourceManager::getObjectTexture(enum OBJECT object) const
 
 
 //-----------------------------------------------------------------------------
+const sf::Texture& ResourceManager::getFinishGameBackground()
+{
+	return m_EndGameImage;
+}
+
+
+//-----------------------------------------------------------------------------
+const sf::Texture& ResourceManager::getLoseBackground()
+{
+	return m_LoseGameImage;
+}
+
+
+//-----------------------------------------------------------------------------
 sf::Music& ResourceManager::GetBackgroundMusic()
 {
 	return m_backgroundMusic;
@@ -155,4 +173,33 @@ const sf::Time& ResourceManager::getDeltaTime() const
 void ResourceManager::setDeltaTime(const sf::Time& newDeltaTime)
 {
 	m_deltaTime = newDeltaTime;
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::playBackgroundMusic()
+{
+	m_backgroundMusic.setLoop(true);
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_REGULAR_VOLUME);
+	m_backgroundMusic.play();  //Start the music
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::playWinMusic()
+{
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
+	m_winLevelSound.setVolume(WIN_MUSIC_REGULAR_VOLUME);
+	m_winLevelSound.play();
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
+}
+
+
+//-----------------------------------------------------------------------------
+void ResourceManager::playLoseMusic()
+{
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
+	m_loseLevelSound.setVolume(WIN_MUSIC_REGULAR_VOLUME);
+	m_loseLevelSound.play();
+	m_backgroundMusic.setVolume(BACKGROUND_MUSIC_LOWER_VOLUME);
 }

@@ -18,10 +18,12 @@ public:
 
 
 	virtual void handleCollision(Objects& otherObject) override;
-	virtual void handleCollision(Robot& robot) override { /* impossible collision, ignore */ };
-	virtual void handleCollision(Guard& guard) override { /* impossible collision, ignore */ };
-
-	virtual void handleCollision(Bombs& bomb) { /* impossible collision, ignore */ };
+	virtual void handleCollision(Guard& guard) override {};
+	virtual void handleCollision(Bombs& bomb) {};
+	virtual void handleCollision(HideGuard& gift) override {};
+	virtual void handleCollision(FrozenGuard& gift) override {};
+	virtual void handleCollision(AddLife& gift) override {};
+	virtual void handleCollision(AddTime& gift) override {};
 
 	bool isGiftTaken();
 	void giftWasTaken();

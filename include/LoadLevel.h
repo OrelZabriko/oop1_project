@@ -35,6 +35,12 @@ public:
     static void addLevelTime();
     void updateTime();
 
+    bool finishAllLevels();
+    void resetAddTime();
+
+    void createFinishGame(sf::RenderWindow& window);
+    void createLoseWindow(sf::RenderWindow& window);
+
 
 private:
     static int m_gameTime;

@@ -26,6 +26,8 @@ public:
     const sf::Texture& getHelpStartMenuBackground();
     const sf::Texture& getBombTexture();
     const sf::Texture& getExplosionTexture();
+    const sf::Texture& getFinishGameBackground();
+    const sf::Texture& getLoseBackground();
 
     sf::Music& GetBackgroundMusic();
     sf::Music& GetWinLevelSound();
@@ -36,12 +38,17 @@ public:
     const sf::Time& getDeltaTime() const;
     void setDeltaTime(const sf::Time& newDeltaTime);
 
+    void playBackgroundMusic();
+    void playWinMusic();
+    void playLoseMusic();
+
 
 private:
     ResourceManager(); //Private constructor for singleton
     void loadTextures();
     void loadMusic();
     void loadTextFont();
+
 
     //Storage for textures
     std::vector<std::string> m_objNames =
@@ -50,12 +57,16 @@ private:
     std::string m_HelpBackGroundFileName = "Help.png";
     std::string m_BombFileName = "Bomb.png";
     std::string m_ExplosionBombFileName = "Explosion.png";
+    std::string m_EndGameFileName = "WIN.png";
+    std::string m_LoseFileName = "LOSE.png";
     std::vector<sf::Texture> m_objects;
     std::vector<sf::Texture> m_utility;
     sf::Texture m_backGroundImage;
     sf::Texture m_HelpBackGroundImage;
     sf::Texture m_BombTexture;
     sf::Texture m_ExplosionTexture;
+    sf::Texture m_EndGameImage;
+    sf::Texture m_LoseGameImage;
 
     //Storage for music
     sf::Music m_backgroundMusic;

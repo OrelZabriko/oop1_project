@@ -99,25 +99,10 @@ void Bombs::handleCollision(Guard& guard)
 
 
 //-----------------------------------------------------------------------------
-void Bombs::handleCollision(Wall& wall)
-{}
-
-
-//-----------------------------------------------------------------------------
 void Bombs::handleCollision(Rock & rock)
 {
     rock.setToDisappear(true);
 }
-
-
-//-----------------------------------------------------------------------------
-void Bombs::handleCollision(Door& door)
-{}
-
-
-//-----------------------------------------------------------------------------
-void Bombs::handleCollision(Bombs & bomb)
-{}
 
 
 //-----------------------------------------------------------------------------
@@ -150,7 +135,7 @@ void Bombs::ExplodeBomb()
         m_activeBombs.push_back(explosionPos);
     }
     m_is_bomb_exploding = true;
-    m_explosion_timer = sf::seconds(0.3f);
+    m_explosion_timer = sf::seconds(LATENCY_EXPOLDE_TIME);
 }
 
 

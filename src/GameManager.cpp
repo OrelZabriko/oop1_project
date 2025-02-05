@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------
 GameManager::GameManager(const Level& currLevel) : m_currLevel(currLevel)
 {
-	loadLevel(currLevel);
+	loadLevel(currLevel);	
 }
 
 
@@ -114,4 +114,12 @@ void GameManager::SetStartGame(const bool ifStart)
 const bool& GameManager::GetIfStartGame() const
 {
 	return m_startGame;
+}
+
+
+//-----------------------------------------------------------------------------
+bool GameManager::checkIfRobotDead()
+{
+	return (m_currBoard.checkRobotEndOfLife());
+
 }

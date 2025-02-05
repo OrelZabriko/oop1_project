@@ -65,6 +65,7 @@ public:
 	bool getTimeGiftStatus();
 	void addLife();
 	void addTime();
+	bool checkRobotEndOfLife();
 	void freezeGuards();
 	
 
@@ -79,4 +80,6 @@ private:
 	std::vector<std::unique_ptr<Bombs>> m_Bombs;
 	sf::Clock freezeGuardTimer;
 	bool m_freezeStarted = false;
+
+	bool RobotDefPosSameAsBomb();
 };
