@@ -2,7 +2,6 @@
 #include "Bombs.h"
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 
 //-----functions section------

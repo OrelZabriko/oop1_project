@@ -2,7 +2,6 @@
 #include "HideGuard.h"
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 
 //-----functions section------

@@ -1,10 +1,11 @@
 #pragma once
 
 //-----include section-----
-#include <SFML/Graphics.hpp>
 #include "StaticObjects.h"
 #include "constants.h"
 #include "ResourceManager.h"
+
+#include <SFML/Graphics.hpp>
 
 
 //-----class section-----
