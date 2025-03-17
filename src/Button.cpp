@@ -21,12 +21,12 @@ sf::Vector2f Button::getPosition() const
 void Button::setPosition(int place)
 {
 	//m_position.x = 30.f;
-	m_position.x = (OPENINIG_MENU_WIDTH - BUTTON_WIDTH) / 2;
+	m_position.x = (WINDOW_WIDTH - BUTTON_WIDTH) / 2;
 
 	//calculate vertical starting position for centering
 	float totalButtonsHeight = START_WINDOW_BUTTONS_NUM * BUTTON_HEIGHT +
 							   (START_WINDOW_BUTTONS_NUM - 1) * BUTTON_SPACING;
-	float startingY = (OPENINIG_MENU_HEIGHT - totalButtonsHeight) / 2;
+	float startingY = (WINDOW_HEIGHT - totalButtonsHeight) / 2;
 
 	//vertical position for each button
 	m_position.y = startingY + (BUTTON_HEIGHT + BUTTON_SPACING) * place;
@@ -77,21 +77,13 @@ sf::RectangleShape Button::makeButtonRectangle() const
 //This function draw each button.
 void Button::draw(sf::RenderWindow& window, char buttonType) const
 {
-    //load a font
-    sf::Font font;
-    if (!font.loadFromFile("GOUDYSTO.TTF"))
-    {
-        exit(EXIT_FAILURE); //Make sure you have a valid font file
-    }
-
-
     //create a rectangle for the button
     sf::RectangleShape button = makeButtonRectangle();
 
 
     //create text for the button
     sf::Text buttonText;
-    buttonText.setFont(font);                                           //Set the font
+    buttonText.setFont(ResourceManager::getInstance().GetTextFont());   //Set the font
     buttonText.setString(getStartMenuButtonStringByChar(buttonType));  //Set the text
     buttonText.setCharacterSize(FONT_CHARACTERS_SIZE);                //Text size
     buttonText.setFillColor(sf::Color::Black);                       //Text color

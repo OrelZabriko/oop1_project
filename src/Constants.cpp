@@ -2,23 +2,30 @@
 #include "Constants.h"
 
 
-
 //-----functions section------
 //-----------------------------------------------------------------------------
-char getCharByEnum(OBJECT obj)
+char getObjCharByEnum(OBJECT obj)
 {
 	switch (obj)
 	{
-	case OBJECT::Door:
+	case OBJECT::DOOR:
 		return 'D';
-	case OBJECT::Wall:
+	case OBJECT::WALL:
 		return '#';
-	case OBJECT::Rock:
+	case OBJECT::ROCK:
 		return '@';
-	case OBJECT::Robot:
+	case OBJECT::ROBOT:
 		return '/';
-	case OBJECT::Guard:
+	case OBJECT::GUARD:
 		return '!';
+	case OBJECT::AddTimeGIFT:
+		return 'T';
+	case OBJECT::AddLifeGift:
+		return 'L';
+	case OBJECT::FrozenGuardGift:
+		return 'F';
+	case OBJECT::HideGuardGift:
+		return 'H';
 	}
 }
 
@@ -29,15 +36,23 @@ OBJECT getObjByChar(char obj)
 	switch (obj)
 	{
 	case 'D':
-		return OBJECT::Door;
+		return OBJECT::DOOR;
 	case '#':
-		return OBJECT::Wall;
+		return OBJECT::WALL;
 	case '@':
-		return OBJECT::Rock;
+		return OBJECT::ROCK;
 	case '/':
-		return OBJECT::Robot;
+		return OBJECT::ROBOT;
 	case '!':
-		return OBJECT::Guard;
+		return OBJECT::GUARD;
+	case 'T':
+		return OBJECT::AddTimeGIFT;
+	case 'L':
+		return OBJECT::AddLifeGift;
+	case 'F':
+		return OBJECT::FrozenGuardGift;
+	case 'H':
+		return OBJECT::HideGuardGift;
 	}
 }
 
@@ -91,8 +106,8 @@ std::string getStartMenuButtonStringByChar(char buttonType)
 //This function check if the mouse is in the bounds of the button or the cell
 //that called to this function.
 bool CheckLimits(const sf::Vector2f mousePosition,
-				 const sf::Vector2f buttonCellPos,
-				 const sf::Vector2f buttonCellSize)
+	const sf::Vector2f buttonCellPos,
+	const sf::Vector2f buttonCellSize)
 {
 	if (buttonCellPos.x < mousePosition.x && buttonCellPos.x + buttonCellSize.x > mousePosition.x &&
 		buttonCellPos.y < mousePosition.y && buttonCellPos.y + buttonCellSize.y > mousePosition.y)

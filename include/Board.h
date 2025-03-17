@@ -2,6 +2,19 @@
 
 //-----include section-----
 #include "Constants.h"
+#include "ResourceManager.h"
+#include "Level.h"
+#include "Wall.h"
+#include "Door.h"
+#include "Robot.h"
+#include "Guard.h"
+#include "Rock.h"
+#include "StaticObjects.h"
+#include "Bombs.h"
+#include "AddTime.h"
+#include "AddLife.h"
+#include "FrozenGuard.h"
+#include "HideGuard.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -12,28 +25,59 @@
 class Board
 {
 public:
-	//Board();
+	Board() = default;
+	Board(int rows, int cols);
+	void createCell(const char objChar, const sf::Vector2f objLoc);
 
-	//void resetBoard(const int rows, const int cols);
+	void resetBoard(const Level& currLevel);
 
-	//int GetRows() const;
-	//int GetCols() const;
+	int GetRows() const;
+	int GetCols() const;
 
-	//bool CheckIfInBoard(const sf::Vector2f mousePosition, sf::Vector2i& boardCord) const;
-	//void update(const sf::Vector2i boardCord, OBJECT obj, bool& checkExistencePlayer);
+	const sf::Vector2f& GetBoardPos();
+	void SetBoardPos(const sf::Vector2f& boardPos);
 
-
-
-	//void draw(sf::RenderWindow& window, const TextureManager& tex) const;
-
+	bool isValidPosition(int row, int col) const;
 	
+	void draw(sf::RenderWindow& window) const;
+	
+	void handleBombs(sf::Time deltaTime);
+	void addBomb(const sf::Vector2f& position);
+	sf::Vector2f getRobotPosition() const;
 
-	//void CheckHover(sf::Vector2f mousePosition,
-		//sf::RenderWindow& m_gameWindow,
-		//const TextureManager& textures);
+	void setRobotDirections(const sf::Keyboard::Key key);
+	void MoveRobot(const sf::Keyboard::Key key, const sf::Time& deltaTime);
+	void MoveGuards(const sf::Time& deltaTime);
+
+	void handleObjectCollision();
+
+	bool returnIfNeedToDecLife();
+
+	void updateGuards();
+	void updateRocks();
+	void updateGifts();
+
+	void HideSingleGuard();
+
+	bool getHideGiftStatus();
+	bool getFreezeGiftStatus();
+	bool getLifeGiftStatus();
+	bool getTimeGiftStatus();
+	void addLife();
+	void addTime();
+	bool checkRobotEndOfLife();
+	void freezeGuards();
+	
 
 private:
 	int m_rows;
 	int m_cols;
-	//std::vector<std::vector<Cell>> m_board;
+	sf::Vector2f m_boardPosition;
+	std::unique_ptr<Robot> m_Robot;
+	std::vector<std::unique_ptr<Guard>> m_Guards;
+	std::vector<std::unique_ptr<StaticObjects>> m_StaticObjects;
+	std::vector<std::unique_ptr<Gifts>> m_Gifts;
+	std::vector<std::unique_ptr<Bombs>> m_Bombs;
+	sf::Clock freezeGuardTimer;
+	bool m_freezeStarted = false;
 };

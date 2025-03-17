@@ -15,20 +15,40 @@ class LoadLevel
 {
 public:
     LoadLevel();
-    const Level& getLevel()
-    {
-        
-        if (m_currLevel > m_levels.size())
-        {
-            //winner?
-        }
-        return m_levels[m_currLevel++];
-    }
+
+    bool readAllLevels();
+
+    const Level& getLevel();
+
+    static void setNextLevel(bool val);
+
+    bool getIsNextLevel();
+    
+    static const int& getCurrLevel();
+
+    int getCurrentLevelRows() const;
+    int getCurrentLevelCols() const;
+
+    static void restartGameTime();
+    void startTimer();
+    static int getLevelTime();
+    static void addLevelTime();
+    void updateTime();
+
+    bool finishAllLevels();
+    void resetAddTime();
+
+    void createFinishGame();
+    void createLoseWindow();
 
 
 private:
-    int m_currLevel;
-    bool readAllLevels();
+    static int m_gameTime;
+    static int m_addTime;
+    sf::Clock m_gameTimer;
+    bool m_timerStarted = false;
+    static int m_currLevel;
+    static bool m_nextLevel;
     std::vector<Level> m_levels;
 };
 

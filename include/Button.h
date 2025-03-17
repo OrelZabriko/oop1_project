@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "Constants.h"
+#include "ResourceManager.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

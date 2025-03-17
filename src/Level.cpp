@@ -1,21 +1,13 @@
 //-----include section-----
 #include "Level.h"
-#include "Constants.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 
-
 //-----functions section------
 //-----------------------------------------------------------------------------
-Level::Level() 
-{
-}
-
-
-//-----------------------------------------------------------------------------
-void Level::setCols(const int cols)
+void Level::setLevelCols(const int cols)
 {
 	m_cols = cols;
 }
@@ -26,6 +18,9 @@ const int Level::getRows() const
 {
 	return m_rows;
 }
+
+
+//-----------------------------------------------------------------------------
 const int Level::getCols() const
 {
 	return m_cols;
@@ -33,7 +28,7 @@ const int Level::getCols() const
 
 
 //-----------------------------------------------------------------------------
-void Level::setRows(const int rows)
+void Level::setLevelRows(const int rows)
 {
 	m_rows = rows;
 }
@@ -52,3 +47,9 @@ void Level::setCell(const std::string line)
 	m_matrix.push_back(line);
 }
 
+
+//-----------------------------------------------------------------------------
+const char& Level::GetObjChar(int row, int col) const
+{
+	return m_matrix[row][col];
+}

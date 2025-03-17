@@ -3,7 +3,7 @@
 //-----include section-----
 #include "Button.h"
 #include "Constants.h"
-#include "TextureManager.h"
+#include "ResourceManager.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -21,15 +21,23 @@ class OpeningMenu
 public:
 	OpeningMenu();
 
-	//void RunStartWindow();
+	char getClickedButton(const sf::Vector2f& mousePosition) const;
 
 	void Draw(sf::RenderWindow& window);
 
-private:
-	//sf::RenderWindow m_startMenu;
+	void CreateHelpWindow(sf::RenderWindow& window);
+	void ResetSettings();
+	void createBackButton();
 
+
+private:
 	sf::Sprite m_backgroundImage;
+	sf::Sprite m_helpBackgroundImage;
 	sf::Vector2f m_backgroundImageSize;
 	std::vector<std::unique_ptr<Button>> m_menuButtons;
+	sf::Text m_helpText;
+	sf::RectangleShape m_backButton;
+	sf::Text m_backButtonText;
+
 	void SetScaleBackgroundImag();
 };
