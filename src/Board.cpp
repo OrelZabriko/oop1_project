@@ -1,5 +1,7 @@
 //-----include section-----
 #include "Board.h"
+#include "Cell.h"
+#include "Constants.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -9,11 +11,14 @@
 #include <string>
 #include <vector>
 
+
 #include <stdio.h>
+
 
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+
 Board::Board(int rows,int cols) : m_rows(rows), m_cols(cols)
 {}
 
@@ -80,6 +85,7 @@ void Board::resetBoard(const Level& currLevel)
 {
 	m_rows = currLevel.getRows();
 	m_cols = currLevel.getCols();
+
 }
 
 
@@ -98,6 +104,7 @@ int Board::GetCols() const
 
 
 //-----------------------------------------------------------------------------
+
 const sf::Vector2f& Board::GetBoardPos()
 {
 	return m_boardPosition;
@@ -449,3 +456,4 @@ bool Board::checkRobotEndOfLife()
 	}
 	return false;
 }
+
